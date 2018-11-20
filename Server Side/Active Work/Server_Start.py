@@ -1,0 +1,3 @@
+import Main
+
+Main.MainEntryPoint()
