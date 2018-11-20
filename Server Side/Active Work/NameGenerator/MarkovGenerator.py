@@ -2,7 +2,7 @@ import random
 
 
 
-def createNGramList(strings, order = 3):
+def createNGramListDEPRECATED(strings, order = 3):
     # ngramSet = pd.DataFrame(columns=['string', 'num', 'followers'])
     ngramList = []
     beginnings = []
@@ -73,8 +73,8 @@ def createNGRAMList(strings, order = 3):
     return starters, ngrams
 
 def markovIt(
-        starters = ['a'], 
-        ngrams = {'a':'b'}, 
+        starters = ['default'], 
+        ngrams = {'default':'this is default'}, 
         order = 3, 
         numGenerated = 10, 
         maxlength = 20, 
@@ -95,7 +95,6 @@ def markovIt(
             # print(f'Num: {randy} , text: {ret[i][-order:]} , potentionals: {potentials}')
     return ret
 
-
 def generate(strings, order = 3, numGenerated=10):
     maxlength = (len(max(strings, key=len)))
     starters, ngrams = createNGRAMList(strings, order)
@@ -103,4 +102,3 @@ def generate(strings, order = 3, numGenerated=10):
     print(ret)
     # print(ngrams[9])
     return ret
-

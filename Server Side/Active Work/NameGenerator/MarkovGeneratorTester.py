@@ -1,11 +1,12 @@
 import MarkovGenerator as markov
 import pandas as pd
 
-def load(filepath="Experiments/names.csv"):
+
+def load(filepath="names.csv"):
     df = pd.read_csv(
         filepath,
         # sep=",",
-        # engine="python",
+        engine="python",
         encoding="latin1",
         # index_col=0
         )
@@ -19,7 +20,7 @@ def parse(parsee="names example"):
     return ret
 
 def main(repeatCount = 10):
-    df = load("Experiments/names.csv")
+    df = load("Server Side/Active Work/NameGenerator/names.csv")
     # for item in df.examples:
     #     print(parse(item))
     generatedContent = []
