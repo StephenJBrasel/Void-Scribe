@@ -75,8 +75,8 @@ def createNGRAMList(strings, order = 3):
 def markovIt(
         starters = ['default'], 
         ngrams = {'default':'this is default'}, 
-        order = 3, 
         numGenerated = 10, 
+        order = 3, 
         maxlength = 20, 
         seed = None):
     random.seed(seed)
@@ -95,10 +95,10 @@ def markovIt(
             # print(f'Num: {randy} , text: {ret[i][-order:]} , potentionals: {potentials}')
     return ret
 
-def generate(strings, order = 3, numGenerated=10):
+def generate(strings, numGenerated=10, order = 3, maxlength = 10, seed = None):
     maxlength = (len(max(strings, key=len)))
     starters, ngrams = createNGRAMList(strings, order)
-    ret = markovIt(starters, ngrams, order, numGenerated, maxlength = 10, seed = None)
-    print(ret)
+    ret = markovIt(starters, ngrams, numGenerated, order, maxlength, seed)
+    # print(ret)
     # print(ngrams[9])
     return ret
