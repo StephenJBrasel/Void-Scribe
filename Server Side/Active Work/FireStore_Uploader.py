@@ -1,5 +1,4 @@
 import queue
-import Main
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -7,17 +6,10 @@ cred = credentials.Certificate(r'C:\Users\thepe_000\Desktop\PP5\Void Scribe\Serv
 firebase_admin.initialize_app(cred)
 
 DataBaseReference = firestore.client()
-UploadQueue = queue.Queue()
+_UploadQueue_ = queue.Queue()
+#Objects in Queue must be indexable format -> [0] collection reference [1] document contents [2] (optional) document name
 
-doc_ref = db.collection(u'TEST_COLLECTION').document(u'TEST_DOCUMENT')
-doc_ref.set({
-    u'test1': u'Hello there,',
-    u'test2': u'General',
-    u'test3': u'Kenobi'
-})
-
-
-def UploadDocument(collection, document_content, document_name):
+def _UploadDocument_(collection, document_content, document_name):
     #collection - A reference to the collection to insert into, utalize DataBaseReference to obtain this
     #document_content - A dictionary object that is the contents of the document to upload
     #docuement_name - An optional string used to name the uploaded document
@@ -30,6 +22,9 @@ def UploadDocument(collection, document_content, document_name):
         doc_ref = collection.document(document_name)
 
     doc_ref.set(document_content)
+
+def EnqueueDocument(collection, document_content, document_name):
+    _UploadQueue_.put((collection, document_content, document_name))
 
 def FireStoreUploaderEntryPoint():
 
@@ -46,8 +41,13 @@ def FireStoreUploaderEntryPoint():
             break
 
         try:
-            doc_info = UploadQueue.get(timeout=1/10)
+            doc_info = _UploadQueue_.get(timeout=1/10)
         except:
             continue
 
-        UploadDocument(doc_info[0], doc_info[1], doc_info[2])
+        try:
+            doc_name = doc_info[2]
+        except:
+            docu_name = None
+
+        _UploadDocument_(doc_info[0], doc_info[1], doc_name)
