@@ -15,7 +15,7 @@ def load(filepath="names.csv"):
     # print(df)
     return df
 
-__df__ = load("Server Side/Active Work/NameGenerator/names.csv")
+__df__ = load("names.csv")
 
 def parse(parsee="names example"):
     ret = parsee.split(' ')

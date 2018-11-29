@@ -12,7 +12,7 @@ _UploadQueue_ = queue.Queue()
 def _UploadDocument_(collection, document_content, document_name):
     #collection - A reference to the collection to insert into, utalize DataBaseReference to obtain this
     #document_content - A dictionary object that is the contents of the document to upload
-    #docuement_name - An optional string used to name the uploaded document
+    #document_name - An optional string used to name the uploaded document
     #If no document name is provided push() is used to generate a unique ID
     
     doc_ref = None
