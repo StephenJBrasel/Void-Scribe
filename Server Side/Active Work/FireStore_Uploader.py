@@ -9,21 +9,17 @@ DataBaseReference = firestore.client()
 _UploadQueue_ = queue.Queue()
 #Objects in Queue must be indexable format -> [0] collection reference [1] document contents [2] (optional) document name
 
-def _UploadDocument_(collection, document_content, document_name):
+def _UploadDocument_(collection, document_content, document_name=None):
     #collection - A reference to the collection to insert into, utalize DataBaseReference to obtain this
     #document_content - A dictionary object that is the contents of the document to upload
     #document_name - An optional string used to name the uploaded document
     #If no document name is provided push() is used to generate a unique ID
     
-    doc_ref = None
-    if document_name == None:
-        doc_ref = collection.push()
-    else:
-        doc_ref = collection.document(document_name)
+    
+    doc_ref = collection.document(document_name)
+    doc_ref.set(document_data=document_content)
 
-    doc_ref.set(document_content)
-
-def EnqueueDocument(collection, document_content, document_name):
+def EnqueueDocument(collection, document_content, document_name=None):
     _UploadQueue_.put((collection, document_content, document_name))
 
 def FireStoreUploaderEntryPoint():
@@ -45,9 +41,10 @@ def FireStoreUploaderEntryPoint():
         except:
             continue
 
+        doc_name = None
         try:
             doc_name = doc_info[2]
         except:
-            docu_name = None
+            doc_name = None
 
         _UploadDocument_(doc_info[0], doc_info[1], doc_name)

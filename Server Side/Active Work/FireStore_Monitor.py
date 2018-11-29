@@ -28,19 +28,20 @@ def FireStoreMonitorEntryPoint():
     import firebase_admin
     from firebase_admin import credentials, firestore
     cred = credentials.Certificate(r'C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Active Work\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json')
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, name="Monitor")
     db = firestore.client()
     requests_ref = db.collection(u'Algorithm_Requests')
 
     #Register Callback to allow safe termination
     shut_down = False
-        def Shutdown_Monitor():
-            nonlocal shut_down
-            shut_down = True
-        from Main import AddShutDownProcess
-        AddShutDownProcess(Shutdown_Monitor)
+    def Shutdown_Monitor():
+        nonlocal shut_down
+        shut_down = True
+    from Main import AddShutDownProcess
+    AddShutDownProcess(Shutdown_Monitor)
 
     import time
+    import Algorithm_Processor
     while True:
         if shut_down:
             break
@@ -55,6 +56,8 @@ def FireStoreMonitorEntryPoint():
 
             if values['Timestamp'] > last_timestamp:
                 last_timestamp = values['Timestamp']
+
+            Algorithm_Processor.EnqueueRequest(doc)
 
         time.sleep(1/5)
 

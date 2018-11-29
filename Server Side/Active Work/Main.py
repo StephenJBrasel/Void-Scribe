@@ -2,6 +2,9 @@ import threading
 import queue
 import time
 import Terminal_Controller
+import FireStore_Monitor
+import Algorithm_Processor
+import FireStore_Uploader
 
 
 main_processings = queue.Queue()
@@ -34,6 +37,9 @@ def MainEntryPoint():
     #Start-Up Procedure
     SpinUpThread(Terminal_Controller.InputEntryPoint, "Terminal Controller", True)
     SpinUpThread(Terminal_Controller.ExecutionerEntryPoint, "Terminal Exeutioner")
+    SpinUpThread(FireStore_Monitor.FireStoreMonitorEntryPoint, "Firestore Monitor", True)
+    SpinUpThread(FireStore_Uploader.FireStoreUploaderEntryPoint, "Firestore Uploader")
+    SpinUpThread(Algorithm_Processor.AlgorithmProcessorEntryPoint, "Algorithm Processor")
 
     Terminal_Controller.AddTerminalCommand("exit", command_exit, help_tip_exit, post_report_exit)
 
