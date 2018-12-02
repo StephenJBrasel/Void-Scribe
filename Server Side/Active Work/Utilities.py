@@ -1,3 +1,4 @@
+#Firebase Timestamping
 def __GenerateConnection__():
     #Create a secure connection to the Firestore REST API using google Oauth2
     from google.oauth2 import service_account

@@ -40,6 +40,28 @@ def FireStoreMonitorEntryPoint():
     from Main import AddShutDownProcess
     AddShutDownProcess(Shutdown_Monitor)
 
+    #Register Terminal Command To Adjust Interval of Query
+    query_rate = 1/5
+    def command_QueryRate(arguments=None):
+        if arguments == None or len(arguments) != 1:
+            return "QueryRate has one required argument,\n\tex: QueryRate 5\n\tThis will set the QueryRate to 1/5 query per second." 
+        try:
+            float(arguments[0])
+        except:
+            return "Argument was passed with invalid syntax."
+        
+        nonlocal query_rate
+        query_rate = float(arguments[0])
+
+    queryrate_tip_help = "Adjusts the rate that Firestore is Queried for new requests.\n\tArguments\n\t\t1. Query Rate Value - Value to be set as the new Query Rate"
+    def post_report_queryrate(result=None):
+        if result==None:
+            return
+        print(result)
+    from Terminal_Controller import AddTerminalCommand
+    AddTerminalCommand("QueryRate", command_QueryRate, queryrate_tip_help, post_report_queryrate)
+
+
     import time
     import Algorithm_Processor
     while True:
@@ -59,5 +81,5 @@ def FireStoreMonitorEntryPoint():
 
             Algorithm_Processor.EnqueueRequest(doc)
 
-        time.sleep(1/5)
+        time.sleep(query_rate)
 

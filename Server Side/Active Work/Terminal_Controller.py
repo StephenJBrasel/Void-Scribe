@@ -14,13 +14,14 @@ class Command_Info:
         self.help_tip = help_tip
         self.post_report = post_report
 
+
 Help_Message = "Unrecognized Command Input. Commands are not case-sensative. Enter ""help"" for a list of commands." #Displayed when an improper command is entered
 Execution_Queue = queue.Queue()
 Commands = {}
 
 #Terminal Command Definitions
 #Help Command
-def command_help():
+def command_help(arguments=None):
     print("*------------------------------------------*")
     print("Void Scribe Terminal Commands:")
     for command_name in Commands.keys():
@@ -35,7 +36,7 @@ def AddTerminalCommand(command_name, command, help_tip, post_report):
     if command_name in Commands.keys():
         raise KeyError(f"Commands Name {command_name} already exists in commands list.")
 
-    Commands[command_name] = Command_Info(command, help_tip, post_report)
+    Commands[command_name.lower()] = Command_Info(command, help_tip, post_report)
 
 def InputEntryPoint():
     AddTerminalCommand("help", command_help, help_tip_help, post_report_help)
@@ -43,7 +44,7 @@ def InputEntryPoint():
     while True:
         terminal_input = input()
 
-        if terminal_input not in Commands.keys():
+        if terminal_input.split(' ', 1)[0].lower() not in Commands.keys():
             print(Help_Message)
             continue
 
@@ -64,10 +65,16 @@ def ExecutionerEntryPoint():
             break
 
         try:
-            command = Execution_Queue.get(timeout=1/10)
+            terminal_input = Execution_Queue.get(timeout=1/10)
         except:
             continue
-        result = Commands[command].command()
+
+        terminal_input = terminal_input.split(' ')
+        command = terminal_input[0]
+        terminal_input.pop(0)
+        arguments = terminal_input
+        result = Commands[command].command(arguments)
+
         if result != None:
             Commands[command].post_report(result)
         else:

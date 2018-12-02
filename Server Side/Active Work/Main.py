@@ -27,7 +27,7 @@ def MainEntryPoint():
     shut_down = False
     #Terminal Command Definitions
     #Exit Command
-    def command_exit():
+    def command_exit(arguments=None):
         nonlocal shut_down
         shut_down = True
     help_tip_exit = "Triggers the gracefull termination of the server."
