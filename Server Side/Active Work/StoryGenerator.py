@@ -15,34 +15,6 @@ def main():
     # for i in range(10):
     #     print(hash(mainChar))
     fun = data['adjective']
-    fun2 = {
-        # ensure adjectives don't contradict one another. 
-        'origin':['#[quantity:#adjQuantity#][opinion:#adjOpinion#][size:#adjSize#][age:#adjAge#][shape:#adjShape#][colour:#adjColour#][origin:#adjOrigin#][material:#adjMaterial#][purpose:#adjPurpose#]adjectiveOrderList#'],
-        'adjectiveOrderList': [ #(2^numAdjCategories) - 1, 2^8-1 = 255
-            '#adjectiveQuantity# #noun#'],
-        'noun':['knife'],
-        'adjectiveQuantity':['[noun:#noun.s#]#quantity# #adjectiveOpinion#','#adjectiveOpinion#'],
-        'adjectiveOpinion':['#opinion# #adjectiveSize#','#adjectiveSize#'],
-        'adjectiveSize':['#size# #adjectiveAge#','#adjectiveAge#'],
-        'adjectiveAge':['#age# #adjectiveShape#','#adjectiveShape#'],
-        'adjectiveShape':['#shape# #adjectiveColour#','#adjectiveColour#'],
-        'adjectiveColour':['#colour# #adjectiveOrigin#','#adjectiveOrigin#'],
-        'adjectiveOrigin':['#origin# #adjectiveMaterial#','#adjectiveMaterial#'],
-        'adjectiveMaterial':['#material# #adjectivePurpose#','#adjectivePurpose#'],
-        'adjectivePurpose':['#purpose#',''],
-        'adjQuantity':['many'],
-        'adjOpinion': ['lovely'],
-        'adjSize': ['little'],
-        'adjAge': ['old'],
-        'adjShape': [ #including height and weight
-            'rectangular'], 
-        'adjColour': ['green'],
-        'adjOrigin': [ #nationality/planetality/systemality
-            'French'], 
-        'adjMaterial': ['silver'],
-        'adjPurpose':[ # or qualifier
-            'whittling'] 
-    }
     # for i in fun:
     #     print(i)
     #     print(fun[i])
@@ -64,7 +36,24 @@ def main():
             grammar.add_modifiers(base_english)
             print(grammar.flatten('#origin#'))  # prints, e.g., 'Hello, world!'
 
-        
+def getStoryElements():
+    ret = []
+    for i in data:
+        ret.append(i)
+    return ret
+
+def generateSentence(
+        Sentence_Type = 'quest', 
+        amount = 3):
+    ret = []
+    for i in range(amount):
+        grammar = tracery.Grammar(data[Sentence_Type])
+        grammar.add_modifiers(base_english)
+        ret.append(grammar.flatten('#origin#'))
+    return ret
 
 
-main()
+if __name__ == "__main__":
+    items = generateSentence()
+    for i in items:
+        print(i)
