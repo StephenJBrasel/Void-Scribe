@@ -27,7 +27,7 @@ def MessengerEntryPoint():
             break
 
         try:
-            msg_info = _UploadQueue_.get(timeout=1/10)
+            msg_info = _Message_Queue_.get(timeout=1/10)
         except:
             continue
 
