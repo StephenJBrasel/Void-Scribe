@@ -3,7 +3,7 @@ import pandas as pd
 import random
 
 
-def load(filepath="names.csv"):
+def load(filepath="Server Side/Active Work/names.csv"):
     df = pd.read_csv(
         filepath,
         # sep=",",
@@ -15,7 +15,7 @@ def load(filepath="names.csv"):
     # print(df)
     return df
 
-__df__ = load("names.csv")
+__df__ = load("Server Side/Active Work/names.csv")
 
 def parse(parsee="names example"):
     ret = parsee.split(' ')

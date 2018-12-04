@@ -43,17 +43,32 @@ def getStoryElements():
     return ret
 
 def generateSentence(
+        dataObject = data['hi'],
         Sentence_Type = 'quest', 
         amount = 3):
+    # catch case where dataObject == None && Sentence_Type == None
+    if (dataObject == None) and (Sentence_Type == None):
+        dataObject = data['hi']
+    # catch case where dataObject == None && Sentence_Type != None
+    if (dataObject == None) and (Sentence_Type != None):
+        dataObject = data[Sentence_Type]
+    # # catch case where dataObject != None && Sentence_Type == None
+    # if (dataObject != None) and (Sentence_Type == None):
+    # # catch case where dataObject != None && Sentence_Type != None
+    # if (dataObject != None) and (Sentence_Type != None):
     ret = []
     for i in range(amount):
-        grammar = tracery.Grammar(data[Sentence_Type])
+        grammar = tracery.Grammar(dataObject)
         grammar.add_modifiers(base_english)
         ret.append(grammar.flatten('#origin#'))
     return ret
 
-
 if __name__ == "__main__":
-    items = generateSentence()
+    rules = {
+        "origin": ["#goodbye.capitalize#, #location#!"],
+        "goodbye": ["goodbye", "sayonara", "adios", "good riddance"],
+        "location": ["world", "solar system", "galaxy", "universe"]
+    }
+    items = generateSentence(dataObject=rules)
     for i in items:
         print(i)
