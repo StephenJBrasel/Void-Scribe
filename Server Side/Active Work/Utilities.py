@@ -29,3 +29,19 @@ def GetTimeStamp(authed_session = authed_session):
 
     return response.json()['timestamp']
 
+def CD(directory):
+    #Changes the working directory to the filepath
+    #Returns a callback to revert to initial directory
+    #ex. usage
+    #temp = CD("Misc")
+    #import Utilities
+    #temp()
+    #This will import Utilites from the Misc directory
+    import os
+    initial_path = os.getcwd()
+    def ReturnToPrevousDirectory():
+        nonlocal initial_path
+        os.chdir(initial_path)
+    os.chdir(directory)
+    return ReturnToPrevousDirectory
+
