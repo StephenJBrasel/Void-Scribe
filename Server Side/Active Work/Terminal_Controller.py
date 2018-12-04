@@ -70,7 +70,7 @@ def ExecutionerEntryPoint():
             continue
 
         terminal_input = terminal_input.split(' ')
-        command = terminal_input[0]
+        command = terminal_input[0].lower()
         terminal_input.pop(0)
         arguments = terminal_input
         result = Commands[command].command(arguments)
