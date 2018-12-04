@@ -3,19 +3,23 @@ import * as functions from 'firebase-functions';
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const helloWorld = functions.https.onRequest((request, response) => {
- response.send("Jesus Fragoso needs to come to school tomorrow.");
+export const getTimestamp = functions.https.onRequest((request, response) => 
+{
+  const admin = require('firebase-admin');
+  response.send(admin.firestore.FieldValue.serverTimestamp());
 });
 
-exports.createUser = functions.firestore
-    .document('users/{userId}')
-    .onCreate((snap, context) => {
-      // Get an object representing the document
-      // e.g. {'name': 'Marie', 'age': 66}
-      const newValue = snap.data();
+exports.timestampRequests = functions.firestore
+    .document('Algorithm_Requests/{req_id}')
+    .onCreate((event, context) => {
 
-      // access a particular field as you would any JS property
-      const name = newValue.name;
+      const admin = require('firebase-admin');
+      return event.ref.set({timestamp: admin.firestore.FieldValue.serverTimestamp()}, {merge: true})
 
-      // perform desired operations ...
+    });
+
+exports.tagRequestsForProcessing = functions.firestore
+    .document('Algorithm_Requests/{req_id}')
+    .onCreate((event, context) => {
+      return event.ref.update({"Processed":false})
     });
