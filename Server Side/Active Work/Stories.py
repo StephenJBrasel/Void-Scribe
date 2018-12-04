@@ -1309,6 +1309,11 @@ data = {
         "adjPurpose":[ # or qualifier
             "whittling"
         ] 
+    },
+    "hi" : {
+        "origin": ["#hello.capitalize#, #location#!"],
+        "hello": ["hello", "greetings", "howdy", "hey"],
+        "location": ["world", "solar system", "galaxy", "universe"]
     }
 }
 
