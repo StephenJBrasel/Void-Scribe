@@ -2,24 +2,36 @@ import queue
 import firebase_admin.firestore
 import FireStore_Uploader
 import Utilities
+from Void_Scribe import NameGenerator, StoryGenerator, MarkovGenerator
 
 _RequestsQueue_ = queue.Queue()
 def EnqueueRequest(request_document):
     _RequestsQueue_.put(request_document)
 
 def __ProcessNameRequest__(request_document):
-    import NameGenerator
+    # module = Utilities.ImportModule("MarkovGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\MarkovGenerator.py")
+    # module = Utilities.ImportModule("NameGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\NameGenerator.py")
     
     values = request_document.to_dict()
     name_type, amount = values["Req_Arguments"]["Name_Type"], values["Req_Arguments"]["Amount"]
     gen_names = NameGenerator.MarkovName(Name_Type=name_type, amount=amount)
     return gen_names
 
+def __ProcessSentenceRequest__(request_document):
+    # module = Utilities.ImportModule("MarkocGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\MarkovGenerator.py")
+    # module = Utilities.ImportModule("NameGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\NameGenerator.py")
+    # module = Utilities.ImportModule("StoryGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\StoryGenerator.py")
+
+    values = request_document.to_dict()
+    name_type, amount = values["Req_Arguments"]["Sentence_Type"], values["Req_Arguments"]["Amount"]
+    gen_names = StoryGenerator.generateSentence(Name_Type=name_type, amount=amount)
+    return gen_names
 
 
 
-_AlgorithmRequestMap_ = {"Name":__ProcessNameRequest__}
-__StorageCollectionMap__ = {"Name":FireStore_Uploader.DataBaseReference.collection("Generated_Names")}
+
+_AlgorithmRequestMap_ = {"Name":__ProcessNameRequest__, "Sentence":__ProcessSentenceRequest__}
+__StorageCollectionMap__ = {"Name":FireStore_Uploader.DataBaseReference.collection("Generated_Names"), "Sentence":FireStore_Uploader.DataBaseReference.collection("Generated_Sentences")}
 
 
 def __ProcessRequest__(request_document):

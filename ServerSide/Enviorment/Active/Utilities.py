@@ -5,7 +5,7 @@ def __GenerateConnection__():
     from google.auth.transport.requests import AuthorizedSession
     scopes = ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/firebase.database"]
 
-    credentials = service_account.Credentials.from_service_account_file( r'C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Active Work\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json', scopes=scopes)
+    credentials = service_account.Credentials.from_service_account_file( r'C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Enviorment\Active\Non-Public\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json', scopes=scopes)
 
     authed_session = AuthorizedSession(credentials)
 
@@ -29,19 +29,17 @@ def GetTimeStamp(authed_session = authed_session):
 
     return response.json()['timestamp']
 
-def CD(directory):
-    #Changes the working directory to the filepath
-    #Returns a callback to revert to initial directory
-    #ex. usage
-    #temp = CD("Misc")
-    #import Utilities
-    #temp()
-    #This will import Utilites from the Misc directory
-    import os
-    initial_path = os.getcwd()
-    def ReturnToPrevousDirectory():
-        nonlocal initial_path
-        os.chdir(initial_path)
-    os.chdir(directory)
-    return ReturnToPrevousDirectory
+def ImportModule(module_name, module_path):
+    # import os
+    # initial_path = os.getcwd()
+    # def ReturnToPrevousDirectory():
+    #     nonlocal initial_path
+    #     os.chdir(initial_path)
+    # os.chdir(directory)
+    # return ReturnToPrevousDirectory
+    import importlib, importlib.util, os.path
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
