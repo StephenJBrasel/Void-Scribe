@@ -3,7 +3,7 @@ import pandas as pd
 import random
 
 
-def load(filepath="names.csv"):
+def load(filepath="Server Side/Active Work/names.csv"):
     df = pd.read_csv(
         filepath,
         # sep=",",
@@ -15,7 +15,7 @@ def load(filepath="names.csv"):
     # print(df)
     return df
 
-__df__ = load("names.csv")
+__df__ = load("Server Side/Active Work/names.csv")
 
 def parse(parsee="names example"):
     ret = parsee.split(' ')
@@ -31,14 +31,15 @@ def listGeneratedNames(repeatCount = 10):
         # print(df.values[i][0])
         for j in range(repeatCount):
             txt = parse(__df__.values[i][1])
-            print(txt)
+            # print(txt)
             generatedContent.append([__df__.values[i][0], markov.generate(txt, order = 3)])
         # print()
     
     # txt = parse(names['test'])
     # markov(txt, order=2)
-    for item in generatedContent:
-        print(item)
+    # for item in generatedContent:
+    #     print(item)
+    return generatedContent
 
 def getNames(
         Name_Type = 'americanForenames', 
@@ -68,5 +69,5 @@ def getNameTypes():
     return __df__.nameType
     
 
-# listGeneratedNames(3)
-# MarkovName(Name_Type = 'werewolfForenames')
+if __name__ == "__main__":
+    print(MarkovName(Name_Type = 'werewolfForenames'))
