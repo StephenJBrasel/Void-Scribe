@@ -546,7 +546,7 @@ data = {
     },
     "quest" : {
         "origin": [
-            "#plea# #[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#",
+            "#plea##[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#",
             "#[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#"
         ],
         "setQuestAmount": [

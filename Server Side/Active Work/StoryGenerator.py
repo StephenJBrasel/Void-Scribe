@@ -74,7 +74,11 @@ if __name__ == "__main__":
     print()
     for i in items:
         print(i)
-    items = generateSentence(dataObject=None, Sentence_Type='quest')
+    items = generateSentence(dataObject=None, Sentence_Type='adjective')
+    print()
+    for i in items:
+        print(i)
+    items = generateSentence(dataObject=None, Sentence_Type=None)
     print()
     for i in items:
         print(i)
