@@ -546,7 +546,7 @@ data = {
     },
     "quest" : {
         "origin": [
-            "#plea# #[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#",
+            "#plea##[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#",
             "#[#setQuestAmount#][#setQuestPeople#][#setPlaces#][#setDeliverable#][#setCraft#][#setQuestType#]quest#"
         ],
         "setQuestAmount": [
@@ -1309,6 +1309,11 @@ data = {
         "adjPurpose":[ # or qualifier
             "whittling"
         ] 
+    },
+    "hi" : {
+        "origin": ["#hello.capitalize#, #location#!"],
+        "hello": ["hello", "greetings", "howdy", "hey"],
+        "location": ["world", "solar system", "galaxy", "universe"]
     }
 }
 

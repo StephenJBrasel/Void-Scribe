@@ -1,7 +1,6 @@
 from void_scribe import MarkovGenerator as markov
 import pandas as pd
 import random
-import os
 
 this_dir, this_filename = os.path.split(__file__)
 default_path = this_dir + r"\data\names.csv"
@@ -34,14 +33,15 @@ def listGeneratedNames(repeatCount = 10):
         # print(df.values[i][0])
         for j in range(repeatCount):
             txt = parse(__df__.values[i][1])
-            print(txt)
+            # print(txt)
             generatedContent.append([__df__.values[i][0], markov.generate(txt, order = 3)])
         # print()
     
     # txt = parse(names['test'])
     # markov(txt, order=2)
-    for item in generatedContent:
-        print(item)
+    # for item in generatedContent:
+    #     print(item)
+    return generatedContent
 
 def getNames(
         Name_Type = 'americanForenames', 
@@ -71,5 +71,5 @@ def getNameTypes():
     return __df__.nameType
     
 
-# listGeneratedNames(3)
-# MarkovName(Name_Type = 'werewolfForenames')
+if __name__ == "__main__":
+    print(MarkovName(Name_Type = 'werewolfForenames'))
