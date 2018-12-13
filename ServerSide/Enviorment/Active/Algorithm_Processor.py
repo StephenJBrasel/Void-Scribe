@@ -43,12 +43,14 @@ def __ProcessRequest__(request_document):
     #Format Completed_Request and Storage documents then send them for uploading
     proc_req_doc = {}
     proc_req_doc["Request"] = values
+    proc_req_doc["Hash_Key"] = values["Hash_Key"]
     proc_req_doc["Processed_Request"] = processed_req
     proc_req_doc["Timestamp"] = Utilities.GetTimeStamp()
     proc_req_doc["User_ID"] = values["User_ID"]
 
     storage_doc = {}
     storage_doc["User_ID"] = values["User_ID"]
+    storage_doc["Hash_Key"] = values["Hash_Key"]
     storage_doc["Data"] = processed_req
     storage_doc["Timestamp"] = Utilities.GetTimeStamp()
 
