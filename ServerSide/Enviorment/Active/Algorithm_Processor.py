@@ -2,7 +2,7 @@ import queue
 import firebase_admin.firestore
 import FireStore_Uploader
 import Utilities
-from Void_Scribe import NameGenerator, StoryGenerator, MarkovGenerator
+from void_scribe import NameGenerator, StoryGenerator, MarkovGenerator
 
 _RequestsQueue_ = queue.Queue()
 def EnqueueRequest(request_document):
@@ -23,8 +23,8 @@ def __ProcessSentenceRequest__(request_document):
     # module = Utilities.ImportModule("StoryGenerator", r"C:\Users\thepe_000\Desktop\PP5\Void Scribe\Server Side\Algorithm\Stable\StoryGenerator.py")
 
     values = request_document.to_dict()
-    name_type, amount = values["Req_Arguments"]["Sentence_Type"], values["Req_Arguments"]["Amount"]
-    gen_names = StoryGenerator.generateSentence(Name_Type=name_type, amount=amount)
+    sentence_type, amount = values["Req_Arguments"]["Sentence_Type"], values["Req_Arguments"]["Amount"]
+    gen_names = StoryGenerator.generateSentence(Sentence_Type=name_type, amount=amount)
     return gen_names
 
 
