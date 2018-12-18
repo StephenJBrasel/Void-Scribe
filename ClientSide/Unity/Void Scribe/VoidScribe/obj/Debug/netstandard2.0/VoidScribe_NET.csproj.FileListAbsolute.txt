@@ -1,0 +1,9 @@
+F:\Unity Projects\Void Scribe\VoidScribe\bin\Debug\netstandard2.0\VoidScribe_NET.deps.json
+F:\Unity Projects\Void Scribe\VoidScribe\bin\Debug\netstandard2.0\VoidScribe_NET.dll
+F:\Unity Projects\Void Scribe\VoidScribe\bin\Debug\netstandard2.0\VoidScribe_NET.pdb
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.csprojResolveAssemblyReference.cache
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.csproj.CoreCompileInputs.cache
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.AssemblyInfoInputs.cache
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.AssemblyInfo.cs
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.dll
+F:\Unity Projects\Void Scribe\VoidScribe\obj\Debug\netstandard2.0\VoidScribe_NET.pdb
