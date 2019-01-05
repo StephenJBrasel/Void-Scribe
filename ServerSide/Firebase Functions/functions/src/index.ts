@@ -33,7 +33,7 @@ export const voidScribeRetreive = functions.https.onRequest((request, response) 
   const id = data["Doc_ID"];
 
   const collection = admin.firestore().collection('Completed_Requests')
-  const query = collection.where("Doc_ID", "==", String(id))
+  const query = collection.where("Req_Doc_ID", "==", String(id))
 
   return query.get().then((snapshot) => {
     if(snapshot.size === 1)
