@@ -24,7 +24,7 @@ def __ProcessSentenceRequest__(request_document):
 
     values = request_document.to_dict()
     sentence_type, amount = values["Req_Arguments"]["Sentence_Type"], values["Req_Arguments"]["Amount"]
-    gen_names = StoryGenerator.generateSentence(Sentence_Type=name_type, amount=amount)
+    gen_names = StoryGenerator.generateSentence(Sentence_Type=sentence_type, amount=amount)
     return gen_names
 
 
