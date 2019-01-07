@@ -1,5 +1,6 @@
 import random
 
+
 # Generate dict of objects, classes -> uid
 # Generate sequence of objects, story -> [class[uid], class[uid], class[uid]]
 # Parse to text from sequence of objects -> The fox jumped
@@ -81,7 +82,7 @@ def markovIt(
         length = len(ret[i])
         while ret[i][-order:] in ngrams.keys() and length < maxlength:
             if length >= minlength:
-                # if the last bits of the word are in enders, break off, continue to next word.
+                # if the last bits of the word are proper ends, break off, continue to next word.
                 print(ret[i][-order:])
                 if ret[i][-order:] in ends:
                     print(ret[i])

@@ -2,8 +2,8 @@ from void_scribe import MarkovGenerator as markov
 import pandas as pd
 import random
 
-this_dir, this_filename = os.path.split(__file__)
-default_path = this_dir + r"\data\names.csv"
+# this_dir, this_filename = os.path.split(__file__)
+default_path = "data/names.csv"
 
 def load(filepath=default_path):
     df = pd.read_csv(
