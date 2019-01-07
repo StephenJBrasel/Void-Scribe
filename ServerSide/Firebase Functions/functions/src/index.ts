@@ -22,7 +22,7 @@ export const voidScribeRequest = functions.https.onRequest((request, response) =
 
 
   return doc.set(data).then((result) => {
-    response.send(doc.id)
+    response.status(200).json(doc.id)
   });
   
 });
@@ -38,11 +38,13 @@ export const voidScribeRetreive = functions.https.onRequest((request, response) 
   return query.get().then((snapshot) => {
     if(snapshot.size === 1)
     {
-      response.send({data:snapshot.docs[0].data(), completed:true})
+      //response.send({data:snapshot.docs[0].data(), completed:true})
+      response.status(200).json({data:snapshot.docs[0].data(), completed:true})
     }
     else
     {
-      response.send({completed:false});
+      //response.send({completed:false});
+      response.status(200).json({completed:false});
     }
   });
 });
