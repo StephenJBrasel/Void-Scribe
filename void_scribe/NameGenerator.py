@@ -4,7 +4,7 @@ import random
 import os
 
 this_dir, this_filename = os.path.split(__file__)
-default_path = r"\data\names.csv"
+default_path = this_dir + r"\data\names.csv"
 
 def load(filepath=default_path):
     df = pd.read_csv(
