@@ -6,11 +6,11 @@ from distutils.core import setup
 files = ["data/*"]
 
 setup(name = "void_scribe",
-    version = "0.1",
-    description = "Stephans Stuff",
-    author = "Stphan Brasel",
+    version = "0.1a",
+    description = "Procedural Natural Language Generation",
+    author = "Stephen Brasel",
     author_email = "machinelearningmadlads@gmail.com",
-    url = "whatever",
+    url = "https://github.com/GermanMoFo/Void-Scribe",
     #Name the folder where your packages live:
     #(If you have other packages (dirs) or modules (py files) then
     #put them into the package directory - they will be found 
