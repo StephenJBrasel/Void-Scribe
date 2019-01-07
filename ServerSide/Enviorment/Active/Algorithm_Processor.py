@@ -27,7 +27,7 @@ def __ProcessNameRequest__(request_document):
     else:
         name_type = values["Req_Arguments"]["Name_Type"]
 
-    if name_type not in NameGenerator.getNameTypes():
+    if name_type not in list(NameGenerator.getNameTypes()):
         print("Bad Request Arguments, Name_Type field is not a valid Name_Type")
         return ("Invalid Name_Type", "Error")
 
@@ -98,6 +98,7 @@ def __ProcessRequest__(request_document):
     storage_doc["Timestamp"] = Utilities.GetTimeStamp()
     proc_req_doc["Timestamp"] = Utilities.GetTimeStamp()
     proc_req_doc["Processed_Request"] = processed_req
+    proc_req_doc["Req_Doc_ID"] = request_document.id
 
     if "Hash_Key" in values.keys():
         proc_req_doc["Hash_Key"] = values["Hash_Key"]
