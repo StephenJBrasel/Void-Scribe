@@ -26,7 +26,7 @@ def FireStoreMonitorEntryPoint():
     #Establish database connection
     import firebase_admin
     from firebase_admin import credentials, firestore
-    cred = credentials.Certificate(r'C:\Users\thepe_000\Desktop\PP5\VoidScribe\ServerSide\Enviorment\Active\Non-Public\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json')
+    cred = credentials.Certificate(r'C:\Users\Joshua\Desktop\PP5\Void-Scribe\ServerSide\Enviorment\Active\Non-Public\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json')
     firebase_admin.initialize_app(cred, name="Monitor")
     db = firestore.client()
     requests_ref = db.collection(u'Algorithm_Requests')
@@ -40,7 +40,7 @@ def FireStoreMonitorEntryPoint():
     AddShutDownProcess(Shutdown_Monitor)
 
     #Register Terminal Command To Adjust Interval of Query
-    query_rate = 1/5
+    query_rate = 1
     def command_QueryRate(arguments=None):
         if arguments == None or len(arguments) != 1:
             return "QueryRate has one required argument,\n\tex: QueryRate 5\n\tThis will set the QueryRate to 1/5 query per second." 

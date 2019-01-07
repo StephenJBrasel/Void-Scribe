@@ -5,7 +5,7 @@ def __GenerateConnection__():
     from google.auth.transport.requests import AuthorizedSession
     scopes = ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/firebase.database"]
 
-    credentials = service_account.Credentials.from_service_account_file( r'C:\Users\thepe_000\Desktop\PP5\VoidScribe\ServerSide\Enviorment\Active\Non-Public\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json', scopes=scopes)
+    credentials = service_account.Credentials.from_service_account_file( r'C:\Users\Joshua\Desktop\PP5\Void-Scribe\ServerSide\Enviorment\Active\Non-Public\void-scribe-firebase-adminsdk-xtf9j-a419db8670.json', scopes=scopes)
 
     authed_session = AuthorizedSession(credentials)
 
