@@ -32,7 +32,6 @@ def createNGRAMList(strings = ["hello", "world"], order = 3):
     return starts, ends, ngrams
 
 def fillProbabilities(data):
-    
     totalProbability = 0
     numWithoutProb = 0
     for item in data:
@@ -52,6 +51,10 @@ def fillProbabilities(data):
     return data
 
 def PCFGtoTCFG(data):
+    '''
+    Converts data from individually probabilistic to consecutively cummulatively probabilistic:  
+    [[i, 0.5], [j, 0.5]] -> BECOMES -> [[i, 0.5], [j, 1]]
+    '''
     prob = 0
     for item in data:
         prob += item[1]

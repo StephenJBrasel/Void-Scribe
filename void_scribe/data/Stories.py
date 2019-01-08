@@ -1310,6 +1310,9 @@ data = {
             "whittling"
         ] 
     },
+    "Hero's Journey" : {
+        
+    },
     "hi" : {
         "origin": ["#hello.capitalize#, #location#!"],
         "hello": ["hello", "greetings", "howdy", "hey"],

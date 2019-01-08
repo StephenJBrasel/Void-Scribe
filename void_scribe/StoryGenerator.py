@@ -1,5 +1,5 @@
 from void_scribe import NameGenerator
-from void_scribe.Stories import data
+from void_scribe.data.Stories import data
 import tracery
 from tracery.modifiers import base_english
 

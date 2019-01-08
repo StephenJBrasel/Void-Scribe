@@ -1,48 +1,6 @@
 from void_scribe import MarkovGenerator as markov
-import pandas as pd
 import random
-import os
-
-this_dir, this_filename = os.path.split(__file__)
-default_path = this_dir + r"\data\names.csv"
-
-def load(filepath=default_path):
-    df = pd.read_csv(
-        filepath,
-        # sep=",",
-        engine="python",
-        encoding="latin1",
-        # index_col=0
-        )
-    # df.info()
-    # print(df)
-    return df
-
-__df__ = load(default_path)
-
-def parse(parsee="names example"):
-    ret = parsee.split(' ')
-    # print(ret)
-    return ret
-
-def listGeneratedNames(repeatCount = 10):
-    # for item in df.examples:
-    #     print(parse(item))
-    generatedContent = []
-    # print(df.values[0][0])
-    for i in range(len(__df__)):
-        # print(df.values[i][0])
-        for j in range(repeatCount):
-            txt = parse(__df__.values[i][1])
-            # print(txt)
-            generatedContent.append([__df__.values[i][0], markov.generate(txt, order = 3)])
-        # print()
-    
-    # txt = parse(names['test'])
-    # markov(txt, order=2)
-    # for item in generatedContent:
-    #     print(item)
-    return generatedContent
+from void_scribe.data.names import names as __df__
 
 def getNames(
         Name_Type = 'americanForenames', 
@@ -51,8 +9,7 @@ def getNames(
     random.seed(seed)
     ret = []
     for i in range(amount):
-        potentials = __df__[__df__['nameType'] == Name_Type].examples.values[0]
-        potentials = parse(potentials)
+        potentials = __df__[Name_Type]
         ret.append(random.choice(potentials))
     return ret
 
@@ -62,15 +19,15 @@ def MarkovName(
         order = 3, 
         maxlength = 10, 
         seed = None):
-    # print(df.values)
-    txt = parse(__df__[__df__['nameType'] == Name_Type].examples.values[0])
-    ret = (markov.generate(txt, amount, order, maxlength, seed))
-    # print(ret)
-    return ret
+    txt = __df__[Name_Type]
+    ret = (markov.generate(txt, amount, order, maxlength, seed)) 
+    return ret 
 
 def getNameTypes():
-    return __df__.nameType
+    return list(__df__.keys())
     
 
 if __name__ == "__main__":
+    print(getNameTypes())
+    print(getNames(Name_Type = 'werewolfForenames'))
     print(MarkovName(Name_Type = 'werewolfForenames'))
