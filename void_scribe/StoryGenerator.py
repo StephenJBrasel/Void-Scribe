@@ -36,11 +36,12 @@ def main():
             grammar.add_modifiers(base_english)
             print(grammar.flatten('#origin#'))  # prints, e.g., 'Hello, world!'
 
-def getStoryElements():
+def getPrefabStoryElementList():
     ret = []
     for i in data:
         ret.append(i)
     return ret
+
 
 def generateSentence(
         dataObject = None,
