@@ -43,7 +43,7 @@ def getStoryPrefabs():
     return ret
 
 
-def generateSentence(
+def generateStory(
         dataObject = None,
         Sentence_Type = 'quest', 
         amount = 3):
@@ -59,27 +59,34 @@ def generateSentence(
     return ret
 
 if __name__ == "__main__":
-    rules = {
-        "origin": ["#goodbye.capitalize#, #location#!"],
-        "goodbye": ["goodbye", "sayonara", "adios", "good riddance"],
-        "location": ["world", "solar system", "galaxy", "universe"]
-    }
-    items = generateSentence()
-    for i in items:
-        print(i)
-    items = generateSentence(dataObject=rules)
+    def maintest():
+        rules = {
+            "origin": ["#goodbye.capitalize#, #location#!"],
+            "goodbye": ["goodbye", "sayonara", "adios", "good riddance"],
+            "location": ["world", "solar system", "galaxy", "universe"]
+        }
+        items = generateStory()
+        for i in items:
+            print(i)
+        items = generateStory(dataObject=rules)
+        print()
+        for i in items:
+            print(i)
+        items = generateStory(dataObject=None)
+        print()
+        for i in items:
+            print(i)
+        items = generateStory(dataObject=None, Sentence_Type='adjective')
+        print()
+        for i in items:
+            print(i)
+        items = generateStory(dataObject=None, Sentence_Type=None)
+        print()
+        for i in items:
+            print(i)
+    # maintest()
+    items = generateStory(dataObject=None, Sentence_Type='myth', amount=10)
     print()
     for i in items:
         print(i)
-    items = generateSentence(dataObject=None)
-    print()
-    for i in items:
-        print(i)
-    items = generateSentence(dataObject=None, Sentence_Type='adjective')
-    print()
-    for i in items:
-        print(i)
-    items = generateSentence(dataObject=None, Sentence_Type=None)
-    print()
-    for i in items:
-        print(i)
+

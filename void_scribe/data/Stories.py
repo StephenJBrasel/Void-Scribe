@@ -122,7 +122,7 @@ data = {
         ],
         "terrestrialAnimalLarge": [
             '#forestAnimalLarge#',
-            '#jungleAnimalLarge'
+            '#jungleAnimalLarge#'
         ],
         "aquaticAnimalLarge": [
             "whale",
