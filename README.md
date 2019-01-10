@@ -5,7 +5,7 @@ Void Scribe is python module designed for procedural narrative generation as wel
 
 This repository is one of a series of 4 related code bases.
 
-Void Scribe - A Python package of the Void sCribe Algorithm
+Void Scribe - A Python package of the Void Scribe Algorithm
 https://github.com/GermanMoFo/Void-Scribe
 
 Void Web - A Python web application and Firebase cloud functions designed to create interfaces to the API from the web.
