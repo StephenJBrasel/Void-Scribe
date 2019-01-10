@@ -1310,8 +1310,128 @@ data = {
             "whittling"
         ] 
     },
-    "Hero's Journey" : {
-        
+    "Hero's Journey" : { #TODO THESE NEED MORE CONCISE NAMES
+    #TODO FILL THESE OUT WITH SEQUENTIAL OPERATIONS
+        "Miraculous or unusual circumstances around the Hero's conception or birth.":# Bonus points if there was a prophecy. Less common in modern stories, which tend to emphasize the role of personal choice in defining a hero, although there may still be a Prophecy Twist involved.
+        [],
+        "Begins in the ordinary world of the Hero's hometown": # often in one of two flavours:
+        # The Good Kingdom, for a story in which the Hero must save the world from impending doom, and
+        # The Wasteland, for a story in which the Hero must restore their world.
+        # Suburbia can be either, depending on where the story falls on the Sliding Scale of Idealism vs. Cynicism.
+        [],
+        "The Hero may be dissatisfied with the ordinary and express a desire for adventure.": # In musicals this can be expressed through an "I Want" Song.
+        [],
+        "The Herald brings a Call to Adventure.": # The Hero learns that they must leave the known world behind and travel into the land of adventure.
+        [],
+        # The Hero must then decide how to answer the Call:
+        "Refusal of the Call": #More common in classic stories. The Call will often try again because The Call Knows Where You Live. Can't Stay Normal and Resigned to the Call are special cases of call refusal.
+        [],
+        "Jumped at the Call": #, sometimes even in the face of Adventure Rebuff: More common in modern stories. The modern subversion of this is when the hero is Resigned to the Call. They accept it, but only because they feel it would be pointless to resist, and not because they're particularly happy about the thought of adventure. If the hero finds themself abducted by destiny before even knowing what the Call is or even that they were addressed, then they may be a Cosmic Plaything. Resigning oneself to fate becomes easier in these situations. Just like its enthusiastic counterpart, this version of the narrative is more common in modern tales than classic ones.
+        [],
+        #Frequently, the first step on the Journey is receiving some kind of magical tchotchke or other 
+        "Supernatural Aid":
+        [],
+        "Crossing the First Threshold": #The Hero must make a conscious, willing decision to embark on the adventure and leave the known world behind. This is the First Threshold. The Hero may have to defeat Threshold Guardians, who are not necessarily adversarial but do test the Hero's resolve. Down the Rabbit Hole is a special case for young heroines embarking on supernatural adventures.
+        [],
+        "The Land of Adventure": #the Hero enters a strange, dreamlike realm, where logic is topsy-turvy and the "rules" are markedly different from the ordinary world. Carl Jung identified the Ordinary Realm with the conscious mind, and the Realm of Adventure with the subconscious mind.
+        #One may meet their Hero Partners here and rescue a Damsel in Distress.
+        [],
+        "The Spiritual Death and Rebirth": # represents a symbolic death for the Hero: the Hero is defeated and killed, their flesh scattered, ready to be reborn and emerge as a new person. If you think the symbolic death ought to come later, don't worry: The Writer's Journey omits this step altogether in favor of a Resurrection step just before the end.
+        # Part of this step involves the Hero Losing the Guide.
+        [],
+        "Road of Trials": #the path out of the Belly of the Whale. Usually the meat of the story; The Writer's Journey calls it Tests, Allies, Enemies, while Booker goes into detail on different types of tests (deadly terrain, monsters, temptations, deadly opposites, and a journey to the underworld). Stops along the way might include:
+        # The Shapeshifter: someone you don't trust but nonetheless need for their capabilities or knowledge.
+        # The Goddess
+        # The Temptress
+        # Atonement With the Father: George Lucas loved this step. Oedipus probably didn't. Variants include a final showdown with an Archnemesis Dad (sometimes still ending in atonement if Death Equals Redemption) and Calling the Old Man Out
+        # At least one "Leave Your Quest" Test, usually after meeting the Goddess or Temptress.
+        [],
+        "Night Sea Voyage": #the Hero must sneak into the Big Bad's Elaborate Underground Base and retrieve something or someone. Campbell noted that these Stealth Runs were usually at night and often involved water; hence the name.
+        # Link's initial attempt at rescuing Aryll from the Forsaken Fortress in The Legend of Zelda: The Wind Waker is a near-perfect example of one of these.
+        # Perhaps the best known example is the infiltration of the Death Star by Luke Skywalker to rescue Princess Leia.
+        [],
+        "Time out just before the big battle": #the Heroes gather around a campfire and prepare for the battle, tell stories, confess their feelings, etc. It reminds them of what's at stake, and serves as a breather after all the action of the Road of Trials.
+        [],
+        "Apotheosis / Fight against the Big Bad / Ultimate Boon": #(These are typically very closely related, often intertwined.)
+        # Apotheosis: The Hero comes to view the world in a new and radically different way, either because of a critical breakthrough they've made or some crucial information they've uncovered. If it is something to do with themself then this is a good time for an I Am Who?.
+        # The Hero confronts the Big Bad: Typically this plays out in a David vs. Goliath fashion. They are usually called upon to sacrifice themself, or something or someone important to them. A Friend or Idol Decision is a common scenario. Note that asked is the key word here—it's usually enough that the Hero be willing to sacrifice something without actually having to do it. Someone else will sacrifice themself in the Hero's stead, or the Hero will prove to have outwitted the Big Bad somehow (so that the apparent sacrifice isn't really a sacrifice), or it was all a Secret Test of Character, or…
+        # The Ultimate Boon: getting the reward the hero's been chasing all this time, often but not always a MacGuffin.
+        # The Final Temptation is often involved in one or more of these three events: A hero originally motivated by a self-serving goal may receive their Ultimate Boon with the option to take it and run before saving the day. A hero on a Homeward Journey may find a way home, but turn back after their Apotheosis makes them realize their work isn't done. Another may be offered the Ultimate Boon or a tempting substitute by the Big Bad…in exchange for stepping aside. Still another may find that the Ultimate Boon is exactly the sacrifice they are required to make to defeat the Big Bad.
+        [],
+        "Refusal of the Return": #At this point in the story, the Hero has mastered the strange world they were thrust into. They probably have earned a permanent place here, if they want it. They may even want to stay, but usually there are forces at work that propel them home.
+        [],
+        "The Return": #Also called the Magic Flight; the Hero now has the boon and high-tails it away, with the villain and/or their forces in hot pursuit, the two parties locked in a battle of wits and magic (especially shapeshifting) during the chase. (See the Celtic story of Taliesin's escape from Cerridwen for a textbook example of this.) The Hero's escape may not require actual magic, but will require all of the new skills they've learned and new allies they've made. Or alternately they could realize the Awful Truth that they can't return home because sometimes Failure Is the Only Option…
+        [],
+        "Crossing the Return Threshold": #Sometimes a fight against the forces of the Muggle world, which the Hero wins thanks to help from their Muggle allies. This is where the Post-Climax Confrontation happens, as the remaining antagonistic forces have followed the Hero beyond the threshold and attacked them at a time when the plot should be wrapping up. In the absence of any action, it may be a Boring Return Journey instead, a chance for the Hero to reflect on what they've gained and experienced throughout their journey.
+        [],
+        "Freedom to Live": #The Hero grants the boon to their people.
+        [], 
+        "Celebration": #A Dance Party Ending is often in order.
+        []
+    },
+    "VladimirPropp" : { #TODO FILL THESE OUT WITH SEQUENTIAL OPERATIONS
+        "ABSENTATION": #A member of the hero's community or family leaves the security of the home environment. This may be the hero themselves, or some other relation that the hero must later rescue. This division of the cohesive family injects initial tension into the storyline. This may serve as the hero's introduction, typically portraying them as an ordinary person.
+        [],
+        "INTERDICTION": # A forbidding edict or command is passed upon the hero ('don't go there', 'don't do this'). The hero is warned against some action.
+        [],
+        "VIOLATION of INTERDICTION": #The prior rule is violated. Therefore the hero did not listen to the command or forbidding edict. Whether committed by the Hero by accident or temper, a third party or a foe, this generally leads to negative consequences. The villain enters the story via this event, although not necessarily confronting the hero. They may be a lurking and manipulative presence, or might act against the hero's family in his absence.
+        [],
+        "RECONNAISSANCE": #The villain makes an effort to attain knowledge needed to fulfill their plot. Disguises are often invoked as the villain actively probes for information, perhaps for a valuable item or to abduct someone. They may speak with a family member who innocently divulges a crucial insight. The villain may also seek out the hero in their reconnaissance, perhaps to gauge their strengths in response to learning of their special nature.
+        [],
+        "DELIVERY": #The villain succeeds at recon and gains a lead on their intended victim. A map is often involved in some level of the event.
+        [],
+        "TRICKERY": #The villain attempts to deceive the victim to acquire something valuable. They press further, aiming to con the protagonists and earn their trust. Sometimes the villain make little or no deception and instead ransoms one valuable thing for another.
+        [],
+        "COMPLICITY": #The victim is fooled or forced to concede and unwittingly or unwillingly helps the villain, who is now free to access somewhere previously off-limits, like the privacy of the hero's home or a treasure vault, acting without restraint in their ploy.
+        [],
+        "VILLAINY or LACKING": #The villain harms a family member, including but not limited to abduction, theft, spoiling crops, plundering, banishment or expulsion of one or more protagonists, murder, threatening a forced marriage, inflicting nightly torments and so on. Simultaneously or alternatively, a protagonist finds they desire or require something lacking from the home environment (potion, artifact, etc.). The villain may still be indirectly involved, perhaps fooling the family member into believing they need such an item.
+        [],
+        "MEDIATION":  # One or more of the negative factors covered above comes to the attention of the Hero, who uncovers the deceit/perceives the lacking/learns of the villainous acts that have transpired.
+        [],
+        "BEGINNING COUNTERACTION": # The hero considers ways to resolve the issues, by seeking a needed magical item, rescuing those who are captured or otherwise thwarting the villain. This is a defining moment for the hero, one that shapes their further actions and marks the point when they begin to fit their noble mantle.
+        [],
+        "DEPARTURE":  #The hero leaves the home environment, this time with a sense of purpose. Here begins their adventure.
+        [],
+        "FIRST FUNCTION OF THE DONOR": #The hero encounters a magical agent or helper (donor) on their path, and is tested in some manner through interrogation, combat, puzzles or more.
+        [],
+        "HERO'S REACTION": #The hero responds to the actions of their future donor; perhaps withstanding the rigours of a test and/or failing in some manner, freeing a captive, reconciles disputing parties or otherwise performing good services. This may also be the first time the hero comes to understand the villain's skills and powers, and uses them for good.
+        [],
+        "RECEIPT OF A MAGICAL AGENT": #The hero acquires use of a magical agent as a consequence of their good actions. This may be a directly acquired item, something located after navigating a tough environment, a good purchased or bartered with a hard-earned resource or fashioned from parts and ingredients prepared by the hero, spontaneously summoned from another world, a magical food that is consumed, or even the earned loyalty and aid of another.
+        [],
+        "GUIDANCE": #The hero is transferred, delivered or somehow led to a vital location, perhaps related to one of the above functions such as the home of the donor or the location of the magical agent or its parts, or to the villain.
+        [],
+        "STRUGGLE": #The hero and villain meet and engage in conflict directly, either in battle or some nature of contest.
+        [],
+        "BRANDING": #The hero is marked in some manner, perhaps receiving a distinctive scar or granted a cosmetic item like a ring or scarf.
+        [],
+        "VICTORY": #The villain is defeated by the hero – killed in combat, outperformed in a contest, struck when vulnerable, banished, and so on.
+        [],
+        "LIQUIDATION": #The earlier misfortunes or issues of the story are resolved; object of search are distributed, spells broken, captives freed.
+        [],
+        "RETURN": #The hero travels back to their home.
+        [],
+        "PURSUIT": #The hero is pursued by some threatening adversary, who perhaps seek to capture or eat them.
+        [],
+        "RESCUE":#The hero is saved from a chase. Something may act as an obstacle to delay the pursuer, or the hero may find or be shown a way to hide, up to and including transformation unrecognisably. The hero's life may be saved by another.
+        [],
+        "UNRECOGNIZED ARRIVAL": #The hero arrives, whether in a location along their journey or in their destination, and is unrecognised or unacknowledged.
+        [],
+        "UNFOUNDED CLAIMS": #A false hero presents unfounded claims or performs some other form of deceit. This may be the villain, one of the villain's underlings or an unrelated party. It may even be some form of future donor for the hero, once they've faced their actions.
+        [],
+        "DIFFICULT TASK": #A trial is proposed to the hero – riddles, test of strength or endurance, acrobatics and other ordeals.
+        [],
+        "SOLUTION": #The hero accomplishes a difficult task.
+        [],
+        "RECOGNITION": #The hero is given due recognition – usually by means of their prior branding.
+        [],
+        "EXPOSURE": #The false hero and/or villain is exposed to all and sundry.
+        [],
+        "TRANSFIGURATION": #The hero gains a new appearance. This may reflect aging and/or the benefits of labour and health, or it may constitute a magical remembering after a limb or digit was lost (as a part of the branding or from failing a trial). Regardless, it serves to improve their looks.
+        [],
+        "PUNISHMENT": #The villain suffers the consequences of their actions, perhaps at the hands of the hero, the avenged victims, or as a direct result of their own ploy.
+        [],
+        "WEDDING": #The hero marries and is rewarded or promoted by the family or community, typically ascending to a throne.
+        []
     },
     "hi" : {
         "origin": ["#hello.capitalize#, #location#!"],
