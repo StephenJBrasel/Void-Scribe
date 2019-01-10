@@ -36,7 +36,7 @@ def main():
             grammar.add_modifiers(base_english)
             print(grammar.flatten('#origin#'))  # prints, e.g., 'Hello, world!'
 
-def getPrefabStoryElementList():
+def getStoryPrefabs():
     ret = []
     for i in data:
         ret.append(i)
