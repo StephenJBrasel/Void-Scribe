@@ -4,6 +4,7 @@ import random
 # Generate sequence of objects, story -> [class[uid], class[uid], class[uid]]
 # Parse to text from sequence of objects -> The fox jumped
 
+# TODO Stop returning a markov Chain, this is just supposed to generate the NGRAMS. 
 def createNGRAMList(strings = ["hello", "world"], order = 3):
     """
     Returns starts, ends, ngrams:  
@@ -153,11 +154,11 @@ def createNGramFullList(strings = ["hello", "world"], order = 3):
             ends = enders
         fullList.append(ngrams)
         count -= 1
-    print(starts)
-    print(starters)
-    print(ends)
-    print(enders)
-    print(fullList)
+    # print(starts)
+    # print(starters)
+    # print(ends)
+    # print(enders)
+    # print(fullList)
     return starts, ends, fullList
 
 def listToListOfLists(data = ['a', 'b']):
@@ -224,10 +225,10 @@ def completeListWithPriors(
 
     returns list of lists of elements with assigned probabilities. data with high probability, elements in complete set that weren't in data have a low probability.
     '''
-    if prior == 0:
+    if prior == 0 or len(data) >= len(completeSet):
         return fillProbabilities(data)
     currentProb = (1-prior)
-    otherProb = prior/(26-len(data))
+    otherProb = prior/(len(completeSet)-len(data))
     data = fillProbabilities(data)
     totalProb = 0
     # if all letters already exist in an ngram list, DO NOT ALTER PROBABILITY.
@@ -246,8 +247,8 @@ def completeListWithPriors(
             data.append([i, otherProb])   
     for i in data:
         totalProb += i[1]
-    print(totalProb)
-    print(data)
+    # print(totalProb)
+    # print(data)
     return data
 
 def PCFGtoTCFG(data = [['i', 0.5], ['j', 0.5]]):
@@ -262,7 +263,6 @@ def PCFGtoTCFG(data = [['i', 0.5], ['j', 0.5]]):
     data[len(data) - 1][1] = 1
     return data
 
-# TODO incorporate new [list of dictionaries] structure with [elem, probability] generation into markov model.
 def markovIt(
         starters = ['def'],
         ends = ['ault'],
@@ -297,6 +297,27 @@ def markovIt(
             length += 1
     return ret
 
+def checkPotentialNodes(listDicts, currentList, key, n):
+    """
+    function returns list of potential next nodes in markov chain.
+    if no nodes exist, returns None.
+    """
+    potentials = None
+    if key[-n:] in listDicts[currentList].keys():
+        potentials = listDicts[currentList][key[-n:]]
+    else:
+        if  (currentList + 1) < len(listDicts):
+            currentList += 1
+            n -= 1
+            potentials = checkPotentialNodes(listDicts, currentList, key, n)
+    if potentials:
+        if len(potentials) == 0:
+            if  (currentList + 1) < len(listDicts):
+                currentList += 1
+                n -= 1
+                potentials = checkPotentialNodes(listDicts, currentList, key, n)
+    return potentials
+
 # TODO incorporate new [list of dictionaries] structure with [elem, probability] generation into markov model.
 def markovItv2(
         starters = ['def'],
@@ -323,11 +344,22 @@ def markovItv2(
         length = len(ret[i])
         currentList = 0
         while length < maxlength:
-            potentials = listDicts[currentList][ret[i][-order:]]
-
-            nextChar = random.choice(potentials)
-            ret[i] += nextChar
-            length += 1
+            # potentials = listDicts[currentList][ret[i][-order:]]
+            n = int(order)
+            potentials = checkPotentialNodes(listDicts, currentList, ret[i], n)
+            if potentials is not None:
+                prob = random.random()
+                for elem in potentials:
+                    if elem[1] > prob:
+                        nextChar = elem[0]
+                        break
+                    # print(elem)
+                
+                # nextChar = random.choice(potentials)
+                ret[i] += nextChar
+                length += 1
+            else:
+                break
     return ret
 
 def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0):
@@ -336,16 +368,24 @@ def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength
     """
     if maxlength == 0:
         maxlength = (len(max(strings, key=len)))
-    starts, ends, ngrams = createNGRAMList(strings, order)
-    # TODO once markovit can handle [list of dict of key,value where value is list of list of [elem, prob]], incorporate those.
-    # starts, ends, dictList = createNGramFullList(strings, order)
+    # starts, ends, ngrams = createNGRAMList(strings, order)
+    starts, ends, dictList = createNGramFullList(strings, order)
+    for i in range(len(dictList)):
+        for key in dictList[i]:
+            if i != (len(dictList) - 1):
+                # TODO Fix this ridiculousness.
+                dictList[i][key] = PCFGtoTCFG(duplicateElemToPCFG(listToListOfLists(dictList[i][key])))
+            else:
+                # TODO Fix this ridiculousness.
+                dictList[i][key] = PCFGtoTCFG(completeListWithPriors(duplicateElemToPCFG(listToListOfLists(dictList[i][key])), prior))
     # orderOneNGrams = dictList[len(dictList) - 1]
     # for i in orderOneNGrams:
-    #   orderOneNGrams[i] = assignPrior(listToListOfLists(orderOneNGrams[i]), prior)
-    print(f"Starters = {starts}")
-    print(f"Enders = {ends}")
-    # TODO make a markovIt where ngrams can be a list of dictionaires of key=string, value = list of list where elements are ['char', float]
-    ret = markovIt(starts, ends, ngrams, numGenerated, order, minlength, maxlength, seed)
+    #   orderOneNGrams[i] = completeListWithPriors(listToListOfLists(orderOneNGrams[i]), prior)
+
+    # print(f"Starters = {starts}")
+    # print(f"Enders = {ends}")
+    # ret = markovIt(starts, ends, ngrams, numGenerated, order, minlength, maxlength, seed)
+    ret = markovItv2(starts, ends, dictList, numGenerated, order, minlength, maxlength, seed)
     return ret
 
 if __name__ == "__main__":
@@ -395,7 +435,7 @@ if __name__ == "__main__":
             print(f"{item} : {ngrams[item]}")
         for i in ngrams:
             ngrams[i] = completeListWithPriors(listToListOfLists(ngrams[i]), prior=0.01)
-            # print(f"{i} : {ngrams[i]}")
+            print(f"{i} : {ngrams[i]}")
             print()
         # print(ngrams)
     
@@ -415,10 +455,13 @@ if __name__ == "__main__":
 
     def generateTest():
         from void_scribe.data.names import names as __df__
-        print(f"Generated words: {generate(__df__['test2'])}")
+        for nameType in __df__:
+            print(f"{nameType}: {generate(__df__[nameType], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
+        # for i in range(10):
+        #     print(f"UnixCommands: {generate(__df__['UnixCommands'], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
 
     # ngramTest()
-    # completeListWithPriors()
+    print(completeListWithPriors())
     # duplicateTest()
     # fullListTest()
-    generateTest()
+    # generateTest()
