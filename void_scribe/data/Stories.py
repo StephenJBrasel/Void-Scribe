@@ -1280,7 +1280,7 @@ data = {
         ],
         "adjectivePurpose":[
             "#purpose#",
-            ""
+            "\b"
         ],
         "adjQuantity":[
             "many"
