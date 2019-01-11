@@ -30,6 +30,107 @@ def createNGRAMList(strings = ["hello", "world"], order = 3):
                 ngrams[gram].append(string[i+order])
     return starts, ends, ngrams
 
+def createShingles(words=None, order=3):
+    #Parameters
+    ##strings - iterable object that contains strings that represent words
+    ##order - The order of the generated ngrams
+    #Returns
+    ##shingles - A List of shingles of order(order)
+    if words == None: 
+        return None
+    if order == None:
+        return None
+    if order == 0:
+        return []
+    if order > len(words):
+        return []
+
+    shingles = []
+    count = len(words)
+    for index, word in enumerate(words):
+        if count - index < order: 
+            break
+
+        shingle = []
+
+        for i in range(order):
+            shingle.append(words[index + i])
+
+        shingles.append(tuple(shingle))
+
+    return shingles
+
+def createMarkovChain(ngrams):
+    #Parameters
+    ##ngrams - Indexable collections of Indexable Collections (Of the same len())
+    #Returns
+    ##chain - Dictionary of Key-Items and Value-Following Term
+
+    #Validate
+    order = len(ngrams[0])
+    for ngram in ngrams:
+        if (len(ngram) != order):
+            raise ValueError("NGrams are not of the same order")
+    
+    chain = {}
+    count = len(ngrams)
+    for index, ngram in enumerate(ngrams):
+        if index == count - 1: 
+            break
+
+        chain[ngram] = ngrams[index + 1][order - 1]
+
+    return chain
+    
+def markovGenerate(data, order, amount):
+    #Parameters
+    ##data - List of List of Objects
+    #Return
+    ##generated_outputs - List of amount number Lists of ordered objects occording to markov algorithm
+
+    #Helper Function
+    def tupleEndofList(_list):
+        return tuple(_list[(-1 * order):])
+    
+    
+    #Shingle Data, Save Starts, Generate Chains
+    starts = []
+    chains = {}
+    max_length = 0
+    for entry in data:
+        shingles = createShingles(entry, order)
+        if len(entry) > max_length:
+            max_length = len(entry)
+        if len(shingles) != 0:
+            starts.append(shingles[0])
+            chains.update(createMarkovChain(shingles))
+    
+    generated_outputs = []
+    for i in range(amount):
+        #Select random start
+        start = random.randint(0, len(starts) - 1)
+        start = starts[start]
+
+        #Generate Output Using Chains    
+        output = []
+        for item in start:
+            output.append(item)
+
+        while len(output) < max_length and tupleEndofList(output) in chains.keys():
+            output.append(chains[tupleEndofList(output)])
+
+        generated_outputs.append(output)
+
+    return generated_outputs
+
+
+    
+...     
+
+
+
+
+
 # TODO Integrate this into createNGRAMList to speed up algorithm.
 def createNGramFullList(strings = ["hello", "world"], order = 3):
     """
