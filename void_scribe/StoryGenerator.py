@@ -76,7 +76,7 @@ if __name__ == "__main__":
         print()
         for i in items:
             print(i)
-        items = generateStory(dataObject=None, Sentence_Type='adjective')
+        items = generateStory(dataObject=None, Sentence_Type='adjective', amount=10)
         print()
         for i in items:
             print(i)
@@ -84,9 +84,9 @@ if __name__ == "__main__":
         print()
         for i in items:
             print(i)
-    # maintest()
-    items = generateStory(dataObject=None, Sentence_Type='myth', amount=10)
-    print()
-    for i in items:
-        print(i)
+        items = generateStory(dataObject=None, Sentence_Type='quest')
+        print()
+        for i in items:
+            print(i)
+    maintest()
 
