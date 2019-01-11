@@ -25,9 +25,13 @@ def MarkovName(
 
 def getNameTypes():
     return list(__df__.keys())
-    
+
 
 if __name__ == "__main__":
-    print(getNameTypes())
-    print(getNames(Name_Type = 'werewolfForenames'))
-    print(MarkovName(Name_Type = 'werewolfForenames'))
+    # print(getNameTypes())
+    # print(getNames(Name_Type = 'werewolfForenames'))
+    # print(MarkovName(Name_Type = 'werewolfForenames'))
+    def getGenNames():
+        for nameType in getNameTypes():
+            print(f"{nameType} : {MarkovName(Name_Type=nameType)} ||| {getNames(Name_Type=nameType)}")
+    getGenNames()
