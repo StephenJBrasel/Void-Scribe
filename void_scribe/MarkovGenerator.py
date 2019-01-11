@@ -1,57 +1,5 @@
 import random
 
-
-
-def createNGramListDEPRECATED(strings, order = 3):
-    # ngramSet = pd.DataFrame(columns=['string', 'num', 'followers'])
-    ngramList = []
-    beginnings = []
-    for string in strings:
-        # print(f"String: {string}\t\tRange: {range(len(string) - order)}")
-        for i in range(len(string) - order + 1):
-            notFound = True
-            gram = string[i:(i + order)]
-            if i == 0:
-                if gram not in beginnings:
-                    beginnings.append(gram)
-            # print(gram)
-            j=0
-            for val in ngramList:
-                # print(type(val))
-                # print(val[0])
-                if val[0] == gram:
-                    ngramList[j][1] += 1
-                    # print(ngramList[j])
-                    if i+order < len(string):
-                        if string[i + order] not in ngramList[j][2]:
-                            ngramList[j][2] += [string[i + order]]
-                    notFound = False
-                j += 1
-            if notFound:
-                ngramList.append([gram, 1, []])
-                if i+order < len(string):
-                    ngramList[j][2] = [string[i + order]]
-            # print(gram)
-
-    # for item in ngramList:
-    #     print(item)
-    # print('----')
-    # for item in beginnings:
-    #     print(item)
-    
-    total = 0
-    for elem in ngramList:
-        total += elem[1]
-    prevElem = [0, 0, 0]
-    for elem in ngramList:
-        elem[1] = elem[1]/total 
-        
-        elem[1] += prevElem[1]
-        prevElem = elem
-        print(elem)
-
-    return beginnings, ngramList
-
 def createNGRAMList(strings, order = 3):
     ngrams = {}
     starters = []
