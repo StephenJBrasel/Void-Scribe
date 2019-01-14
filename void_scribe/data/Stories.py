@@ -676,7 +676,7 @@ data = {
             "[questType:#deliver#][reason:#deliverReason#]", #bring [noun] to [person] at [place] [in [place]]
             "[questType:#fetch#][reason:#fetchReason#]", #get [thing:noun] from [place] and bring #thing# to [other place]
 
-            "[questType:#destroy#][reason:#destroyReason#]", #destroy something
+            "[questType:#destroy#][reason:#destroyReason#]", #destroy something/someone
             "#setGuardQuestType#", #guard something, and if threat: destroy threat.
 
             # "[questType:#skill#][reason:#skillReason#]", #perform [action] using only N skill(s).
