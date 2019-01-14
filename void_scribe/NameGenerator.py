@@ -1,4 +1,4 @@
-from void_scribe import MarkovGenerator as markov
+from void_scribe import MarkovGen as markov
 import random
 from void_scribe.data.names import names as __df__
 
@@ -17,10 +17,10 @@ def MarkovName(
         Name_Type = 'americanForenames', 
         amount = 3, 
         order = 3, 
-        maxlength = 10, 
+        maxlength = 0, 
         seed = None):
     txt = __df__[Name_Type]
-    ret = (markov.generate(txt, amount, order, maxlength, seed)) 
+    ret = (markov.generate(txt, amount, order, maxlength=maxlength, seed=seed)) 
     return ret 
 
 def getNameTypes():
