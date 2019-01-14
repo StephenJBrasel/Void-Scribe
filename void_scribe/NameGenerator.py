@@ -17,10 +17,12 @@ def MarkovName(
         Name_Type = 'americanForenames', 
         amount = 3, 
         order = 3, 
+        minlength = 3,
         maxlength = 0, 
-        seed = None):
+        seed = None, 
+        prior = 0):
     txt = __df__[Name_Type]
-    ret = (markov.generate(txt, amount, order, maxlength=maxlength, seed=seed)) 
+    ret = (markov.generate(txt, amount, order, minlength, maxlength, seed, prior)) 
     return ret 
 
 def getNameTypes():
