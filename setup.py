@@ -24,6 +24,6 @@ setup(name = "void_scribe",
     #'runner' is in the root.
     #scripts = ["runner"],
     #
-    #This next part it for the Cheese Shop, look a little down the page.
+    #This next part is for the Cheese Shop, look a little down the page.
     #classifiers = []     
 ) 

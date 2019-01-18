@@ -5,32 +5,6 @@ import pickle
 # Generate sequence of objects, story -> [class[uid], class[uid], class[uid]]
 # Parse to text from sequence of objects -> The fox jumped
 
-# TODO Stop returning a markov Chain, this is just supposed to generate the NGRAMS. 
-def createNGRAMList(strings = ["hello", "world"], order = 3):
-    """
-    Returns starts, ends, ngrams:  
-
-    starts = list of len(order) ngrams from the start of each string in strings.  
-    ends = list of len(order) ngrams from the end of each string in strings.  
-    ngrams = dictionary with keys of ngrams and values of following individual characters.
-    
-    """
-    ngrams = {}
-    starts, ends = [], []
-    for string in strings:
-        for i in range(len(string) - order + 1):
-            gram = string[i:(i + order)]
-            if i == 0:
-                if gram not in starts:
-                    starts.append(gram)
-            elif i == (len(string) - order):
-                if gram not in ends:
-                    ends.append(gram)
-            if i+order < len(string):
-                if gram not in ngrams.keys():
-                    ngrams[gram] = []
-                ngrams[gram].append(string[i+order])
-    return starts, ends, ngrams
 
 def createNGrams(elements=None, order=3):
     #Parameters
@@ -212,11 +186,37 @@ def markovGenerate(markovDictionary, order, amount, max_length=15):
 
 
     
-...     
+     
 
 
 
 
+# TODO Stop returning a markov Chain, this is just supposed to generate the NGRAMS. 
+def createNGRAMList(strings = ["hello", "world"], order = 3):
+    """
+    Returns starts, ends, ngrams:  
+
+    starts = list of len(order) ngrams from the start of each string in strings.  
+    ends = list of len(order) ngrams from the end of each string in strings.  
+    ngrams = dictionary with keys of ngrams and values of following individual characters.
+    
+    """
+    ngrams = {}
+    starts, ends = [], []
+    for string in strings:
+        for i in range(len(string) - order + 1):
+            gram = string[i:(i + order)]
+            if i == 0:
+                if gram not in starts:
+                    starts.append(gram)
+            elif i == (len(string) - order):
+                if gram not in ends:
+                    ends.append(gram)
+            if i+order < len(string):
+                if gram not in ngrams.keys():
+                    ngrams[gram] = []
+                ngrams[gram].append(string[i+order])
+    return starts, ends, ngrams
 
 # TODO Integrate this into createNGRAMList to speed up algorithm.
 def createNGramFullList(strings = ["hello", "world"], order = 3):
@@ -383,6 +383,16 @@ def markovIt(
             length += 1
     return ret
 
+def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0):
+    """
+    Returns list of [numGenerated] generated words.
+    """
+    if maxlength == 0:
+        maxlength = (len(max(strings, key=len)))
+    starts, ends, ngrams = createNGRAMList(strings, order)
+    ret = markovIt(starts, ends, ngrams, numGenerated, order, minlength, maxlength, seed)
+    return ret
+
 def checkPotentialNodes(listDicts, currentList, key, n):
     """
     function returns list of potential next nodes in markov chain.
@@ -420,6 +430,7 @@ def markovItv2(
     """
     random.seed(seed)
     ret = []
+    midLength = (minlength + maxlength) / 2
     listMin = 0
     listMax = len(listDicts) - 1
     start = 0
@@ -429,26 +440,40 @@ def markovItv2(
         ret.append(starters[randy])
         length = len(ret[i])
         currentList = 0
-        while length < maxlength:
+        hasEnded = False
+        while length < (maxlength - order):
             # potentials = listDicts[currentList][ret[i][-order:]]
             n = int(order)
+            # option to set potentials the old way: via the order set at the beginning
             potentials = checkPotentialNodes(listDicts, currentList, ret[i], n)
             if potentials is not None:
                 prob = random.random()
+                # nextChar = random.choice(potentials)
                 for elem in potentials:
                     if elem[1] > prob:
                         nextChar = elem[0]
                         break
-                    # print(elem)
-                
-                # nextChar = random.choice(potentials)
                 ret[i] += nextChar
                 length += 1
             else:
                 break
+            if length > minlength:
+                chance = random.randint(minlength, maxlength)
+                if chance < len(ret[i]):
+                    hasEnded = False
+                    for end in ends:
+                        if ret[i][-1:] == end[0]:
+                            ret[i] = ret[i][:-1]
+                            ret[i] += end
+                            hasEnded = True
+                            break
+                    if hasEnded:
+                        break
+        # if not hasEnded:
+        #     ret[i] += random.choice(ends)
     return ret
 
-def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0):
+def generateFull(strings = ["hello", "world"], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0):
     """
     Returns list of [numGenerated] generated words.
     """
@@ -464,13 +489,7 @@ def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength
             else:
                 # TODO Fix this ridiculousness.
                 dictList[i][key] = PCFGtoTCFG(completeListWithPriors(duplicateElemToPCFG(listToListOfLists(dictList[i][key])), prior))
-    # orderOneNGrams = dictList[len(dictList) - 1]
-    # for i in orderOneNGrams:
-    #   orderOneNGrams[i] = completeListWithPriors(listToListOfLists(orderOneNGrams[i]), prior)
 
-    # print(f"Starters = {starts}")
-    # print(f"Enders = {ends}")
-    # ret = markovIt(starts, ends, ngrams, numGenerated, order, minlength, maxlength, seed)
     ret = markovItv2(starts, ends, dictList, numGenerated, order, minlength, maxlength, seed)
     return ret
 
@@ -543,11 +562,21 @@ if __name__ == "__main__":
         from void_scribe.data.names import names as __df__
         for nameType in __df__:
             print(f"{nameType}: {generate(__df__[nameType], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
-        # for i in range(10):
-        #     print(f"UnixCommands: {generate(__df__['UnixCommands'], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
-
+    
+    def generateWerewolfTest():
+        from void_scribe.data.names import names as __df__
+        nameType = 'werewolfForenames'
+        print(f"{nameType}: {generate(__df__[nameType], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
+    
+    def generateFullTest():
+        from void_scribe.data.names import names as __df__
+        for nameType in __df__:
+            print(f"{nameType}: {generateFull(__df__[nameType], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0)}")
+    
     # ngramTest()
-    print(completeListWithPriors())
+    # print(completeListWithPriors())
     # duplicateTest()
     # fullListTest()
-    # generateTest()
+    generateTest()
+    # generateWerewolfTest()
+    # generateFullTest()
