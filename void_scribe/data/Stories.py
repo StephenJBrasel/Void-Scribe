@@ -1371,11 +1371,25 @@ data = {
     },
     "VladimirPropp" : { #TODO FILL THESE OUT WITH SEQUENTIAL OPERATIONS
         "ABSENTATION": #A member of the hero's community or family leaves the security of the home environment. This may be the hero themselves, or some other relation that the hero must later rescue. This division of the cohesive family injects initial tension into the storyline. This may serve as the hero's introduction, typically portraying them as an ordinary person.
-        [],
+        [
+            # Protagonist 
+            #   List of Protagonist relationships
+            # absentee = choose character from high order relationships
+            # absentee.Travel(choose destination based on protagonists ability to travel minimum/maximum)
+            # generate reason for leaving
+            # update protagonist information to realize event.
+        ],
         "INTERDICTION": # A forbidding edict or command is passed upon the hero ('don't go there', 'don't do this'). The hero is warned against some action.
-        [],
+        [
+            # get [type] of restriction from available action types or user request
+            # Protagonist character
+            # Rule-Maker character (choose character from respected relationships)
+            # Protagonist.(choose Protagonist action([type])).warning == choose(warning level above None)
+        ],
         "VIOLATION of INTERDICTION": #The prior rule is violated. Therefore the hero did not listen to the command or forbidding edict. Whether committed by the Hero by accident or temper, a third party or a foe, this generally leads to negative consequences. The villain enters the story via this event, although not necessarily confronting the hero. They may be a lurking and manipulative presence, or might act against the hero's family in his absence.
-        [],
+        [
+            
+        ],
         "RECONNAISSANCE": #The villain makes an effort to attain knowledge needed to fulfill their plot. Disguises are often invoked as the villain actively probes for information, perhaps for a valuable item or to abduct someone. They may speak with a family member who innocently divulges a crucial insight. The villain may also seek out the hero in their reconnaissance, perhaps to gauge their strengths in response to learning of their special nature.
         [],
         "DELIVERY": #The villain succeeds at recon and gains a lead on their intended victim. A map is often involved in some level of the event.
