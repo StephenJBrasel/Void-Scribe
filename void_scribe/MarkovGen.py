@@ -383,7 +383,14 @@ def markovIt(
             length += 1
     return ret
 
-def generate(strings = ["hello", "world"], numGenerated=10, order = 3, minlength = 3, maxlength = 0, seed = None, prior = 0):
+def generate(
+        strings = ["hello", "world"], 
+        numGenerated=10, 
+        order = 3, 
+        minlength = 3, 
+        maxlength = 0, 
+        seed = None, 
+        prior = 0):
     """
     Returns list of [numGenerated] generated words.
     """
