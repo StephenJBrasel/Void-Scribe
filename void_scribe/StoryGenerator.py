@@ -3,6 +3,11 @@ from void_scribe.data.Stories import data
 import tracery
 from tracery.modifiers import base_english
 import random
+# from nltk.parse.generate import generate, demo_grammar
+# from nltk import CFG
+# import spacy
+import pynlg
+
 
 """
     Naming conventions:
@@ -34,6 +39,7 @@ def generateTraceryStory(
         ret.append(grammar.flatten('#origin#'))
     return ret
 
+
 # Objects
 
 
@@ -42,20 +48,28 @@ class objEntity():
         """
 
     def __init__(self,
-                nameEntity="",
-                creature=None,
-                intelligence=None,
-                item=None,
-                container=None):
+            world=None,
+            nameEntity="",
+            x = 0,
+            y = 0,
+            z = 0,
+            creature=None,
+            AI=None,
+            item=None,
+            container=None):
+        self.world = world
         self.nameEntity = nameEntity
+        self.x = x
+        self.y = y
+        self.z = z
 
         self.creature = creature
         if self.creature:
             self.creature.owner = self
 
-        self.intelligence = intelligence
-        if self.intelligence:
-            self.intelligence.owner = self
+        self.AI = AI
+        if self.AI:
+            self.AI.owner = self
 
         self.item = item
         if self.item:
@@ -67,7 +81,23 @@ class objEntity():
 
 
 class objSimulation:
-    def __init__(self):
+    def __init__(self,
+            genres = None, 
+            actions = None, 
+            occupations = None, 
+            goals = None, 
+            traits = None, 
+            personalityFacets = None
+        ):
+        self.nameSimulation = "universe"
+        
+        self.genres = genres
+        self.actions = actions
+        self.occupations = occupations
+        self.goals = goals
+        self.traits = traits
+        self.personalityFacets = personalityFacets
+
         self.history = []
         self.items = []
         self.creatures = []
@@ -76,14 +106,33 @@ class objSimulation:
     def addEvent(self, event):
         """
         Appends an event to the history of the world.
-        event is a tuple in the form of (verb, subject, object1, object2).
+        event is a tuple in the form of (sentenceStruct, lemmasInOrderOfSentenceStruct, tense, sentenceType).
         """
         self.history.append(event)
 
-    def addCreature(self, creature):
+    def packageEvent(self,
+            sentenceStruct = ["verb", "Subject", "Direct Object"],
+            lemmasInStructOrder = ["live", "I", "here"],
+            tense = "present",
+            sentenceType = "imperative"):
+        """ 
+        valid sentence types: declarative, imperative, (can|may|would|should|could), (who|what|when|where|why|how), question
+        valid tenses: past, present, progressive, past_progressive, future, infinitive 
+        """
+        ret = {}
+        for i, pos in enumerate(sentenceStruct):
+            ret[pos] = lemmasInStructOrder[i]
+        return ret
+
+    def addCreature(self, entity):
         # Verb, Subject, listObjects
-        self.history.append(
-            ("create", creature.nameLivingThing, creature, self))
+        if len(self.creatures) == 0:
+            self.protagonist = entity
+        self.creatures.append(entity)
+        self.addEvent(entity.creature.nameLivingThing.capitalize() + " is a " + entity.nameEntity.lower() + " living in the " + self.nameSimulation + ".")
+        # self.addEvent(("live", entity.creature.nameLivingThing, entity.nameEntity, self.nameSimulation))
+            # [entity.creature.nameLivingThing] is a [entity.nameEntity] living in the [self.nameSimulation].
+                # Bob is a human living in the universe.
 
 # Components
 
@@ -91,9 +140,21 @@ class objSimulation:
 class comLivingThing:
     def __init__(self,
                  nameLivingThing="",
-                 hp=1):
+                 hp=1, 
+                 Strength=10,
+                 Constitution=10,
+                 Dexterity=10,
+                 Charisma=10, # May conflict with personality traits/facets. Think of this as their physical beauty
+                 Wisdom=10,
+                 Intelligence=10):
         self.nameLivingThing = nameLivingThing
         self.hp = hp
+        self.Strength = Strength
+        self.Constitution = Constitution
+        self.Dexterity = Dexterity
+        self.Charisma = Charisma
+        self.Wisdom = Wisdom
+        self.Intelligence = Intelligence
 
 
 class comAI:
@@ -103,18 +164,18 @@ class comAI:
     """
 
     def __init__(self,
-                 goals=None,
+                 quests=None,
                  traits=None,
                  facets=None):
         # print("They're here.")
-        self.goals = goals
+        self.quests = quests
         self.traits = traits
         self.facets = facets
 
     def randomize_traits(self, traitMin=-50, traitMax=50):
         if self.traits is not None:
-            helper_randomizeWithinConstraints(-50,
-                                              50, traitMin, traitMax, self.traits)
+            helper_randomizeWithinConstraints(
+                -50, 50, traitMin, traitMax, self.traits)
         # else:
         #     return helper_func_failure("comAI.randomize_traits")
 
@@ -125,32 +186,160 @@ class comAI:
         # else:
         #     return helper_func_failure("comAI.randomize_personality")
 
+    def take_turn(self):
+        # Character selects one of it's available goals (ordered by urgency/optionality)
+        # if not character.mainGoal:
+        #     character.mainGoal = character.goals.pop()
+        self.currentQuest = self.quests[0]
+        helper_thinkingActing(self.owner, self.currentQuest)
+        print("it's MY turn.")
+
+class comPlace:
+    def __init__(self,
+            namePlace="",
+            environmentType="",
+            government="",
+            population=[]):
+        self.namePlace = namePlace 
+        self.environmentType = environmentType 
+        self.government = government 
+        self.population = population 
+    
+    @property
+    def totalPopulation(self):
+        return len(self.population)
+
 
 class comItem:
     def __init__(self,
+            nameItem="",
+            typeItem="",
             volume=0,
             weight=0):
+        self.nameItem = nameItem
+        self.typeItem = typeItem
         self.volume = volume
         self.weight = weight
-        print('Carry me.')
+
+    def acquire(self, actor):
+        if actor.container:
+            if actor.container.volume + self.volume > actor.container.max_volume:
+                # TODO add new event to history that says the actor could not carry the item
+                print("Could not acquire item.")
+            else:
+                # TODO add new event to history saying the item was picked up by [actor].
+                actor.container.inventory.append(self.owner)
+                self.container = actor.container
+
+    def drop(self): # TODO drop the item in a place. (x, y, z)
+        if self.container:
+            self.container.inventory.remove(self.owner)
+
+    def use(self):
+        if self.owner.equipment:
+            self.owner.equipment.toggle_equip()
+            return "no-action"
+
+        if self.use_function:  # """ == cast_heal """
+            result = self.use_function(self.container.owner, self.value)
+            if result is not None:
+                print("use_function failed.")
+            else:
+                self.container.inventory.remove(self.owner)
+                return result
+    
+    # def give(self, entity):
+        # TODO implement
+        # if self.owner.equipment:
+
 
 
 class comContainer:
-    def __init__(self):
-        print("GET IN MA BELLY.")
+    def __init__(self, 
+            inventory = [],
+            volumeMax = 1,
+            weightMax = 1, 
+            closed = True):
+        self.inventory = []
+        self.volumeMax = volumeMax
+        self.weightMax = weightMax
+        self.closed = closed
 
+
+class comEquipment:
+    def __init(self,
+            slot=None, 
+            warmth=None):
+        self.slot=slot
+        self.warmth=warmth
+
+# AI
 
 # Generators
 
-def generatePlace(
-        seed=None):
-    print("hello, #place#!")
+def generatePlace(seed=None, # Randonimity
+        world=None,
+        population=[],
+        generateName=True
+        ):
+
+    placeCom = comPlace()
+    place = objEntity(
+        world=world,
+        nameEntity="place",
+        place=comPlace,
+        creature=None,
+        AI=None,
+        item=None,
+        container=None)
 
 
-def generateCharacter(
-        seed=None,  # Randonimity
+def generateItem(seed=None, # Randonimity
+        world=None,
+        generateName=True,
+        nameItem="",
+        typeItem=""
+        ):
 
-        goals=None,  # AI
+    if nameItem != "":
+        itemName = nameItem
+    elif generateName:
+        itemName = NameGenerator.MarkovName(
+            Name_Type='breads',
+            amount=1,
+            order=3,
+            minlength=3,
+            maxlength=0,
+            seed=seed,
+            prior=0
+            )[0]
+    else:
+        itemName = NameGenerator.getNames(
+            Name_Type='breads',
+            amount=1,
+            seed=seed
+            )[0]
+
+    itemCom = comItem(
+            nameItem=itemName,
+            typeItem=typeItem,
+            volume=0,
+            weight=0)
+
+    item = objEntity(
+        world=world,
+        nameEntity="item",
+        creature=None,
+        AI=None,
+        item=itemCom,
+        container=None)
+    return item
+
+
+def generateCharacter(seed=None,  # Randonimity
+        world=None,
+
+        quests=None,  # AI
         traits=None,
         facets=None,
         isRandomizingTraits=True,
@@ -162,10 +351,10 @@ def generateCharacter(
 
         generateName=True,
         nameLivingThing="",  # Living
-        hp=0,
+        hp=1,
         ):
     AI_com = comAI(
-        goals=goals,
+        quests=quests,
         traits=traits,
         facets=facets)
 
@@ -192,12 +381,13 @@ def generateCharacter(
         # "romanEmperorForenames",
         "russianForenames",
         "spanishForenames",
-        "swedishForenames",
+        "swedishForenames"
 
-        "scottishSurnames",
+        # "scottishSurnames",
 
-        "tolkienesqueForenames",
-        "werewolfForenames"}
+        # "tolkienesqueForenames",
+        # "werewolfForenames"
+        }
 
     if nameLivingThing != "":
         creatureName = nameLivingThing
@@ -224,14 +414,15 @@ def generateCharacter(
         nameLivingThing=creatureName,
         hp=hp)
     Character = objEntity(
-        nameEntity="Human",
+        world=world,
+        nameEntity="human",
         creature=creature_com,
-        intelligence=AI_com,
+        AI=AI_com,
         item=None,
         container=[])
-    print(Character.creature.nameLivingThing.capitalize() + " is a " +
-        Character.nameEntity.lower() + " living in " +
-        "the world.")  # TODO make places before people
+    # print(Character.creature.nameLivingThing.capitalize() + " is a " +
+    #     Character.nameEntity.lower() + " living in " +
+    #     "the world.")  # TODO make places before people
     return Character
 
 # Helper Functions
@@ -250,25 +441,55 @@ def helper_randomizeWithinConstraints(c_min, c_max, r_min, r_max, dictionary):
             dictionary[key] = random.randint(r_min, r_max)
 
 
+def helper_thinkingActing(character, quest):
+    accomplished = False
+
+    if quest[0] == "acquire":
+        # find the nearest item of type quest[1]
+        listOfItemType = []
+        for thing in character.world.items:
+            if thing.item.typeItem == quest[1]:
+                listOfItemType.append(thing)
+        # get the distance to the nearest item to be acquired.
+        if len(listOfItemType) > 0:
+            listOfItemType[0].item.acquire(character)
+            # Verb Subject Object  = acquire, creature, potion
+            character.world.addEvent(character.creature.nameLivingThing.capitalize() + " acquired a " + listOfItemType[0].item.typeItem + ".")
+            accomplished = True
+
+    if accomplished:
+        character.AI.quests.remove(quest)
+
+# def helper_getTAGNodes(goal):
+#     return [goal for edge in TAG(GOAL)]
+
+
 # Simulation Main
 
 def simulation_init(seed=None):
     random.seed(seed)
 
+    # Story Elements
     genres = {
-        "action": [
+        "action": {
             "characterCountMin":1,
             "goal": "STAY_ALIVE"
-        ],
-        "adventure": [],
-        "horror": [],
-        "thriller": [],
-        "romance": [
+        },
+        "adventure": {},
+        "horror": {},
+        "thriller": {},
+        "romance": {
             "characterCountMin":2,
             "goal": "START_A_FAMILY"
+        }
+    }
+
+    structures = {
+        "Hero's Journey":[
         ]
     }
 
+    # AI Components
     occupations = [
         "warrior",
         "baker",
@@ -995,42 +1216,64 @@ def simulation_init(seed=None):
             # 10-24	is stingy with resources on projects and refuses to expend any extra effort
             # 0-9	cuts any corners possible when working on a project, regardless of the consequences, rather than wasting effort or resources
     }
+    
+    actions = {  
+            # destroy, create, modify, interact
+        "None":[],
+        "think":[],
+        "watch":[],
 
-    actions = {  # destroy, create, modify, interact
-        "[questType:#travel#][reason:#travelReason#]",  # go to [place]
-        # travel# #interact# #guard#
-        "[questType:#escort#][reason:#escortReason#]",
-        # bring [noun] to [person] at [place] [in [place]]
-        "[questType:#deliver#][reason:#deliverReason#]",
-        # get [thing:noun] from [place] and bring #thing# to [other place]
-        "[questType:#fetch#][reason:#fetchReason#]",
+        "travel":[],
+        "lead":[],
+        "follow":[],
+        "interact":[], # give quest to someone else, get information
+        
+        "acquire":[], # gather resources/items
+        "give":[],
+        "drop":[],
+        "utilize":[],
 
-        # destroy something/someone
-        "[questType:#destroy#][reason:#destroyReason#]",
-        # guard something, and if threat: destroy threat.
-        "#setGuardQuestType#",
-
-        # "[questType:#giveQuest#][reason:#questReason#]", #give someone a quest, usually because they're more qualified.
-        # "[questType:#skill#][reason:#skillReason#]", #perform [action] using only N skill(s).
-        "[questType:#craft#][reason:#craftReason#]",  # make [item]
-
-        # bypass or complete puzzle/test
-        "[questType:#solve#][reason:#solveReason#]"
-        ]
+        "harm":[],
+        "heal":[],
+        "guard":[],
+        "craft":[]
     }
 
-    WORLD = objSimulation()
 
-    for i in range(10):
-        mainChar = generateCharacter(
+    # World generation
+    WORLD = objSimulation(
+        genres,
+        actions,
+        occupations,
+        goals,
+        traits,
+        personalityFacets
+    )
+
+    for i in range(1):
+        item = generateItem(seed=None, # Randonimity
+            world=WORLD,
+            generateName=False,
+            nameItem="bravery",
+            typeItem="potion"
+            )
+        WORLD.items.append(item)
+
+    for i in range(1):
+        creature = generateCharacter(
             seed = seed,
+            world=WORLD,
             hp = 10,
-            goals = goals['person'],
+            quests = [
+                ["acquire", "potion"]
+                ],
             traits = traits,
             facets = personalityFacets,
             isRandomizingTraits = True,
             isRandomizingFacets = True)
-        WORLD.creatures.append(mainChar)
+        WORLD.addCreature(creature)
+    
+    return WORLD
 
     # thing = item()
         # event = action()
@@ -1063,12 +1306,11 @@ def simulation_init(seed=None):
 
         # final goal + opposing starting condition selected based on quest type.
 
-def simulation_main_loop():
-
-    # while (len(protagonist.goals()) > 0):
-        # Protagonist selects one of it's available goals (ordered by urgency/optionality)
-        # if not protagonist.mainGoal:
-        #     protagonist.mainGoal = protagonist.goals.pop()
+def simulation_main_loop(WORLD=None):
+    quitSimulation = False
+    while (len(WORLD.protagonist.AI.quests) > 0) and not quitSimulation:
+        for entity in WORLD.creatures:
+            entity.AI.take_turn()
 
         # uses filtering based on thinking-acting graph to decide on a single action
         # actionChoice = getThoughtOrAction(protagonist.mainGoal)
@@ -1091,7 +1333,9 @@ def simulation_main_loop():
         #     protagonist.goals().insert(goal)
 
         # The protagonist continues thinking-acting until goal-stack is resolved.
-    print("Exiting...")
+    
+    for event in WORLD.history:
+        print(event)
 
 if __name__ == "__main__":
     def traceryTest():
@@ -1124,10 +1368,30 @@ if __name__ == "__main__":
         for i in items:
             print(i)
 
+    # def nltkTest():
+    #     print('hi')
+        # print("Demo grammar: " + demo_grammar)
+        
+        # grammar = CFG.fromstring(demo_grammar)
+        # print("Grammar: " + str(grammar))
+
+        # for sentence in generate(grammar, n=10):
+        #     print(' '.join(sentence))
+
+        # for sentence in generate(grammar, depth=6):
+        #     print(' '.join(sentence))
+
+    def spacyTest():
+        print("hi!")
+    
     def narrativeGenTest():
-        simulation_init()
-        simulation_main_loop()
+        ret = simulation_init()
+        simulation_main_loop(ret)
+
+        
+
 
     # maintest()
+    # nltkTest()
     narrativeGenTest()
 

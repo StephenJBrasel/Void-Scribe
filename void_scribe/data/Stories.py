@@ -1315,9 +1315,9 @@ data = {
         "Miraculous or unusual circumstances around the Hero's conception or birth.":# Bonus points if there was a prophecy. Less common in modern stories, which tend to emphasize the role of personal choice in defining a hero, although there may still be a Prophecy Twist involved.
         [],
         "Begins in the ordinary world of the Hero's hometown": # often in one of two flavours:
-        # The Good Kingdom, for a story in which the Hero must save the world from impending doom, and
-        # The Wasteland, for a story in which the Hero must restore their world.
-        # Suburbia can be either, depending on where the story falls on the Sliding Scale of Idealism vs. Cynicism.
+            # The Good Kingdom, for a story in which the Hero must save the world from impending doom, and
+            # The Wasteland, for a story in which the Hero must restore their world.
+            # Suburbia can be either, depending on where the story falls on the Sliding Scale of Idealism vs. Cynicism.
         [],
         "The Hero may be dissatisfied with the ordinary and express a desire for adventure.": # In musicals this can be expressed through an "I Want" Song.
         [],
@@ -1334,29 +1334,29 @@ data = {
         "Crossing the First Threshold": #The Hero must make a conscious, willing decision to embark on the adventure and leave the known world behind. This is the First Threshold. The Hero may have to defeat Threshold Guardians, who are not necessarily adversarial but do test the Hero's resolve. Down the Rabbit Hole is a special case for young heroines embarking on supernatural adventures.
         [],
         "The Land of Adventure": #the Hero enters a strange, dreamlike realm, where logic is topsy-turvy and the "rules" are markedly different from the ordinary world. Carl Jung identified the Ordinary Realm with the conscious mind, and the Realm of Adventure with the subconscious mind.
-        #One may meet their Hero Partners here and rescue a Damsel in Distress.
+            #One may meet their Hero Partners here and rescue a Damsel in Distress.
         [],
         "The Spiritual Death and Rebirth": # represents a symbolic death for the Hero: the Hero is defeated and killed, their flesh scattered, ready to be reborn and emerge as a new person. If you think the symbolic death ought to come later, don't worry: The Writer's Journey omits this step altogether in favor of a Resurrection step just before the end.
-        # Part of this step involves the Hero Losing the Guide.
+            # Part of this step involves the Hero Losing the Guide.
         [],
         "Road of Trials": #the path out of the Belly of the Whale. Usually the meat of the story; The Writer's Journey calls it Tests, Allies, Enemies, while Booker goes into detail on different types of tests (deadly terrain, monsters, temptations, deadly opposites, and a journey to the underworld). Stops along the way might include:
-        # The Shapeshifter: someone you don't trust but nonetheless need for their capabilities or knowledge.
-        # The Goddess
-        # The Temptress
-        # Atonement With the Father: George Lucas loved this step. Oedipus probably didn't. Variants include a final showdown with an Archnemesis Dad (sometimes still ending in atonement if Death Equals Redemption) and Calling the Old Man Out
-        # At least one "Leave Your Quest" Test, usually after meeting the Goddess or Temptress.
+            # The Shapeshifter: someone you don't trust but nonetheless need for their capabilities or knowledge.
+            # The Goddess
+            # The Temptress
+            # Atonement With the Father: George Lucas loved this step. Oedipus probably didn't. Variants include a final showdown with an Archnemesis Dad (sometimes still ending in atonement if Death Equals Redemption) and Calling the Old Man Out
+            # At least one "Leave Your Quest" Test, usually after meeting the Goddess or Temptress.
         [],
         "Night Sea Voyage": #the Hero must sneak into the Big Bad's Elaborate Underground Base and retrieve something or someone. Campbell noted that these Stealth Runs were usually at night and often involved water; hence the name.
-        # Link's initial attempt at rescuing Aryll from the Forsaken Fortress in The Legend of Zelda: The Wind Waker is a near-perfect example of one of these.
-        # Perhaps the best known example is the infiltration of the Death Star by Luke Skywalker to rescue Princess Leia.
+            # Link's initial attempt at rescuing Aryll from the Forsaken Fortress in The Legend of Zelda: The Wind Waker is a near-perfect example of one of these.
+            # Perhaps the best known example is the infiltration of the Death Star by Luke Skywalker to rescue Princess Leia.
         [],
         "Time out just before the big battle": #the Heroes gather around a campfire and prepare for the battle, tell stories, confess their feelings, etc. It reminds them of what's at stake, and serves as a breather after all the action of the Road of Trials.
         [],
         "Apotheosis / Fight against the Big Bad / Ultimate Boon": #(These are typically very closely related, often intertwined.)
-        # Apotheosis: The Hero comes to view the world in a new and radically different way, either because of a critical breakthrough they've made or some crucial information they've uncovered. If it is something to do with themself then this is a good time for an I Am Who?.
-        # The Hero confronts the Big Bad: Typically this plays out in a David vs. Goliath fashion. They are usually called upon to sacrifice themself, or something or someone important to them. A Friend or Idol Decision is a common scenario. Note that asked is the key word here—it's usually enough that the Hero be willing to sacrifice something without actually having to do it. Someone else will sacrifice themself in the Hero's stead, or the Hero will prove to have outwitted the Big Bad somehow (so that the apparent sacrifice isn't really a sacrifice), or it was all a Secret Test of Character, or…
-        # The Ultimate Boon: getting the reward the hero's been chasing all this time, often but not always a MacGuffin.
-        # The Final Temptation is often involved in one or more of these three events: A hero originally motivated by a self-serving goal may receive their Ultimate Boon with the option to take it and run before saving the day. A hero on a Homeward Journey may find a way home, but turn back after their Apotheosis makes them realize their work isn't done. Another may be offered the Ultimate Boon or a tempting substitute by the Big Bad…in exchange for stepping aside. Still another may find that the Ultimate Boon is exactly the sacrifice they are required to make to defeat the Big Bad.
+            # Apotheosis: The Hero comes to view the world in a new and radically different way, either because of a critical breakthrough they've made or some crucial information they've uncovered. If it is something to do with themself then this is a good time for an I Am Who?.
+            # The Hero confronts the Big Bad: Typically this plays out in a David vs. Goliath fashion. They are usually called upon to sacrifice themself, or something or someone important to them. A Friend or Idol Decision is a common scenario. Note that asked is the key word here—it's usually enough that the Hero be willing to sacrifice something without actually having to do it. Someone else will sacrifice themself in the Hero's stead, or the Hero will prove to have outwitted the Big Bad somehow (so that the apparent sacrifice isn't really a sacrifice), or it was all a Secret Test of Character, or…
+            # The Ultimate Boon: getting the reward the hero's been chasing all this time, often but not always a MacGuffin.
+            # The Final Temptation is often involved in one or more of these three events: A hero originally motivated by a self-serving goal may receive their Ultimate Boon with the option to take it and run before saving the day. A hero on a Homeward Journey may find a way home, but turn back after their Apotheosis makes them realize their work isn't done. Another may be offered the Ultimate Boon or a tempting substitute by the Big Bad…in exchange for stepping aside. Still another may find that the Ultimate Boon is exactly the sacrifice they are required to make to defeat the Big Bad.
         [],
         "Refusal of the Return": #At this point in the story, the Hero has mastered the strange world they were thrust into. They probably have earned a permanent place here, if they want it. They may even want to stay, but usually there are forces at work that propel them home.
         [],

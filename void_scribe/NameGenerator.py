@@ -9,7 +9,7 @@ def getNames(
     random.seed(seed)
     ret = []
     for i in range(amount):
-        potentials = __df__[Name_Type]
+        potentials = __df__[Name_Type]["Data"]
         ret.append(random.choice(potentials))
     return ret
 
@@ -21,7 +21,7 @@ def MarkovName(
         maxlength = 0, 
         seed = None, 
         prior = 0):
-    txt = __df__[Name_Type]
+    txt = __df__[Name_Type]["Data"]
     ret = (markov.generate(txt, amount, order, minlength, maxlength, seed, prior)) 
     return ret 
 
