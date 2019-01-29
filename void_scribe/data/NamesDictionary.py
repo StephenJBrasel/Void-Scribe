@@ -42,9 +42,7 @@ class NamesDictionary:
     def values(self):
         for key in self.keys():
             yield self.__getitem__(key)
+
             
 
     
-
-test = NamesDictionary()
-print(test['americanForenames'])
