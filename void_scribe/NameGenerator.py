@@ -1,6 +1,9 @@
 from void_scribe import MarkovGen as markov
 import random
-from void_scribe.data.names import names as __df__
+# from void_scribe.data.names import names as __df__
+from void_scribe.data import NamesDictionary
+
+__df__ = NamesDictionary.NamesDictionary()
 
 def getNames(
         Name_Type = 'americanForenames', 

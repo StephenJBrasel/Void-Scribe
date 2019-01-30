@@ -156,7 +156,8 @@ class NamesDictionary:
             # Update index
             self.__updateIndex__()
 
-
+if __name__ == "__main__":
+    NamesDictionary()
             
         
         
