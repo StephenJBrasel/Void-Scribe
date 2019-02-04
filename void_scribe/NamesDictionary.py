@@ -24,11 +24,13 @@ class NamesDictionary:
         # Update Index
         self.__updateIndex__()
 
-    def __verifyNameType__(self, data):
+    def __verifyNameType__(self, data, ignore=None):
         if type(data) != type({}):
             raise ValueError("Argument data must be of type {}, passed argument is of type {}.".format(type({}), type(data)))
         for req in self.__requiredKeys__:
             if req not in data.keys():
+                if req in ignore:
+                    continue
                 return req
         return True
 
@@ -156,7 +158,47 @@ class NamesDictionary:
             # Update index
             self.__updateIndex__()
 
+    def merge(self, name_type, data, category=None, enforce_unique=True):
+        # This function takes two data sets for a name_type and combines them
+        # This can be useful for when additional data is found that fits best into another existing set
+        # By default the 'Category' option is taken from the existing entry
+        # Otherwise this can be overwritten by passing it as an argument
+        # Additionally, each record is checked for uniqueness by default (makes function nsquared)
+        # Both options can be overrided with optional arguments
 
+        # Verify incoming data
+        verify = self.__verifyNameType__(data, ignore=['Category'])
+        if verify != True:
+            raise ValueError("Argument 'data' must contain field: '{}'.".format(verify))
+        if type(name_type) != type(""):
+            raise ValueError("Argument 'name_type' must be of type: {}, object is of type: {}.".format(type(""), type(category)))
+        if name_type not in self.keys():
+            raise ValueError("Passed 'name_type' is not a valid Name_Type.")
+
+        # Load set to merge into
+        existing_data = self.__loadNameType__(name_type)
+
+        # Merge Data
+        if category != None:
+            if type(category) != type(""):
+                raise ValueError("Argument 'category' must be of type: {}, object is of type: {}.".format(type(""), type(category)))
+            existing_data['Category'] = category
+
+        for tag in data['Tags']:
+            if tag not in existing_data['Tags']:
+                existing_data['Tags'].append(tag)
+
+        for name in data['Data']:
+            if enforce_unique:
+                if name not in existing_data['Data']:
+                    existing_data['Data'].append(name)
+            elif not enforce_unique:
+                existing_data['Data'].append(name)
+
+        # Save Data
+        self.__saveNameType__(name_type, existing_data)
+
+        
             
         
         

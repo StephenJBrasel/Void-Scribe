@@ -4,3 +4,5 @@ __pycache__
 /ServerSide/.vscode
 .vscode
 void_scribe/tempDataConverter.py
+/void_scribe/NamesDictionaryTests.py
+/void_scribe/Non-Public/pokeScrape.py
