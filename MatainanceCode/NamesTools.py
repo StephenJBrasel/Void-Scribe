@@ -1,5 +1,6 @@
 from appJar import gui
-from NamesDictionary import NamesDictionary
+from void_scribe.NamesDictionary import NamesDictionary
+# from void_scribe.NamesDictionary import NamesDictionary
 import pkg_resources
 
 def update_Search():
