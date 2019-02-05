@@ -20,7 +20,8 @@ setup(name = "void_scribe",
     #I called the package 'package' thus cleverly confusing the whole issue...
     #This dict maps the package name =to=> directories
     #It says, package *needs* these files.
-    package_data = {'void_scribe' : files }
+    package_data = {'void_scribe' : files },
+    include_package_data=True
     #'runner' is in the root.
     #scripts = ["runner"],
     #
