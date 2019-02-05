@@ -1,251 +1,136 @@
-import pickle
-import os
+from appJar import gui
+from NamesDictionary import NamesDictionary
+import pkg_resources
 
-data_path = "C:\\Users\\thepe_000\\Desktop\\PP5\\VoidScribe\\void_scribe\\data\\Names\\"
+def update_Search():
+    entry = app.getEntry('Search_Name_Type')
+    matches, misses = [], []
+    for name_type in nd.keys():
+        if entry in name_type:
+            matches.append(name_type)
+        else:
+            misses.append(name_type)
+    display = matches
+    display.append('----------------------------------------')
+    for nt in misses:
+        display.append(nt)
 
-def createIndex(path):
-        #helper function, yields all files in a directory
-        def files(path):  
-            for file in os.listdir(path):
-                if os.path.isfile(os.path.join(path, file)):
-                    yield file
-
-        index = {}
-        for file in files(path):
-            key = file.split('.')[0]
-            index[key] = path + file
-        return index
-
-def loadNameType(Name_Type, index):
-        return pickle.load(open(index[Name_Type], "rb" ))
-
-def writeNameType(data_path, new_Name_Type, new_Data, old_Name_Type=None):
-    # Writes a new pickled dictionairy object to data_path using new_Name_Type as the filename 
-    # and new_Data as the data
-    # if old_Name_Type is specified, the file will be removed
-
-    # Setup for deletion
-    to_del = ""
-    if old_Name_Type != None:
-        to_del = data_path + old_Name_Type
+    app.updateListBox('Name_Types', display)
+    
+    if len(display) == 0:
+        app.setEntryInvalid('Search_Name_Type')
+    elif entry in display:
+        app.setEntryValid('Search_Name_Type')
     else:
-        to_del = data_path + new_Name_Type
+        app.setEntryWaitingValidation('Search_Name_Type')
 
-    # Check to ensure file is valid
-    if os.path.isfile(to_del):
-        # delete file
-        os.remove(to_del)
+def moveToEntry():
+    entry = app.getListBox('Name_Types')
+    if len(entry) != 0:
+        app.setEntry('Search_Name_Type', entry[0])
+        selectNameType()
 
-    # Pickle new file
-    pickle.dump(new_Data, open(data_path + new_Name_Type + '.p', "wb"))
+def selectNameType():
+    # verify the field is good
 
-def saveNameType(index, Name_Type, data):
+    inp = app.getEntry('Search_Name_Type')
+    if inp not in nd.keys():
+        app.setLabel('Selected_Name_Type', "Please Enter A Valid Name_Type. {} is invalid.".format(inp))
+        app.setOptionBox('Category', 0)
+        app.updateListBox('Tags', [])
+    else:
+        app.setLabel('Selected_Name_Type', "Selected Name_Type: {}.".format(inp))
+        global selected, selected_nt
+        selected = nd[inp]
+        selected_nt = inp
+        app.setOptionBox('Category', categories.index(selected['Category']))
+        app.updateListBox('Tags', selected['Tags'])
 
-    to_del = data_path + Name_Type + '.p'
-    # Check to ensure file is valid
-    if os.path.isfile(to_del):
-        # delete file
-        os.remove(to_del)
-    pickle.dump(data, open(data_path + Name_Type + '.p', "wb"))
+def selectTag():
+    tag = app.getListBox('Tags')[0]
+    app.setEntry('Edit_Tag_Entry', tag)
 
-def Console(options):
-    # Options is dictionary where:
-    #   key is name of the option
-    #   value is a function to call
+def editTag():
+    to_edit = app.getListBox('Tags')[0]
+    to_save = app.getEntry('Edit_Tag_Entry')
+    selected['Tags'][selected['Tags'].index(to_edit)] = to_save
+    app.updateListBox('Tags', selected['Tags'])
 
-    def printOptions():
-        print("Select an option by entering a valid number.")
-        i = 0
-        for i, option in enumerate(options.keys()):
-            print(f'{i}. {option}')
-        print(f'{i + 1}. exit')
+def addTag():
+    to_save = app.getEntry('Edit_Tag_Entry')
+    selected['Tags'].append(to_save)
+    app.updateListBox('Tags', selected['Tags'])
 
-    def getInput():
-        arg = input()
-        if arg == 'exit':
-            return arg
-        if arg not in options.keys():
-            return None
-        return arg
+def saveName_Type():
+    nd.update(selected, selected_nt, overwrite=True)
 
-    def loop():
+def updateCategory():
+    cat = app.getOptionBox('Category')
+    selected['Category'] = cat
 
-        while True:
-            printOptions()
-            option = getInput()
-            while option == None:
-                print("Invalid input, please re-enter")
-                option = getInput()
-            if option == 'exit':    
-                break
-            else:
-                options[option]()
+def refreshTagData():
+    global tag_data
+    index = nd.__createIndex__(pkg_resources.resource_filename('void_scribe', 'data/Names/'))
+    for key in index.keys():
+        for tag in nd[key]['Tags']:
+            if tag not in tag_data.keys():
+                tag_data[tag] = []
+            tag_data[tag].append(key)
 
-    loop()
+def addTagFromList():
+    tags = app.getListBox('Existing_Tags')
+    if len(tags) == 0:
+        return
+    tag = tags[0]
+    selected['Tags'].append(tag)
+    app.updateListBox('Tags', selected['Tags'])
+    refreshTagData()
 
-def search():
+def removeTagFromList():
+    tag = app.getListBox('Tags')[0]
+    selected['Tags'].remove(tag)
+    app.updateListBox('Tags', selected['Tags'])
+    refreshTagData()
 
-    def searchForName_Type():
-        index = createIndex(data_path)
-        print('Please enter a valid Name_Type, or exit')
-        while True:
-            arg = input()
-            if arg == 'exit':
-                return
-            if arg not in index.keys():
-                print(f'{arg} Name_Type not found, please check spelling')
-                continue
-            break 
+app = gui(title='NamesTools')
+nd = NamesDictionary()
+categories = ['None', 'Creatures', 'Places', 'Things', 'Ideas']
+selected = None
+selected_nt = ""
+tag_data = {}
+refreshTagData()
 
-        Name_Type = loadNameType(arg, index)
+# Create search label and entry box
+app.addLabel('Select_Text', 'Select Name_Type')
+app.addValidationEntry('Search_Name_Type')
+app.setEntryDefault('Search_Name_Type', 'Search...')
+app.addListBox('Name_Types', nd.keys())
+app.setEntryChangeFunction('Search_Name_Type', update_Search)
+app.setListBoxChangeFunction('Name_Types', moveToEntry)
+app.setEntrySubmitFunction('Search_Name_Type', selectNameType)
 
-        def Tags():
-            def view():
-                print(f"Name_Type: {arg} has the following tags.")
-                for tag in Name_Type['Tags']:
-                    print(tag)
-            def add():
-                print(f"Please enter a new tag for the {arg} Name_Type.")
-                new = input()
-                print(f"Adding Tag: {new}, confirm (y/n)")
-                confirm = input()
-                if confirm == 'y':
-                    Name_Type['Tags'].append(new)
-                    saveNameType(index, arg, Name_Type)
-                    print("New Tag Added")
-            def remove():
-                view()
-                print(f"Please enter a tag to remove from the {arg} Name_Type.")
-                rmv = input()
-                if rmv == 'exit':
-                    return
-                while rmv not in Name_Type['Tags']:
-                    print('Entered Tag not found, please check spelling or enter "exit"')
-                    rmv = input()
-                    if rmv == 'exit':
-                        return
-                print(f"Removing Tag: {rmv}, confirm (y/n)")
-                confirm = input()
-                if confirm == 'y':
-                    Name_Type['Tags'].remove(rmv)
-                    saveNameType(index, arg, Name_Type)
-                    print("Tag Deleted")
-            
+# Create a box of all currently existing tags
+app.addListBox('Existing_Tags', values=tag_data.keys(), column=1, row=2)
+app.setListBoxChangeFunction('Existing_Tags', addTagFromList)
 
-            options = {'view':view, 'add':add, 'remove':remove}
-            Console(options)
+# Create selected box, category field
+app.addLabel('Selected_Name_Type', 'Select a Name Type')
+app.addOptionBox('Category', categories)
+app.setOptionBoxSubmitFunction('Category', updateCategory)
+app.addListBox('Tags', column=2, row=2)
+app.addEntry('Edit_Tag_Entry', column=2)
+app.setEntryDefault('Edit_Tag_Entry', 'Select A Tag To Edit')
+app.setEntrySubmitFunction('Edit_Tag_Entry', addTag)
 
-        def Category():
-            def rename():
-                    print("Please enter a new name")
-                    new = input()
-                    cat = Name_Type["Category"]
-                    print(f"Replacing category name: {cat} with new category: {new}. Confirm? (y/n)")
-                    confirm = input()
-                    if confirm == 'y':
-                        Name_Type['Category'] = new
-                        saveNameType(index, arg, Name_Type)
-                        print("Category renamed")
-    
-            options = {'rename':rename}
-            print(f"Name_Type {arg} is categorized as {Name_Type['Category']}.")
-            Console(options)
+# Create edit and add buttons for tags
+app.addButton('Add_Tag', addTag, column=2)
+app.addButton('Edit_Tag', editTag, column=2)
+app.addButton('Remove Tag', removeTagFromList, column=2)
 
-        options = {'Tags':Tags, 'Category':Category}
-        Console(options)
+# Create Data box for viewing
 
+# Create Save Button
+app.addButton('Save', saveName_Type)
 
-    def searchByTag():
-        print('Gathering Tags...')
-
-        tag_data = {}
-        index = createIndex(data_path)
-        for key in index.keys():
-            for tag in loadNameType(key, index)['Tags']:
-                if tag not in tag_data.keys():
-                    tag_data[tag] = []
-                tag_data[tag].append(key)
-
-        print('Finished indexing tags, please enter a tag to search')
-        print(tag_data.keys())
-        arg = input()
-        while arg not in tag_data.keys():
-            print('Tag not found please enter a valid tag or exit')
-            arg = input()
-            if arg == 'exit':
-                break
-        print(f"Tag {arg} has the following associated Name_Types:")
-        for name_type in tag_data[arg]:
-            print(name_type)
-    
-    def searchByCategory():
-        print('Gathering Cateories...')
-
-        cat_data = {}
-        index = createIndex(data_path)
-        for key in index.keys():
-            cat = loadNameType(key, index)['Category']
-            if cat not in cat_data.keys():
-                cat_data[cat] = []
-            cat_data[cat].append(key)
-
-        print('Finished indexing Categories, please enter a Category to search')
-        print(cat_data.keys())
-        arg = input()
-        while arg not in cat_data.keys():
-            print('Category not found please enter a valid tag or exit')
-            arg = input()
-            if arg == 'exit':
-                break
-        print(f"Category {arg} has the following associated Name_Types:")
-        for name_type in cat_data[arg]:
-            print(name_type)
-
-    options = {'nameType':searchForName_Type, 'tag':searchByTag, 'category':searchByCategory}
-    Console(options)
-
-def Analysis():
-
-    def sumTags():
-        rates_of_apearance = {}
-        index = createIndex(data_path)
-        for key in index.keys():
-            for tag in loadNameType(key, index)['Tags']:
-                if tag not in rates_of_apearance.keys():
-                    rates_of_apearance[tag] = 1
-                else:
-                    rates_of_apearance[tag] += 1
-        
-        for key in rates_of_apearance.keys():
-            print(f"Tag {key} apears {rates_of_apearance[key]} times.")
-
-    def sumCategories():
-        rates_of_apearance = {}
-        index = createIndex(data_path)
-        for key in index.keys():
-            cat = loadNameType(key, index)['Category']
-            if cat not in rates_of_apearance.keys():
-                rates_of_apearance[cat] = 1
-            else:
-                rates_of_apearance[cat] += 1
-        
-        for key in rates_of_apearance.keys():
-            print(f"Category {key} apears {rates_of_apearance[key]} times.")
-
-    options = {'tags':sumTags, 'category':sumCategories}
-    Console(options)
-
-options = {'search':search, 'analysis':Analysis}
-
-if __name__ == '__main__':
-    Console(options)
-
-
-
-    
-
-    
-        
-
-    
-
+# Launch app
+app.go()
