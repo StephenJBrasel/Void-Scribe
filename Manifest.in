@@ -1,2 +1,2 @@
-recursive-include void_scribe/data *
-recursive-include void_scribe/data/Names *
+include void_scribe/data/Names/*.p
+recursive-include void_scribe/data/*
