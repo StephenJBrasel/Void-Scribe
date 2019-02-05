@@ -7,6 +7,8 @@ import random
 # from nltk import CFG
 # import spacy
 import pynlg
+import pickle
+import requests
 
 
 """
@@ -463,6 +465,10 @@ def helper_thinkingActing(character, quest):
 # def helper_getTAGNodes(goal):
 #     return [goal for edge in TAG(GOAL)]
 
+def loadPickle(data = None, fileName = "data/ActionVerbs.p"):
+    with open(fileName, "rb") as file:
+        data = pickle.load(file)
+    return data
 
 # Simulation Main
 
@@ -1369,7 +1375,7 @@ if __name__ == "__main__":
             print(i)
 
     # def nltkTest():
-    #     print('hi')
+        # print('hi')
         # print("Demo grammar: " + demo_grammar)
         
         # grammar = CFG.fromstring(demo_grammar)
@@ -1388,10 +1394,16 @@ if __name__ == "__main__":
         ret = simulation_init()
         simulation_main_loop(ret)
 
-        
+    def conceptNetTest():
+        ActionVerbs = loadPickle(data = None, fileName = "void_scribe/data/ActionVerbs.p")
+        currentVerb = random.choice(ActionVerbs)
+        obj = requests.get("http://api.conceptnet.io/c/en/" + "hello").json()
+        for key in obj:
+            print(f'{key} : {obj[key]}')
+            print()
 
 
-    # maintest()
     # nltkTest()
-    narrativeGenTest()
+    # narrativeGenTest()
+    conceptNetTest()
 

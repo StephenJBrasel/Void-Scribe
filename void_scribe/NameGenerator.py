@@ -6,8 +6,8 @@ from void_scribe.data import NamesDictionary
 __df__ = NamesDictionary.NamesDictionary()
 
 def getNames(
-        Name_Type = 'americanForenames', 
-        amount = 3, 
+        Name_Type = 'americanForenames',
+        amount = 3,
         seed = None):
     random.seed(seed)
     ret = []
@@ -30,7 +30,6 @@ def MarkovName(
 
 def getNameTypes():
     return list(__df__.keys())
-
 
 if __name__ == "__main__":
     # print(getNameTypes())
