@@ -135,7 +135,10 @@ def createMarkovDictionary(data, order, filepath=None):
 
 def markovGenerate(markovDictionary, order, amount, max_length=15):
     #Parameters
-    ##data - List of List of Objects
+    ##markovDictionary
+    ##order
+    ##amount
+    ##max_length
     #Return
     ##generated_outputs - List of amount number Lists of ordered objects occording to markov algorithm
 
