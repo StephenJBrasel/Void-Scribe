@@ -1,13 +1,12 @@
-from void_scribe import NamesDictionary
+from void_scribe import MarkovIndex
 from void_scribe import MarkovGen
 
-ND = NamesDictionary.NamesDictionary()
+MI = MarkovIndex.MarkovIndex()
 
-def getNames(Name_Type = None, amount = 1):
-    namesData = ND[Name_Type]
-    markovDict = MarkovGen.createMarkovDictionary(namesData, 2)
-    return MarkovGen.markovGenerate(markovDict, 2, amount)
+def generateMarkovNames(Name_Type = None, amount = 1):
+    namesMarkovDictionary = MI['Name_Type']
+    return MarkovGen.markovGenerate(namesMarkovDictionary, 2, amount)
 
-def getNameTypes():
-    return ND.keys()
+def validNameTypes():
+    return MI.keys()
 
