@@ -1,2 +1,3 @@
 include void_scribe/data/Names/*.p
+include void_scribe/data/MarkovDictionaries/*.p
 recursive-include void_scribe/data/*
