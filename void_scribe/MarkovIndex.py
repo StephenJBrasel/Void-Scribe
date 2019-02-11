@@ -38,9 +38,6 @@ class MarkovIndex:
     def __updateIndex__(self):
         self.__index__ = self.__createIndex__(self.__DATA_PATH__)
 
-    def __setitem__(self, key, value):
-        self.update(value, key)
-
     def __delitem__(self, key):
         self.remove(key)
 

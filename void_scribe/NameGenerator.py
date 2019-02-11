@@ -1,7 +1,6 @@
-from void_scribe import MarkovIndex
-from void_scribe import MarkovGen
+from void_scribe import MarkovIndex, NamesDictionary, MarkovGen
 
-MI = MarkovIndex.MarkovIndex()
+MI = MarkovIndex()
 
 def generateMarkovNames(Name_Type = None, amount = 1):
     namesMarkovDictionary = MI['Name_Type']
@@ -10,7 +9,7 @@ def generateMarkovNames(Name_Type = None, amount = 1):
 def realNames(Name_Type = 'americanForenames', amount = 1):
     from void_scribe import NamesDictionary
     from random import choice
-    ND = NamesDictionary.NamesDictionary()
+    ND = NamesDictionary()
     ret = []
     for i in range(amount + 1):
         ret.append(choice(ND[Name_Type]['Data']))
