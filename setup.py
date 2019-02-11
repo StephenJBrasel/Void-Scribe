@@ -12,10 +12,6 @@ setup(name = "void_scribe",
     include_package_data=True,
     install_requires=[
           'nlglib',
-          'pickle',
-          'random',
-          'os',
-          'requests',
-          'pkg_resources'
+          'requests'
       ]
 ) 
