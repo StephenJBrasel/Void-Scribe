@@ -8,5 +8,13 @@ setup(name = "void_scribe",
     author = "Stephen Brasel, Joshua Myers",
     packages = ['void_scribe'],
     package_dir = {'void_scribe':'void_scribe'},
-    include_package_data=True
+    include_package_data=True,
+    install_requires=[
+          'nlglib',
+          'pickle',
+          'random',
+          'os',
+          'requests',
+          'pkg_resources'
+      ]
 ) 
