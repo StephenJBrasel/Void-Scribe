@@ -2,6 +2,7 @@ import pickle
 import pkg_resources
 import os
 
+
 class NamesDictionary:
     def __init__(self):
         # __DATA_PATH__ is the folder in which pickled name files are stored
@@ -198,12 +199,39 @@ class NamesDictionary:
         # Save Data
         self.__saveNameType__(name_type, existing_data)
 
-        
-            
-        
-        
+    def filterNameTypesByTag(self, tags = None, orFilter = False):
+        # Returns a list of Name Types that have been filtered using the provided tags
+        # Filter is exclusive, will return only Name Types with all provided tags
+        # Paramters
+        # # tags - iterable list of strings that represent tags for Name Type data
+        # # orFitler - If set to True, this will alter the filter to be inclusive, Name Types with any of the provided tags will be returned
+        filtered_nameTypes = []
+        filter_tag_set = set(tags)
+        for nameType in self.keys():
+            nameType_tag_set = set(self[nameType]["Tags"])
+            if orFilter:
+                if len(nameType_tag_set & filter_tag_set) != 0:
+                    filtered_nameTypes.append(nameType)
+            else:
+                if nameType_tag_set >= filter_tag_set:
+                    filtered_nameTypes.append(nameType)
+        return filtered_nameTypes
 
+    def filterNameTypesbyCategory(self, category = None):
+        # Returns a list of Name Types that are in the provided category
+        filtered_nameTypes = []
+        for nameType in self.keys():
+            if self[nameType]["Category"] == category:
+                filtered_nameTypes.append(nameType)                
+        return filtered_nameTypes
 
-            
+    def filterNameTypes(self, category = None, tags = None, tagOrFilter = False):
+        # Returns a list of Name Types that have been filtered by the provided tags and category
+        tag_filtered_nameTypes = set(self.filterNameTypesByTag(tags, tagOrFilter))
+        if category == None:
+            return list(tag_filtered_nameTypes)
+        category_filtered_nameTypes = set(self.filterNameTypesbyCategory(category))
+        if tags = None:
+            return list(category_filtered_nameTypes)
+        return list(tag_filtered_nameTypes & category_filtered_nameTypes)
 
-    
