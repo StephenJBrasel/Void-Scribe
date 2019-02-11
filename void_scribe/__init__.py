@@ -1,6 +1,7 @@
 name = "void_scribe"
 import void_scribe.NameGenerator
-import void_scribe.NamesDictionary
+from void_scribe.NamesDictionary import NamesDictionary as NamesDictionary
 import void_scribe.PromptGenerator
 import void_scribe.MarkovGen
-import void_scribe.MarkovIndex
+from void_scribe.MarkovIndex import MarkovIndex as MarkovIndex
+from NameGenerator import generateMarkovNames
