@@ -231,7 +231,7 @@ class NamesDictionary:
         if category == None:
             return list(tag_filtered_nameTypes)
         category_filtered_nameTypes = set(self.filterNameTypesbyCategory(category))
-        if tags = None:
+        if tags == None:
             return list(category_filtered_nameTypes)
         return list(tag_filtered_nameTypes & category_filtered_nameTypes)
 
