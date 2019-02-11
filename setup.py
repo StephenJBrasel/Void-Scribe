@@ -1,4 +1,5 @@
-from distutils.core import setup
+#from distutils.core import setup
+from setuptools import setup
 
 files = ["voids_cribe/data/*", "voids_cribe/data/Names/*", "voids_cribe/data/MarkovDictionaries/*"]
 
