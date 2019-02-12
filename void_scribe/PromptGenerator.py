@@ -8,6 +8,7 @@ from nlglib.lexicalisation import Lexicaliser
 from nlglib.macroplanning import *
 from nlglib.microplanning import *
 from nlglib.features import TENSE
+import void_scribe
 
 nameType = [
     "americanForenames",
@@ -58,7 +59,7 @@ templates={
     # 'knight': Clause(Var(0), VP('is', NP('a', 'knight'))),
     # 'say_ni': Clause(Var(0), VP('say', Interjection('"Ni!"'))),
     'travel': Clause(Var(0), VP('travel', complements=[PP('to', Var(1))], features={'TENSE' : 'future', 'MOOD': 'IMPERATIVE'})),
-    "lead": Clause(Var(0), ), # 
+    "lead": Clause(Var(0), VP('lead', Var(1), complements=[PP('to', Var(2))], features={'TENSE':'future'})), 
     "follow": Clause(Var(0), ),
     "interact": Clause(Var(0), ),
     
@@ -101,29 +102,19 @@ def synonym(stringy, pos='v'):
     print(stringy)
     return ret
 
-def list_of_keys(Tag, Category):
-    """ returns a list of keys in NamesDictionary that are in Category AND have Tag. """
-    import NamesDictionary
-    ND = NamesDictionary.NamesDictionary()
-    ret = []
-    for key in ND:
-        if Tag in ND[key]['Tags'] and Category == ND[key]['Category']:
-            ret.append(key)
-    return ret
-
 def generatePrompt(seed = None, promptType = None):
     random.seed(seed)
+    ND = void_scribe.NamesDictionary()
 
     ActionVerbs = loadPickle()
     currentVerb = random.choice(ActionVerbs)
     characters = []
     places = []
-    tempPlaceNames = list_of_keys(Tag="Reality", Category="Places")
+    tempPlaceNames = ND.filterNameTypes(tags=["Reality"], category="Places")
     placeNames = []
     for item in tempPlaceNames:
         if "placeName" not in item:
             placeNames.append(item)
-
 
     characters.append(NameGenerator.realNames(Name_Type=random.choice(nameType), amount = 1)[0].capitalize())
     places.append(NameGenerator.realNames(Name_Type=random.choice(placeNames), amount = 1)[0].capitalize())
@@ -134,7 +125,6 @@ def generatePrompt(seed = None, promptType = None):
 
 
 if __name__ == "__main__":
-    print(synonym('travel', 'v'))
+    # print(synonym('travel', 'v'))
     # lexicalizeString(r'travel(arthur, Camelot)')
-    # generatePrompt()
-    # list_of_keys(Tag="Reality", Category="Places")
+    generatePrompt()
