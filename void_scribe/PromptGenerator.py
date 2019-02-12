@@ -36,7 +36,10 @@ actions = {# destroy, create, modify, interact
     "think":[],
     "observe":[],
 
-    "travel":[],
+    "travel":[
+        {"generate" : [nameType]},
+        {"choose" : ['travel', 'venture', 'go']}
+    ],
     "lead":[],
     "follow":[],
     "interact":[], # give quest to someone else, get information
@@ -73,6 +76,17 @@ lex = Lexicaliser(templates)
 
 realise_en = Realiser(host='nlg.kutlak.info', port=40000)
 
+def q_travel(subject, verb, place, tense='FUTURE'):
+    c = Clause(subject, verb, place)
+    c['TENSE'] = tense
+    return realise_en(c)
+
+def q_lead(subject, verb, dObject, place, tense='FUTURE'):
+    c = Clause(subject, verb, dObject, complements = ['to Daycare'])
+    c['TENSE'] = tense
+    c.complements += PP('to', place)
+    return realise_en(c)
+
 def loadPickle(data = None, fileName = "ActionVerbs.p"):
     path = pkg_resources.resource_filename('void_scribe', 'data/')
     path += fileName
@@ -87,6 +101,12 @@ def synonym(stringy, pos='v'):
     ret = []
     obj1 = requests.get("https://api.datamuse.com/words?rel_syn=" + stringy).json()
     obj2 = requests.get("https://api.datamuse.com/words?ml=" + stringy).json()
+    for i, item in enumerate(obj1):
+        if('score' in item.keys()):
+            if(item['score'] > 50):
+                if('tags' in item.keys()):
+                    if(pos in item['tags']):
+                        ret.append(item['word'])
     for i, item in enumerate(obj2):
         if('score' in item.keys()):
             if(item['score'] > 50):
@@ -110,6 +130,7 @@ def generatePrompt(seed = None, promptType = None):
     placeNames = []
     for item in tempPlaceNames:
         if "placeName" not in item:
+            print(item)
             placeNames.append(item)
         
 
@@ -117,12 +138,14 @@ def generatePrompt(seed = None, promptType = None):
     places.append(NameGenerator.realNames(Name_Type=random.choice(placeNames), amount = 1)[0].capitalize())
     verbs.append('travel')
 
-    ret = lexicalizeString(f'travel({characters[0]}, {places[0]})')
+    ret = (q_travel(characters[0], verbs[0], places[0]))
+
+    # ret = lexicalizeString(f'travel({characters[0]}, {places[0]})')
     print(ret)
     return ret
 
 
 if __name__ == "__main__":
-    # print(synonym('travel', 'v'))
+    # print(synonym('lead', 'v'))
     # lexicalizeString(r'travel(arthur, Camelot)')
     generatePrompt()
