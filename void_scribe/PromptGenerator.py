@@ -53,11 +53,6 @@ actions = {# destroy, create, modify, interact
 }
 
 templates={
-    # 'x': String('X'),
-    # 'arthur': Male('Arthur'),
-    # 'shrubbery': Clause(Var(0), VP('find', NP('a', 'shrubbery'), features=[TENSE.future])),
-    # 'knight': Clause(Var(0), VP('is', NP('a', 'knight'))),
-    # 'say_ni': Clause(Var(0), VP('say', Interjection('"Ni!"'))),
     'travel': Clause(Var(0), VP('travel', complements=[PP('to', Var(1))], features={'TENSE' : 'future', 'MOOD': 'IMPERATIVE'})),
     "lead": Clause(Var(0), VP('lead', Var(1), complements=[PP('to', Var(2))], features={'TENSE':'future'})), 
     "follow": Clause(Var(0), ),
@@ -110,14 +105,17 @@ def generatePrompt(seed = None, promptType = None):
     currentVerb = random.choice(ActionVerbs)
     characters = []
     places = []
+    verbs = []
     tempPlaceNames = ND.filterNameTypes(tags=["Reality"], category="Places")
     placeNames = []
     for item in tempPlaceNames:
         if "placeName" not in item:
             placeNames.append(item)
+        
 
     characters.append(NameGenerator.realNames(Name_Type=random.choice(nameType), amount = 1)[0].capitalize())
     places.append(NameGenerator.realNames(Name_Type=random.choice(placeNames), amount = 1)[0].capitalize())
+    verbs.append('travel')
 
     ret = lexicalizeString(f'travel({characters[0]}, {places[0]})')
     print(ret)
