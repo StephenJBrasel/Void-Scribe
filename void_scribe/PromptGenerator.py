@@ -11,19 +11,19 @@ from nlglib.features import TENSE
 import void_scribe
 
 nameType = [
-    "americanForenames",
-    "dutchForenames",
-    "frenchForenames",
-    "germanForenames",
-    "iselandicForenames",
-    "indianForenames",
-    "irishForenames",
-    "italianForenames",
-    "japaneseForenames",
-    # "romanEmperorForenames",
-    "russianForenames",
-    "spanishForenames",
-    "swedishForenames"
+    # "americanForenames",
+    # "dutchForenames",
+    # "frenchForenames",
+    # "germanForenames",
+    "iselandicForenames"
+    # "indianForenames",
+    # "irishForenames",
+    # "italianForenames",
+    # "japaneseForenames",
+    # # "romanEmperorForenames",
+    # "russianForenames",
+    # "spanishForenames",
+    # "swedishForenames"
 
     # "scottishSurnames",
 
@@ -77,7 +77,8 @@ lex = Lexicaliser(templates)
 realise_en = Realiser(host='nlg.kutlak.info', port=40000)
 
 def q_travel(subject, verb, place, tense='FUTURE'):
-    c = Clause(subject, verb, place)
+    c = Clause(subject, verb)
+    c.complements += PP('to', place)
     c['TENSE'] = tense
     return realise_en(c)
 
@@ -130,7 +131,6 @@ def generatePrompt(seed = None, promptType = None):
     placeNames = []
     for item in tempPlaceNames:
         if "placeName" not in item:
-            print(item)
             placeNames.append(item)
         
 
