@@ -8,7 +8,7 @@
                 "dutchForenames", 
                 "frenchForenames", 
                 "germanForenames", 
-                "icelandicForenames", 
+                "iselandicForenames", 
                 "indianForenames", 
                 "irishForenames", 
                 "italianForenames", 
@@ -21,15 +21,9 @@
         "predicate":[
             {
                 "Choose":[
-                    "lead", 
-                    "guide", 
-                    "escort", 
-                    "accompany", 
-                    "bring", 
-                    "carry", 
-                    "drag", 
-                    "usher", 
-                    "steer"]
+                    "follow",
+                    "accompany",
+                    "attend"]
             }
         ],
         "objekt":[
@@ -39,7 +33,7 @@
                     "dutchForenames", 
                     "frenchForenames", 
                     "germanForenames", 
-                    "icelandicForenames", 
+                    "iselandicForenames", 
                     "indianForenames", 
                     "irishForenames", 
                     "italianForenames", 

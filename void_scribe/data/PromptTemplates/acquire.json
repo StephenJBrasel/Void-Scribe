@@ -8,7 +8,7 @@
                 "dutchForenames", 
                 "frenchForenames", 
                 "germanForenames", 
-                "icelandicForenames", 
+                "iselandicForenames", 
                 "indianForenames", 
                 "irishForenames", 
                 "italianForenames", 
@@ -21,37 +21,33 @@
         "predicate":[
             {
                 "Choose":[
-                    "lead", 
-                    "guide", 
-                    "escort", 
-                    "accompany", 
-                    "bring", 
-                    "carry", 
-                    "drag", 
-                    "usher", 
-                    "steer"]
+                    "get",
+                    "acquire"]
             }
         ],
         "objekt":[
             {
                 "Generate":[
-                    "americanForenames", 
-                    "dutchForenames", 
-                    "frenchForenames", 
-                    "germanForenames", 
-                    "icelandicForenames", 
-                    "indianForenames", 
-                    "irishForenames", 
-                    "italianForenames", 
-                    "japaneseForenames", 
-                    "russianForenames", 
-                    "spanishForenames", 
-                    "swedishForenames"]
+                    "americanCities", 
+                    "capitolCities", 
+                    "greekIslands", 
+                    "japaneseCities", 
+                    "italianCities", 
+                    "fellsInCambria", 
+                    "germanTowns", 
+                    "countries", 
+                    "englishTowns", 
+                    "placesInCumbria", 
+                    "supermarketsAndDiscountStores", 
+                    "swissCities", 
+                    "russianCities", 
+                    "chineseCities", 
+                    "romanPlacesNames"]
             }
         ],
         "complements":[
             {
-                "Word":"to"
+                "Word":"from"
             },
             {
             "Generate":[

@@ -21,32 +21,12 @@
         "predicate":[
             {
                 "Choose":[
-                    "lead", 
-                    "guide", 
-                    "escort", 
-                    "accompany", 
-                    "bring", 
-                    "carry", 
-                    "drag", 
-                    "usher", 
-                    "steer"]
-            }
-        ],
-        "objekt":[
-            {
-                "Generate":[
-                    "americanForenames", 
-                    "dutchForenames", 
-                    "frenchForenames", 
-                    "germanForenames", 
-                    "icelandicForenames", 
-                    "indianForenames", 
-                    "irishForenames", 
-                    "italianForenames", 
-                    "japaneseForenames", 
-                    "russianForenames", 
-                    "spanishForenames", 
-                    "swedishForenames"]
+                    "travel", 
+                    "venture",
+                    "voyage",
+                    "navigate",
+                    "proceed",
+                    "trek"]
             }
         ],
         "complements":[
