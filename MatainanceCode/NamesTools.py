@@ -1,5 +1,5 @@
 from appJar import gui
-from void_scribe.NamesDictionary import NamesDictionary
+import void_scribe
 # from void_scribe.NamesDictionary import NamesDictionary
 import pkg_resources
 
@@ -94,7 +94,7 @@ def removeTagFromList():
     refreshTagData()
 
 app = gui(title='NamesTools')
-nd = NamesDictionary()
+nd = void_scribe.NamesDictionary()
 categories = ['None', 'Creatures', 'Places', 'Things', 'Ideas']
 selected = None
 selected_nt = ""
