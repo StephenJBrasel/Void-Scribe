@@ -108,7 +108,7 @@ class NamesDictionary:
             return None
 
         if overwrite == False and name_type in self.keys():
-            raise KeyError("Key {} already exists and 'overwrite' is not enabled. To enbale overwrite use the update() function.".format(name_type))
+            raise KeyError("Key {} already exists and 'overwrite' is not enabled. To enable overwrite use the update() function.".format(name_type))
 
         save = {}
 

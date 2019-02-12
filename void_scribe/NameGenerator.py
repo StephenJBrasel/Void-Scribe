@@ -17,3 +17,7 @@ def realNames(Name_Type = 'americanForenames', amount = 1):
 
 def validNameTypes():
     return MI.keys()
+
+
+for key in validNameTypes():
+    print(key)
