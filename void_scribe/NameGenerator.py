@@ -3,8 +3,8 @@ from void_scribe import MarkovIndex, NamesDictionary, MarkovGen
 MI = MarkovIndex()
 
 def generateMarkovNames(Name_Type = None, amount = 1):
-    namesMarkovDictionary = MI['Name_Type']
-    return MarkovGen.markovGenerate(namesMarkovDictionary, 2, amount)
+    namesMarkovDictionary = MI[Name_Type]
+    return MarkovGen.markovGenerate(namesMarkovDictionary, 3, amount)
 
 def realNames(Name_Type = 'americanForenames', amount = 1):
     from void_scribe import NamesDictionary
