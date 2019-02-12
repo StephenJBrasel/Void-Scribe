@@ -10,12 +10,14 @@ from nlglib.microplanning import *
 from nlglib.features import TENSE
 import void_scribe
 
+ND = void_scribe.NamesDictionary()
+
 nameType = [
     # "americanForenames",
     # "dutchForenames",
     # "frenchForenames",
     # "germanForenames",
-    "iselandicForenames"
+    "icelandicForenames"
     # "indianForenames",
     # "irishForenames",
     # "italianForenames",
@@ -120,7 +122,6 @@ def synonym(stringy, pos='v'):
 
 def generatePrompt(seed = None, promptType = None):
     random.seed(seed)
-    ND = void_scribe.NamesDictionary()
 
     ActionVerbs = loadPickle()
     currentVerb = random.choice(ActionVerbs)
@@ -131,6 +132,7 @@ def generatePrompt(seed = None, promptType = None):
     placeNames = []
     for item in tempPlaceNames:
         if "placeName" not in item:
+            # print(item)
             placeNames.append(item)
         
 

@@ -1,34 +1,39 @@
 {
-    "subject":[
-        {
-        "Generate":[
-            "americanForenames", 
-            "dutchForenames", 
-            "frenchForenames", 
-            "germanForenames", 
-            "iselandicForenames", 
-            "indianForenames", 
-            "irishForenames", 
-            "italianForenames", 
-            "japaneseForenames", 
-            "russianForenames", 
-            "spanishForenames", 
-            "swedishForenames"]
-        }
-    ],
-    "predicate":[
-        {
-            "Choose":[
-                "travel", 
-                "venture",
-                "voyage",
-                "navigate",
-                "proceed",
-                "trek"]
-        }
-    ],
-    "objekt":[
-        {
+    "phrase":
+    {
+        "subject":[
+            {
+            "Generate":[
+                "americanForenames", 
+                "dutchForenames", 
+                "frenchForenames", 
+                "germanForenames", 
+                "icelandicForenames", 
+                "indianForenames", 
+                "irishForenames", 
+                "italianForenames", 
+                "japaneseForenames", 
+                "russianForenames", 
+                "spanishForenames", 
+                "swedishForenames"]
+            }
+        ],
+        "predicate":[
+            {
+                "Choose":[
+                    "travel", 
+                    "venture",
+                    "voyage",
+                    "navigate",
+                    "proceed",
+                    "trek"]
+            }
+        ],
+        "complements":[
+            {
+                "Word":"to"
+            },
+            {
             "Generate":[
                 "americanCities", 
                 "capitolCities", 
@@ -45,26 +50,10 @@
                 "russianCities", 
                 "chineseCities", 
                 "romanPlacesNames"]
-        }
-    ],
-    "complements":[
-        {
-            "Word":"to"
-        },
-        {
-        "Generate":[
-            "americanForenames", 
-            "dutchForenames", 
-            "frenchForenames", 
-            "germanForenames", 
-            "iselandicForenames", 
-            "indianForenames", 
-            "irishForenames", 
-            "italianForenames", 
-            "japaneseForenames", 
-            "russianForenames", 
-            "spanishForenames", 
-            "swedishForenames"]
-        }
-    ]
+            }
+        ]
+    },
+    "features":{
+        "tense":"FUTURE"
+    }
 }
