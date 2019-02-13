@@ -21,9 +21,17 @@
         "predicate":[
             {
                 "Choose":[
-                    "follow",
-                    "accompany",
-                    "attend"]
+                    "alleviate",
+                    "cure",
+                    "mend",
+                    "rehabilitate",
+                    "rejuvenate",
+                    "repair",
+                    "restore",
+                    "revive",
+                    "soothe",
+                    "treat"
+                    ]
             }
         ],
         "objekt":[
@@ -41,29 +49,6 @@
                     "russianForenames", 
                     "spanishForenames", 
                     "swedishForenames"]
-            }
-        ],
-        "complements":[
-            {
-                "Word":"to"
-            },
-            {
-            "Generate":[
-                "americanCities", 
-                "capitolCities", 
-                "greekIslands", 
-                "japaneseCities", 
-                "italianCities", 
-                "fellsInCambria", 
-                "germanTowns", 
-                "countries", 
-                "englishTowns", 
-                "placesInCumbria", 
-                "supermarketsAndDiscountStores", 
-                "swissCities", 
-                "russianCities", 
-                "chineseCities", 
-                "romanPlacesNames"]
             }
         ]
     },

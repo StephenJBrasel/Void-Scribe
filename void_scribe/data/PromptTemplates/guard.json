@@ -21,9 +21,9 @@
         "predicate":[
             {
                 "Choose":[
-                    "follow",
-                    "accompany",
-                    "attend"]
+                    "guard",
+                    "protect",
+                    "defend"]
             }
         ],
         "objekt":[
@@ -44,27 +44,17 @@
             }
         ],
         "complements":[
-            {
-                "Word":"to"
-            },
-            {
-            "Generate":[
-                "americanCities", 
-                "capitolCities", 
-                "greekIslands", 
-                "japaneseCities", 
-                "italianCities", 
-                "fellsInCambria", 
-                "germanTowns", 
-                "countries", 
-                "englishTowns", 
-                "placesInCumbria", 
-                "supermarketsAndDiscountStores", 
-                "swissCities", 
-                "russianCities", 
-                "chineseCities", 
-                "romanPlacesNames"]
-            }
+            [
+                {
+                "Word":"against"
+                },
+                {
+                "Choose":[
+                    "attack",
+                    "enemies"
+                ]
+                }
+            ]
         ]
     },
     "features":{

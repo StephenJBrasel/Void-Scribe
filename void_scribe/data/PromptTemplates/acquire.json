@@ -8,7 +8,7 @@
                 "dutchForenames", 
                 "frenchForenames", 
                 "germanForenames", 
-                "iselandicForenames", 
+                "icelandicForenames", 
                 "indianForenames", 
                 "irishForenames", 
                 "italianForenames", 
@@ -22,11 +22,35 @@
             {
                 "Choose":[
                     "get",
-                    "acquire"]
+                    "acquire",
+                    "collect",
+                    "gain"]
             }
         ],
         "objekt":[
             {
+                "Generate":[
+                    "americanDesserts",
+                    "breads",
+                    "britishDesserts",
+                    "cakes",
+                    "drinks",
+                    "fish",
+                    "fruit",
+                    "italianFoods",
+                    "meats", 
+                    "nutsAndSeeds",
+                    "pies",
+                    "sandwiches",
+                    "vegetables"]
+            }
+        ],
+        "complements":[
+            [
+                {
+                "Word":"from"
+                },
+                {
                 "Generate":[
                     "americanCities", 
                     "capitolCities", 
@@ -43,30 +67,8 @@
                     "russianCities", 
                     "chineseCities", 
                     "romanPlacesNames"]
-            }
-        ],
-        "complements":[
-            {
-                "Word":"from"
-            },
-            {
-            "Generate":[
-                "americanCities", 
-                "capitolCities", 
-                "greekIslands", 
-                "japaneseCities", 
-                "italianCities", 
-                "fellsInCambria", 
-                "germanTowns", 
-                "countries", 
-                "englishTowns", 
-                "placesInCumbria", 
-                "supermarketsAndDiscountStores", 
-                "swissCities", 
-                "russianCities", 
-                "chineseCities", 
-                "romanPlacesNames"]
-            }
+                }
+            ]
         ]
     },
     "features":{
