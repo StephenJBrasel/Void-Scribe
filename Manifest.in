@@ -1,3 +1,4 @@
 include void_scribe/data/Names/*
 include void_scribe/data/MarkovDictionaries/*
+include void_scribe/data/PromptTemplates/*
 include void_scribe/data/*
