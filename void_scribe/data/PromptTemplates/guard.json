@@ -42,22 +42,22 @@
                     "spanishForenames", 
                     "swedishForenames"]
             }
-        ],
-        "complements":[
-            [
-                {
-                "Word":"against"
-                },
-                {
-                "Choose":[
-                    "attack",
-                    "enemies"
-                ]
-                }
-            ]
         ]
     },
     "features":{
         "TENSE":"FUTURE"
-    }
+    },
+    "complements":[
+        [
+            {
+            "Word":"against"
+            },
+            {
+            "Choose":[
+                "attack",
+                "enemies"
+            ]
+            }
+        ]
+    ]
 }

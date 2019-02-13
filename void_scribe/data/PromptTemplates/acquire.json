@@ -44,34 +44,34 @@
                     "sandwiches",
                     "vegetables"]
             }
-        ],
-        "complements":[
-            [
-                {
-                "Word":"from"
-                },
-                {
-                "Generate":[
-                    "americanCities", 
-                    "capitolCities", 
-                    "greekIslands", 
-                    "japaneseCities", 
-                    "italianCities", 
-                    "fellsInCambria", 
-                    "germanTowns", 
-                    "countries", 
-                    "englishTowns", 
-                    "placesInCumbria", 
-                    "supermarketsAndDiscountStores", 
-                    "swissCities", 
-                    "russianCities", 
-                    "chineseCities", 
-                    "romanPlacesNames"]
-                }
-            ]
         ]
     },
     "features":{
         "TENSE":"FUTURE"
-    }
+    },
+    "complements":[
+        [
+            {
+            "Word":"from"
+            },
+            {
+            "Generate":[
+                "americanCities", 
+                "capitolCities", 
+                "greekIslands", 
+                "japaneseCities", 
+                "italianCities", 
+                "fellsInCambria", 
+                "germanTowns", 
+                "countries", 
+                "englishTowns", 
+                "placesInCumbria", 
+                "supermarketsAndDiscountStores", 
+                "swissCities", 
+                "russianCities", 
+                "chineseCities", 
+                "romanPlacesNames"]
+            }
+        ]
+    ]
 }
