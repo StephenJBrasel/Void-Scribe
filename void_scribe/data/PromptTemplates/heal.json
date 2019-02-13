@@ -53,6 +53,6 @@
         ]
     },
     "features":{
-        "tense":"FUTURE"
+        "TENSE":"FUTURE"
     }
 }
