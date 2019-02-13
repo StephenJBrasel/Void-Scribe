@@ -48,6 +48,7 @@
         "TENSE":"FUTURE"
     },
     "complements":[
+        [
         {
             "Word":"to"
         },
@@ -69,5 +70,6 @@
             "chineseCities", 
             "romanPlacesNames"]
         }
+    ]
     ]
 }
