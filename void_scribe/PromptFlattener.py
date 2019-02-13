@@ -138,3 +138,11 @@ class PromptIndex():
             os.remove(self.__index__[prompt_type])
             # Update index
             self.__updateIndex__()
+
+PI = PromptIndex()
+print(PI.keys())
+for key in PI.keys():
+    if key == 'harm':
+        continue
+    args = contructClauseArguments(PI[key])
+    print(realisePrompt(args))
