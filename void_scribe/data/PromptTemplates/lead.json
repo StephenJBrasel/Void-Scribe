@@ -8,7 +8,6 @@
                 "dutchForenames", 
                 "frenchForenames", 
                 "germanForenames", 
-                "icelandicForenames", 
                 "indianForenames", 
                 "irishForenames", 
                 "italianForenames", 
@@ -39,7 +38,6 @@
                     "dutchForenames", 
                     "frenchForenames", 
                     "germanForenames", 
-                    "icelandicForenames", 
                     "indianForenames", 
                     "irishForenames", 
                     "italianForenames", 
@@ -74,6 +72,6 @@
         ]
     },
     "features":{
-        "tense":"FUTURE"
+        "TENSE":"FUTURE"
     }
 }
