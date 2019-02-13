@@ -33,7 +33,9 @@
     "features":{
         "TENSE":"FUTURE"
     },
-    "complements":[
+    "complements":
+    [
+    [
         {
             "Word":"to"
         },
@@ -56,4 +58,5 @@
             "romanPlacesNames"]
         }
     ]
+]
 }
