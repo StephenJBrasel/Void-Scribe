@@ -1,4 +1,4 @@
-{
+[{
     "phrase":
     {
         "subject":[
@@ -56,4 +56,4 @@
     "features":{
         "TENSE":"FUTURE"
     }
-}
+}]
