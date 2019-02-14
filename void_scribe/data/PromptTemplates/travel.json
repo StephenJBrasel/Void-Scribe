@@ -1,63 +1,65 @@
-[{
-    "phrase":
+[
     {
-        "subject":[
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ],
-        "predicate":[
-            {
-                "Choose":[
-                    "travel", 
-                    "venture",
-                    "voyage",
-                    "navigate",
-                    "proceed",
-                    "trek"]
-            }
-        ]
-    },
-    "features":{
-        "TENSE":"FUTURE"
-    },
-    "complements":
-    [
-    [
-        {
-            "Word":"to"
+        "phrase": {
+            "subject": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ],
+            "predicate": [
+                {
+                    "Choose": [
+                        "travel",
+                        "venture",
+                        "voyage",
+                        "navigate",
+                        "proceed",
+                        "trek"
+                    ]
+                }
+            ]
         },
-        {
-        "Generate":[
-            "americanCities", 
-            "capitolCities", 
-            "greekIslands", 
-            "japaneseCities", 
-            "italianCities", 
-            "fellsInCambria", 
-            "germanTowns", 
-            "countries", 
-            "englishTowns", 
-            "placesInCumbria", 
-            "supermarketsAndDiscountStores", 
-            "swissCities", 
-            "russianCities", 
-            "chineseCities", 
-            "romanPlacesNames"]
-        }
-    ]
-]
-}
+        "features": {
+            "TENSE": "FUTURE"
+        },
+        "complements": [
+            [
+                {
+                    "Word": "to"
+                },
+                {
+                    "Generate": [
+                        "americanCities",
+                        "capitolCities",
+                        "greekIslands",
+                        "japaneseCities",
+                        "italianCities",
+                        "fellsInCambria",
+                        "germanTowns",
+                        "countries",
+                        "englishTowns",
+                        "placesInCumbria",
+                        "supermarketsAndDiscountStores",
+                        "swissCities",
+                        "russianCities",
+                        "chineseCities",
+                        "romanPlacesNames"
+                    ]
+                }
+            ]
+        ]
+    }
 ]

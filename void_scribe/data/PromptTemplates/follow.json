@@ -1,75 +1,80 @@
-[{
-    "phrase":
+[
     {
-        "subject":[
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ],
-        "predicate":[
-            {
-                "Choose":[
-                    "follow",
-                    "accompany",
-                    "attend"]
-            }
-        ],
-        "objekt":[
-            {
-                "Generate":[
-                    "americanForenames", 
-                    "dutchForenames", 
-                    "frenchForenames", 
-                    "germanForenames", 
-                    "icelandicForenames", 
-                    "indianForenames", 
-                    "irishForenames", 
-                    "italianForenames", 
-                    "japaneseForenames", 
-                    "russianForenames", 
-                    "spanishForenames", 
-                    "swedishForenames"]
-            }
-        ]
-    },
-    "features":{
-        "TENSE":"FUTURE"
-    },
-    "complements":[
-        [
-        {
-            "Word":"to"
+        "phrase": {
+            "subject": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ],
+            "predicate": [
+                {
+                    "Choose": [
+                        "follow",
+                        "accompany",
+                        "attend"
+                    ]
+                }
+            ],
+            "objekt": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ]
         },
-        {
-        "Generate":[
-            "americanCities", 
-            "capitolCities", 
-            "greekIslands", 
-            "japaneseCities", 
-            "italianCities", 
-            "fellsInCambria", 
-            "germanTowns", 
-            "countries", 
-            "englishTowns", 
-            "placesInCumbria", 
-            "supermarketsAndDiscountStores", 
-            "swissCities", 
-            "russianCities", 
-            "chineseCities", 
-            "romanPlacesNames"]
-        }
-    ]
-    ]
-}]
+        "features": {
+            "TENSE": "FUTURE"
+        },
+        "complements": [
+            [
+                {
+                    "Word": "to"
+                },
+                {
+                    "Generate": [
+                        "americanCities",
+                        "capitolCities",
+                        "greekIslands",
+                        "japaneseCities",
+                        "italianCities",
+                        "fellsInCambria",
+                        "germanTowns",
+                        "countries",
+                        "englishTowns",
+                        "placesInCumbria",
+                        "supermarketsAndDiscountStores",
+                        "swissCities",
+                        "russianCities",
+                        "chineseCities",
+                        "romanPlacesNames"
+                    ]
+                }
+            ]
+        ]
+    }
+]

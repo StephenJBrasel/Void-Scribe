@@ -1,58 +1,61 @@
-[{
-    "phrase":
+[
     {
-        "subject":[
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ],
-        "predicate":[
-            {
-                "Choose":[
-                    "alleviate",
-                    "cure",
-                    "mend",
-                    "rehabilitate",
-                    "rejuvenate",
-                    "repair",
-                    "restore",
-                    "revive",
-                    "soothe",
-                    "treat"
+        "phrase": {
+            "subject": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
                     ]
-            }
-        ],
-        "objekt":[
-            {
-                "Generate":[
-                    "americanForenames", 
-                    "dutchForenames", 
-                    "frenchForenames", 
-                    "germanForenames", 
-                    "icelandicForenames", 
-                    "indianForenames", 
-                    "irishForenames", 
-                    "italianForenames", 
-                    "japaneseForenames", 
-                    "russianForenames", 
-                    "spanishForenames", 
-                    "swedishForenames"]
-            }
-        ]
-    },
-    "features":{
-        "TENSE":"FUTURE"
+                }
+            ],
+            "predicate": [
+                {
+                    "Choose": [
+                        "alleviate",
+                        "cure",
+                        "mend",
+                        "rehabilitate",
+                        "rejuvenate",
+                        "repair",
+                        "restore",
+                        "revive",
+                        "soothe",
+                        "treat"
+                    ]
+                }
+            ],
+            "objekt": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ]
+        },
+        "features": {
+            "TENSE": "FUTURE"
+        }
     }
-}]
+]

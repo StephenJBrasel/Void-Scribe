@@ -1,64 +1,67 @@
-[{
-    "phrase":
+[
     {
-        "subject":[
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ],
-        "predicate":[
-            {
-                "Choose":[
-                    "guard",
-                    "protect",
-                    "defend"]
-            }
-        ],
-        "objekt":[
-            {
-                "Generate":[
-                    "americanForenames", 
-                    "dutchForenames", 
-                    "frenchForenames", 
-                    "germanForenames", 
-                    "icelandicForenames", 
-                    "indianForenames", 
-                    "irishForenames", 
-                    "italianForenames", 
-                    "japaneseForenames", 
-                    "russianForenames", 
-                    "spanishForenames", 
-                    "swedishForenames"]
-            }
-        ]
-    },
-    "features":{
-        "TENSE":"FUTURE"
-    },
-    "complements":[
-        [
-            {
-            "Word":"against"
-            },
-            {
-            "Choose":[
-                "attack",
-                "enemies"
+        "phrase": {
+            "subject": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ],
+            "predicate": [
+                {
+                    "Choose": [
+                        "guard",
+                        "protect",
+                        "defend"
+                    ]
+                }
+            ],
+            "objekt": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
             ]
-            }
+        },
+        "features": {
+            "TENSE": "FUTURE"
+        },
+        "complements": [
+            [
+                {
+                    "Word": "against"
+                },
+                {
+                    "Choose": [
+                        "attack",
+                        "enemies"
+                    ]
+                }
+            ]
         ]
-    ]
-}
+    }
 ]
