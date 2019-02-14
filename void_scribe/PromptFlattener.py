@@ -45,30 +45,39 @@ def generateElement(elementJSON):
     else:
         return " ".join(elementParts)
         
-def contructClauseArguments(promptJSON):
+def contructClauseArguments(phraseJSON):
     # Given a prompt JSON object this will flatten it.
     # Loops through each element, then appends features and complements
     clauseConstructorArguments = {}
-    for argument in promptJSON['phrase'].keys():
-        elementData = promptJSON['phrase'][argument]
+    for argument in phraseJSON['phrase'].keys():
+        elementData = phraseJSON['phrase'][argument]
         clauseConstructorArguments[argument] = generateElement(elementData)
-    if 'features' in promptJSON.keys():
-        clauseConstructorArguments['features'] = promptJSON['features']
-    if 'complements' in promptJSON.keys():
+    if 'features' in phraseJSON.keys():
+        clauseConstructorArguments['features'] = phraseJSON['features']
+    if 'complements' in phraseJSON.keys():
         complements = []
-        for complementElementData in promptJSON['complements']:
+        for complementElementData in phraseJSON['complements']:
             complementElement = generateElement(complementElementData)
             complements.append(complementElement)
         clauseConstructorArguments['complements'] = complements
 
     return clauseConstructorArguments
 
-def realisePrompt(clauseArguments):
+def realiseClause(clauseArguments):
     # Unpacks the the arguments into the Clause contructor
     # Runs the realization web requests then returns the result
     clause = Clause(**clauseArguments)
 
     return realise(clause)
+
+def generatePrompt(promptType):
+    promptJSON = PI[promptType]
+    prompt = []
+    for clauseJSON in promptJSON:
+        clauseArgs = contructClauseArguments(clauseJSON)
+        clause = realiseClause(clauseArgs)
+        prompt.append(clause)
+    return " ".join(prompt)
 
 class PromptIndex():
     def __init__(self):
@@ -140,9 +149,9 @@ class PromptIndex():
             self.__updateIndex__()
 
 PI = PromptIndex()
+
 print(PI.keys())
 for key in PI.keys():
-    if key == 'harm':
-        continue
+    print(key)
     args = contructClauseArguments(PI[key])
-    print(realisePrompt(args))
+    print(realiseClause(args))
