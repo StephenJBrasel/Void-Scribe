@@ -153,5 +153,4 @@ PI = PromptIndex()
 print(PI.keys())
 for key in PI.keys():
     print(key)
-    args = contructClauseArguments(PI[key])
-    print(realiseClause(args))
+    print(generatePrompt(key))
