@@ -28,32 +28,36 @@
                     "proceed",
                     "trek"]
             }
-        ],
-        "complements":[
-            {
-                "Word":"to"
-            },
-            {
-            "Generate":[
-                "americanCities", 
-                "capitolCities", 
-                "greekIslands", 
-                "japaneseCities", 
-                "italianCities", 
-                "fellsInCambria", 
-                "germanTowns", 
-                "countries", 
-                "englishTowns", 
-                "placesInCumbria", 
-                "supermarketsAndDiscountStores", 
-                "swissCities", 
-                "russianCities", 
-                "chineseCities", 
-                "romanPlacesNames"]
-            }
         ]
     },
     "features":{
         "TENSE":"FUTURE"
-    }
-}]
+    },
+    "complements":
+    [
+    [
+        {
+            "Word":"to"
+        },
+        {
+        "Generate":[
+            "americanCities", 
+            "capitolCities", 
+            "greekIslands", 
+            "japaneseCities", 
+            "italianCities", 
+            "fellsInCambria", 
+            "germanTowns", 
+            "countries", 
+            "englishTowns", 
+            "placesInCumbria", 
+            "supermarketsAndDiscountStores", 
+            "swissCities", 
+            "russianCities", 
+            "chineseCities", 
+            "romanPlacesNames"]
+        }
+    ]
+]
+}
+]
