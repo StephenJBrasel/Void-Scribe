@@ -9,39 +9,16 @@ from nlglib.macroplanning import *
 from nlglib.microplanning import *
 from nlglib.features import TENSE
 import void_scribe
+import json
 
 ND = void_scribe.NamesDictionary()
-
-nameType = [
-    # "americanForenames",
-    # "dutchForenames",
-    # "frenchForenames",
-    # "germanForenames",
-    "icelandicForenames"
-    # "indianForenames",
-    # "irishForenames",
-    # "italianForenames",
-    # "japaneseForenames",
-    # # "romanEmperorForenames",
-    # "russianForenames",
-    # "spanishForenames",
-    # "swedishForenames"
-
-    # "scottishSurnames",
-
-    # "tolkienesqueForenames",
-    # "werewolfForenames"
-    ]
 
 actions = {# destroy, create, modify, interact
     "None":[],
     "think":[],
     "observe":[],
 
-    "travel":[
-        {"generate" : [nameType]},
-        {"choose" : ['travel', 'venture', 'go']}
-    ],
+    "travel":[],
     "lead":[],
     "follow":[],
     "interact":[], # give quest to someone else, get information
@@ -146,6 +123,9 @@ def generatePrompt(seed = None, promptType = None):
     print(ret)
     return ret
 
+def loadJSON():
+    for file in os.listdir(path)
+        json.load(file)
 
 if __name__ == "__main__":
     # print(synonym('lead', 'v'))

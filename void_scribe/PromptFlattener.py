@@ -8,8 +8,6 @@ import os
 
 realise = Realiser(host='nlg.kutlak.info')
 
-leadExamplePath = 'C:/Users/thepe_000/Desktop/PP5/Void-Scribe/void_scribe/data/PromptTemplates/lead.json'
-
 def selectNameTypeAndGenerateWord(nameTypes):
     # Selects a random NameType from the list passed, then calls for generation.
     # Currently utilizes realNames over generateMarkovNames
@@ -32,13 +30,13 @@ def generateElement(elementJSON):
     # Should an element have more than one componet (ie 'to place' rather than 'place')
     # this will join them with space characters
     elementParts = []
-    for elementComponet in elementJSON:
-        if "Generate" in elementComponet.keys():
-            elementParts.append(selectNameTypeAndGenerateWord(elementComponet["Generate"]))
-        if "Choose" in elementComponet.keys():
-            elementParts.append(chooseWord(elementComponet["Choose"]))
-        if "Word" in elementComponet.keys():
-            elementParts.append(elementComponet["Word"])
+    for elementComponent in elementJSON:
+        if "Generate" in elementComponent.keys():
+            elementParts.append(selectNameTypeAndGenerateWord(elementComponent["Generate"]))
+        if "Choose" in elementComponent.keys():
+            elementParts.append(chooseWord(elementComponent["Choose"]))
+        if "Word" in elementComponent.keys():
+            elementParts.append(elementComponent["Word"])
     elementPartCount = len(elementParts)
     if elementPartCount == 0:
         return elementParts[0]
