@@ -1,23 +1,21 @@
 {
     "componets": {
-        "542bc73cc5594eefa5ae6b96207f8d4c": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
+        "542bc73cc5594eefa5ae6b96207f8d4c": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
         "61879ad1d8744296b126e326c18500de": [
             {
                 "Choose": [
@@ -28,25 +26,23 @@
                 ]
             }
         ],
-        "8fda45e1526d41bdbc382f25fc79e113": [
-            {
-                "Generate": [
-                    "americanDesserts",
-                    "breads",
-                    "britishDesserts",
-                    "cakes",
-                    "drinks",
-                    "fish",
-                    "fruit",
-                    "italianFoods",
-                    "meats",
-                    "nutsAndSeeds",
-                    "pies",
-                    "sandwiches",
-                    "vegetables"
-                ]
-            }
-        ],
+        "8fda45e1526d41bdbc382f25fc79e113": {
+            "Generate": [
+                "americanDesserts",
+                "breads",
+                "britishDesserts",
+                "cakes",
+                "drinks",
+                "fish",
+                "fruit",
+                "italianFoods",
+                "meats",
+                "nutsAndSeeds",
+                "pies",
+                "sandwiches",
+                "vegetables"
+            ]
+        },
         "58c9119b45414feaa3febd012d2f77c7": {
             "Word": "from"
         },

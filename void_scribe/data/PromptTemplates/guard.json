@@ -1,50 +1,44 @@
 {
     "componets": {
-        "8e221f49c6c64765af281c65b6e2f1b9": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
-        "057926d915244314b4b453432c891bc9": [
-            {
-                "Choose": [
-                    "guard",
-                    "protect",
-                    "defend"
-                ]
-            }
-        ],
-        "d24db403fa124f86995c4c3fa792578e": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
+        "8e221f49c6c64765af281c65b6e2f1b9": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
+        "057926d915244314b4b453432c891bc9": {
+            "Choose": [
+                "guard",
+                "protect",
+                "defend"
+            ]
+        },
+        "d24db403fa124f86995c4c3fa792578e": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
         "98d39d9068e6443fa4fed05f20d7f311": {
             "Word": "against"
         },

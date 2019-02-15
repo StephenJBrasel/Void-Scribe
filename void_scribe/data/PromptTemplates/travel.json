@@ -1,35 +1,31 @@
 {
     "componets": {
-        "3d64d94166f641c3875659e23df4cce7": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
-        "912a7d90937d441c86696c92dc88e384": [
-            {
-                "Choose": [
-                    "travel",
-                    "venture",
-                    "voyage",
-                    "navigate",
-                    "proceed",
-                    "trek"
-                ]
-            }
-        ],
+        "3d64d94166f641c3875659e23df4cce7": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
+        "912a7d90937d441c86696c92dc88e384": {
+            "Choose": [
+                "travel",
+                "venture",
+                "voyage",
+                "navigate",
+                "proceed",
+                "trek"
+            ]
+        },
         "9f7b8ecf96574708ae785ea3aea41abd": {
             "Word": "to"
         },

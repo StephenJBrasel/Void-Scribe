@@ -1,52 +1,46 @@
 {
     "componets": {
-        "1cf9395fcc2448cdac28b2916a980d0c": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
-        "800b7b88684f478b99251521b4906347": [
-            {
-                "Choose": [
-                    "give",
-                    "deliver",
-                    "present",
-                    "provide"
-                ]
-            }
-        ],
-        "0586ebe9683b41da83c1d75a9b9c845a": [
-            {
-                "Generate": [
-                    "americanDesserts",
-                    "breads",
-                    "britishDesserts",
-                    "cakes",
-                    "drinks",
-                    "fish",
-                    "fruit",
-                    "italianFoods",
-                    "meats",
-                    "nutsAndSeeds",
-                    "pies",
-                    "sandwiches",
-                    "vegetables"
-                ]
-            }
-        ],
+        "1cf9395fcc2448cdac28b2916a980d0c": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
+        "800b7b88684f478b99251521b4906347": {
+            "Choose": [
+                "give",
+                "deliver",
+                "present",
+                "provide"
+            ]
+        },
+        "0586ebe9683b41da83c1d75a9b9c845a": {
+            "Generate": [
+                "americanDesserts",
+                "breads",
+                "britishDesserts",
+                "cakes",
+                "drinks",
+                "fish",
+                "fruit",
+                "italianFoods",
+                "meats",
+                "nutsAndSeeds",
+                "pies",
+                "sandwiches",
+                "vegetables"
+            ]
+        },
         "07e53e5f87244610947849be7561e10d": {
             "Word": "from"
         },

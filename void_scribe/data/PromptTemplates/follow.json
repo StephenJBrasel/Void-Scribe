@@ -1,50 +1,44 @@
 {
     "componets": {
-        "548f18fae6f44e049320d6ad5cbf1063": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
-        "c9405d7a167e4d158ef9b30a7772443c": [
-            {
-                "Choose": [
-                    "follow",
-                    "accompany",
-                    "attend"
-                ]
-            }
-        ],
-        "44b38e3c5a384d6b9c1c34a1d4dc2d9e": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
+        "548f18fae6f44e049320d6ad5cbf1063": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
+        "c9405d7a167e4d158ef9b30a7772443c": {
+            "Choose": [
+                "follow",
+                "accompany",
+                "attend"
+            ]
+        },
+        "44b38e3c5a384d6b9c1c34a1d4dc2d9e": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
         "24a071cb27354829b3146fcbdb96828e": {
             "Word": "to"
         },

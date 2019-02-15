@@ -1,54 +1,48 @@
 {
     "componets": {
-        "a7e96d41de5047baa92d82ca2b7c3bff": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ],
-        "16e96fb528874348a1400472c8da7318": [
-            {
-                "Choose": [
-                    "kill",
-                    "assassinate",
-                    "execute",
-                    "massacre",
-                    "murder",
-                    "slaughter",
-                    "slay"
-                ]
-            }
-        ],
-        "86d3e3002c964be88b2232a818601d56": [
-            {
-                "Generate": [
-                    "americanForenames",
-                    "dutchForenames",
-                    "frenchForenames",
-                    "germanForenames",
-                    "icelandicForenames",
-                    "indianForenames",
-                    "irishForenames",
-                    "italianForenames",
-                    "japaneseForenames",
-                    "russianForenames",
-                    "spanishForenames",
-                    "swedishForenames"
-                ]
-            }
-        ]
+        "a7e96d41de5047baa92d82ca2b7c3bff": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        },
+        "16e96fb528874348a1400472c8da7318": {
+            "Choose": [
+                "kill",
+                "assassinate",
+                "execute",
+                "massacre",
+                "murder",
+                "slaughter",
+                "slay"
+            ]
+        },
+        "86d3e3002c964be88b2232a818601d56": {
+            "Generate": [
+                "americanForenames",
+                "dutchForenames",
+                "frenchForenames",
+                "germanForenames",
+                "icelandicForenames",
+                "indianForenames",
+                "irishForenames",
+                "italianForenames",
+                "japaneseForenames",
+                "russianForenames",
+                "spanishForenames",
+                "swedishForenames"
+            ]
+        }
     },
     "clauses": [
         {
