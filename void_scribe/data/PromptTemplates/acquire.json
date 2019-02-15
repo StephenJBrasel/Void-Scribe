@@ -1,82 +1,95 @@
-[
-    {
-        "phrase": {
+{
+    "componets": {
+        "542bc73cc5594eefa5ae6b96207f8d4c": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "icelandicForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ],
+        "61879ad1d8744296b126e326c18500de": [
+            {
+                "Choose": [
+                    "get",
+                    "acquire",
+                    "collect",
+                    "gain"
+                ]
+            }
+        ],
+        "8fda45e1526d41bdbc382f25fc79e113": [
+            {
+                "Generate": [
+                    "americanDesserts",
+                    "breads",
+                    "britishDesserts",
+                    "cakes",
+                    "drinks",
+                    "fish",
+                    "fruit",
+                    "italianFoods",
+                    "meats",
+                    "nutsAndSeeds",
+                    "pies",
+                    "sandwiches",
+                    "vegetables"
+                ]
+            }
+        ],
+        "58c9119b45414feaa3febd012d2f77c7": {
+            "Word": "from"
+        },
+        "5eb3ff49ff284b9b9a28747b52fc6287": {
+            "Generate": [
+                "americanCities",
+                "capitolCities",
+                "greekIslands",
+                "japaneseCities",
+                "italianCities",
+                "fellsInCambria",
+                "germanTowns",
+                "countries",
+                "englishTowns",
+                "placesInCumbria",
+                "supermarketsAndDiscountStores",
+                "swissCities",
+                "russianCities",
+                "chineseCities",
+                "romanPlacesNames"
+            ]
+        }
+    },
+    "clauses": [
+        {
             "subject": [
-                {
-                    "Generate": [
-                        "americanForenames",
-                        "dutchForenames",
-                        "frenchForenames",
-                        "germanForenames",
-                        "icelandicForenames",
-                        "indianForenames",
-                        "irishForenames",
-                        "italianForenames",
-                        "japaneseForenames",
-                        "russianForenames",
-                        "spanishForenames",
-                        "swedishForenames"
-                    ]
-                }
+                "542bc73cc5594eefa5ae6b96207f8d4c"
             ],
             "predicate": [
-                {
-                    "Choose": [
-                        "get",
-                        "acquire",
-                        "collect",
-                        "gain"
-                    ]
-                }
+                "61879ad1d8744296b126e326c18500de"
             ],
             "objekt": [
-                {
-                    "Generate": [
-                        "americanDesserts",
-                        "breads",
-                        "britishDesserts",
-                        "cakes",
-                        "drinks",
-                        "fish",
-                        "fruit",
-                        "italianFoods",
-                        "meats",
-                        "nutsAndSeeds",
-                        "pies",
-                        "sandwiches",
-                        "vegetables"
-                    ]
-                }
+                "8fda45e1526d41bdbc382f25fc79e113"
+            ],
+            "features": {
+                "TENSE": "FUTURE"
+            },
+            "complements": [
+                [
+                    "58c9119b45414feaa3febd012d2f77c7",
+                    "5eb3ff49ff284b9b9a28747b52fc6287"
+                ]
             ]
-        },
-        "features": {
-            "TENSE": "FUTURE"
-        },
-        "complements": [
-            [
-                {
-                    "Word": "from"
-                },
-                {
-                    "Generate": [
-                        "americanCities",
-                        "capitolCities",
-                        "greekIslands",
-                        "japaneseCities",
-                        "italianCities",
-                        "fellsInCambria",
-                        "germanTowns",
-                        "countries",
-                        "englishTowns",
-                        "placesInCumbria",
-                        "supermarketsAndDiscountStores",
-                        "swissCities",
-                        "russianCities",
-                        "chineseCities",
-                        "romanPlacesNames"
-                    ]
-                }
-            ]
-        ]
-    }
-]
+        }
+    ]
+}

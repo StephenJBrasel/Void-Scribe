@@ -1,82 +1,69 @@
-[
-    {
-        "phrase": {
+{
+    "componets": {
+        "3fef022bab16494b89ab8b86ed00616f": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ],
+        "a13ae7afc1804e6bb2c8caa78a619392": [
+            {
+                "Choose": [
+                    "lead",
+                    "guide",
+                    "escort",
+                    "accompany",
+                    "bring",
+                    "carry",
+                    "drag",
+                    "usher",
+                    "steer"
+                ]
+            }
+        ],
+        "f712040c1f7f4a6e901473179d73953d": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ]
+    },
+    "clauses": [
+        {
             "subject": [
-                {
-                    "Generate": [
-                        "americanForenames",
-                        "dutchForenames",
-                        "frenchForenames",
-                        "germanForenames",
-                        "indianForenames",
-                        "irishForenames",
-                        "italianForenames",
-                        "japaneseForenames",
-                        "russianForenames",
-                        "spanishForenames",
-                        "swedishForenames"
-                    ]
-                }
+                "3fef022bab16494b89ab8b86ed00616f"
             ],
             "predicate": [
-                {
-                    "Choose": [
-                        "lead",
-                        "guide",
-                        "escort",
-                        "accompany",
-                        "bring",
-                        "carry",
-                        "drag",
-                        "usher",
-                        "steer"
-                    ]
-                }
+                "a13ae7afc1804e6bb2c8caa78a619392"
             ],
             "objekt": [
-                {
-                    "Generate": [
-                        "americanForenames",
-                        "dutchForenames",
-                        "frenchForenames",
-                        "germanForenames",
-                        "indianForenames",
-                        "irishForenames",
-                        "italianForenames",
-                        "japaneseForenames",
-                        "russianForenames",
-                        "spanishForenames",
-                        "swedishForenames"
-                    ]
-                }
+                "f712040c1f7f4a6e901473179d73953d"
             ],
-            "complements": [
-                {
-                    "Word": "to"
-                },
-                {
-                    "Generate": [
-                        "americanCities",
-                        "capitolCities",
-                        "greekIslands",
-                        "japaneseCities",
-                        "italianCities",
-                        "fellsInCambria",
-                        "germanTowns",
-                        "countries",
-                        "englishTowns",
-                        "placesInCumbria",
-                        "supermarketsAndDiscountStores",
-                        "swissCities",
-                        "russianCities",
-                        "chineseCities",
-                        "romanPlacesNames"
-                    ]
-                }
-            ]
-        },
-        "features": {
-            "TENSE": "FUTURE"
+            "features": {
+                "TENSE": "FUTURE"
+            }
         }
-    }
-]
+    ]
+}
