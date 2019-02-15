@@ -16,16 +16,14 @@
                 "swedishForenames"
             ]
         },
-        "61879ad1d8744296b126e326c18500de": [
-            {
-                "Choose": [
-                    "get",
-                    "acquire",
-                    "collect",
-                    "gain"
-                ]
-            }
-        ],
+        "61879ad1d8744296b126e326c18500de": {
+            "Choose": [
+                "get",
+                "acquire",
+                "collect",
+                "gain"
+            ]
+        },
         "8fda45e1526d41bdbc382f25fc79e113": {
             "Generate": [
                 "americanDesserts",
