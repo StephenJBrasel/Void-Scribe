@@ -1,0 +1,75 @@
+{
+    "componets": {
+        "3d64d94166f641c3875659e23df4cce7": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "icelandicForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ],
+        "912a7d90937d441c86696c92dc88e384": [
+            {
+                "Choose": [
+                    "travel",
+                    "venture",
+                    "voyage",
+                    "navigate",
+                    "proceed",
+                    "trek"
+                ]
+            }
+        ],
+        "9f7b8ecf96574708ae785ea3aea41abd": {
+            "Word": "to"
+        },
+        "f9612e514846469bb36b503e77bbd03e": {
+            "Generate": [
+                "americanCities",
+                "capitolCities",
+                "greekIslands",
+                "japaneseCities",
+                "italianCities",
+                "fellsInCambria",
+                "germanTowns",
+                "countries",
+                "englishTowns",
+                "placesInCumbria",
+                "supermarketsAndDiscountStores",
+                "swissCities",
+                "russianCities",
+                "chineseCities",
+                "romanPlacesNames"
+            ]
+        }
+    },
+    "clauses": [
+        {
+            "subject": [
+                "3d64d94166f641c3875659e23df4cce7"
+            ],
+            "predicate": [
+                "912a7d90937d441c86696c92dc88e384"
+            ],
+            "features": {
+                "TENSE": "FUTURE"
+            },
+            "complements": [
+                [
+                    "9f7b8ecf96574708ae785ea3aea41abd",
+                    "f9612e514846469bb36b503e77bbd03e"
+                ]
+            ]
+        }
+    ]
+}

@@ -148,7 +148,6 @@ class PromptIndex():
 
 PI = PromptIndex()
 
-print(PI.keys())
 for key in PI.keys():
     print(key)
     print(generatePrompt(key))

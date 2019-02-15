@@ -1,0 +1,93 @@
+{
+    "componets": {
+        "548f18fae6f44e049320d6ad5cbf1063": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "icelandicForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ],
+        "c9405d7a167e4d158ef9b30a7772443c": [
+            {
+                "Choose": [
+                    "follow",
+                    "accompany",
+                    "attend"
+                ]
+            }
+        ],
+        "44b38e3c5a384d6b9c1c34a1d4dc2d9e": [
+            {
+                "Generate": [
+                    "americanForenames",
+                    "dutchForenames",
+                    "frenchForenames",
+                    "germanForenames",
+                    "icelandicForenames",
+                    "indianForenames",
+                    "irishForenames",
+                    "italianForenames",
+                    "japaneseForenames",
+                    "russianForenames",
+                    "spanishForenames",
+                    "swedishForenames"
+                ]
+            }
+        ],
+        "24a071cb27354829b3146fcbdb96828e": {
+            "Word": "to"
+        },
+        "7822d568b1114108a050cf1ec573b700": {
+            "Generate": [
+                "americanCities",
+                "capitolCities",
+                "greekIslands",
+                "japaneseCities",
+                "italianCities",
+                "fellsInCambria",
+                "germanTowns",
+                "countries",
+                "englishTowns",
+                "placesInCumbria",
+                "supermarketsAndDiscountStores",
+                "swissCities",
+                "russianCities",
+                "chineseCities",
+                "romanPlacesNames"
+            ]
+        }
+    },
+    "clauses": [
+        {
+            "subject": [
+                "548f18fae6f44e049320d6ad5cbf1063"
+            ],
+            "predicate": [
+                "c9405d7a167e4d158ef9b30a7772443c"
+            ],
+            "objekt": [
+                "44b38e3c5a384d6b9c1c34a1d4dc2d9e"
+            ],
+            "features": {
+                "TENSE": "FUTURE"
+            },
+            "complements": [
+                [
+                    "24a071cb27354829b3146fcbdb96828e",
+                    "7822d568b1114108a050cf1ec573b700"
+                ]
+            ]
+        }
+    ]
+}
