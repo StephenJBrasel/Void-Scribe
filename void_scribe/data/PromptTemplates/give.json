@@ -1,97 +1,103 @@
-[{
-    "phrase":
+[
     {
-        "subject":[
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ],
-        "predicate":[
-            {
-                "Choose":[
-                    "give",
-                    "deliver",
-                    "present",
-                    "provide"]
-            }
-        ],
-        "objekt":[
-            {
-                "Generate":[
-                    "americanDesserts",
-                    "breads",
-                    "britishDesserts",
-                    "cakes",
-                    "drinks",
-                    "fish",
-                    "fruit",
-                    "italianFoods",
-                    "meats", 
-                    "nutsAndSeeds",
-                    "pies",
-                    "sandwiches",
-                    "vegetables"]
-            }
+        "phrase": {
+            "subject": [
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ],
+            "predicate": [
+                {
+                    "Choose": [
+                        "give",
+                        "deliver",
+                        "present",
+                        "provide"
+                    ]
+                }
+            ],
+            "objekt": [
+                {
+                    "Generate": [
+                        "americanDesserts",
+                        "breads",
+                        "britishDesserts",
+                        "cakes",
+                        "drinks",
+                        "fish",
+                        "fruit",
+                        "italianFoods",
+                        "meats",
+                        "nutsAndSeeds",
+                        "pies",
+                        "sandwiches",
+                        "vegetables"
+                    ]
+                }
+            ]
+        },
+        "features": {
+            "TENSE": "FUTURE"
+        },
+        "complements": [
+            [
+                {
+                    "Word": "from"
+                },
+                {
+                    "Generate": [
+                        "americanCities",
+                        "capitolCities",
+                        "greekIslands",
+                        "japaneseCities",
+                        "italianCities",
+                        "fellsInCambria",
+                        "germanTowns",
+                        "countries",
+                        "englishTowns",
+                        "placesInCumbria",
+                        "supermarketsAndDiscountStores",
+                        "swissCities",
+                        "russianCities",
+                        "chineseCities",
+                        "romanPlacesNames"
+                    ]
+                }
+            ],
+            [
+                {
+                    "Word": "to"
+                },
+                {
+                    "Generate": [
+                        "americanForenames",
+                        "dutchForenames",
+                        "frenchForenames",
+                        "germanForenames",
+                        "icelandicForenames",
+                        "indianForenames",
+                        "irishForenames",
+                        "italianForenames",
+                        "japaneseForenames",
+                        "russianForenames",
+                        "spanishForenames",
+                        "swedishForenames"
+                    ]
+                }
+            ]
         ]
-    },
-    "features":{
-        "TENSE":"FUTURE"
-    },
-    "complements":[
-        [
-            {
-            "Word":"from"
-            },
-            {
-            "Generate":[
-                "americanCities", 
-                "capitolCities", 
-                "greekIslands", 
-                "japaneseCities", 
-                "italianCities", 
-                "fellsInCambria", 
-                "germanTowns", 
-                "countries", 
-                "englishTowns", 
-                "placesInCumbria", 
-                "supermarketsAndDiscountStores", 
-                "swissCities", 
-                "russianCities", 
-                "chineseCities", 
-                "romanPlacesNames"]
-            }
-        ],
-        [
-            {
-            "Word":"to"
-            },
-            {
-            "Generate":[
-                "americanForenames", 
-                "dutchForenames", 
-                "frenchForenames", 
-                "germanForenames", 
-                "icelandicForenames", 
-                "indianForenames", 
-                "irishForenames", 
-                "italianForenames", 
-                "japaneseForenames", 
-                "russianForenames", 
-                "spanishForenames", 
-                "swedishForenames"]
-            }
-        ]
-    ]
-}]
+    }
+]
