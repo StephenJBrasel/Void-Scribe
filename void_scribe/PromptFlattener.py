@@ -23,39 +23,64 @@ def chooseWord(words):
     chosenWord = random.randint(0, len(words) - 1)
     return words[chosenWord]
 
-def generateElement(elementJSON):
-    # Generates an element as defined by nlglib
-    # It is given the JSON encoding for the element and
+def generateComponet(componetJSON):
+    # Generates an componet, defined as a single word that is part of a
+    # element as defined by nlglib
+    # It is given the JSON encoding for the componet and
     # runs corresponding process to generate or pick the word.
-    # Should an element have more than one componet (ie 'to place' rather than 'place')
-    # this will join them with space characters
-    elementParts = []
-    for elementComponent in elementJSON:
-        if "Generate" in elementComponent.keys():
-            elementParts.append(selectNameTypeAndGenerateWord(elementComponent["Generate"]))
-        if "Choose" in elementComponent.keys():
-            elementParts.append(chooseWord(elementComponent["Choose"]))
-        if "Word" in elementComponent.keys():
-            elementParts.append(elementComponent["Word"])
-    elementPartCount = len(elementParts)
-    if elementPartCount == 0:
-        return elementParts[0]
-    else:
-        return " ".join(elementParts)
-        
-def contructClauseArguments(phraseJSON):
-    # Given a prompt JSON object this will flatten it.
-    # Loops through each element, then appends features and complements
+    if "Generate" in componetJSON.keys():
+        return selectNameTypeAndGenerateWord(componetJSON["Generate"])
+    if "Choose" in componetJSON.keys():
+        return chooseWord(componetJSON["Choose"])
+    if "Word" in componetJSON.keys():
+        return componetJSON["Word"]
+
+def generateComponetDictionary(componets):
+    # Given the json dictionary of a prompt templates componets
+    # This will run respective generation processes for each
+    # and create a dictionary that has...
+    # key as the hex id and value as the componet string
+    componetDictionary = {}
+    for componetID in componets.keys():
+        componetDictionary[componetID] = generateComponet(componets[componetID])
+    return componetDictionary
+
+def contructClauseArguments(componetDictionary, clauseJSON):
+    # Given a single clause's json structure and its associated
+    # componet dictionary, this returns an unpackable argument argument
+    # For the clause contructor
+
+    def addBasicArgument(argument):
+        # Helper function to avoid rewriting code
+        if argument in clauseJSON.keys():
+            componetIDs = clauseJSON[argument]
+            elementComponets = []
+            for componetID in componetIDs:
+                componet = componetDictionary[componetID]
+                elementComponets.append(componet)
+            element = " ".join(elementComponets)
+            clauseConstructorArguments[argument] = element
+
     clauseConstructorArguments = {}
-    for argument in phraseJSON['phrase'].keys():
-        elementData = phraseJSON['phrase'][argument]
-        clauseConstructorArguments[argument] = generateElement(elementData)
-    if 'features' in phraseJSON.keys():
-        clauseConstructorArguments['features'] = phraseJSON['features']
-    if 'complements' in phraseJSON.keys():
+
+    # Add basic arguments (one element arguments)
+    addBasicArgument('subject')
+    addBasicArgument('predicate')
+    addBasicArgument('objekt')
+
+    # Add features
+    if 'features' in clauseJSON.keys():
+        clauseConstructorArguments['features'] = clauseJSON['features']
+    
+    # Add complements
+    if 'complements' in clauseJSON.keys():
         complements = []
-        for complementElementData in phraseJSON['complements']:
-            complementElement = generateElement(complementElementData)
+        for complement in clauseJSON['complements']:
+            complementComponets = []
+            for componetID in complement:
+                componet = componetDictionary[componetID]
+                complementComponets.append(componet)
+            complementElement = " ".join(complementComponets)
             complements.append(complementElement)
         clauseConstructorArguments['complements'] = complements
 
@@ -69,13 +94,21 @@ def realiseClause(clauseArguments):
     return realise(clause)
 
 def generatePrompt(promptType):
+    # Takes a promptType, loads associated JSON file
+    # Creates componet dictionary
+    # Runs argument and realization for each clause
+    # joins clauses
+
+    #Load prompt JSON from PromptIndex
     promptJSON = PI[promptType]
-    prompt = []
-    for clauseJSON in promptJSON:
-        clauseArgs = contructClauseArguments(clauseJSON)
-        clause = realiseClause(clauseArgs)
-        prompt.append(clause)
-    return " ".join(prompt)
+    
+    componetDictionary = generateComponetDictionary(promptJSON['componets'])
+    clauses = []
+    for clauseJSON in promptJSON['clauses']:
+        clauseContructorArguments = contructClauseArguments(componetDictionary, clauseJSON)
+        clause = realiseClause(clauseContructorArguments)
+        clauses.append(clause)
+    return " ".join(clauses)
 
 class PromptIndex():
     def __init__(self):
@@ -147,7 +180,3 @@ class PromptIndex():
             self.__updateIndex__()
 
 PI = PromptIndex()
-
-for key in PI.keys():
-    print(key)
-    print(generatePrompt(key))
