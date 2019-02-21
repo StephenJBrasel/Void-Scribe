@@ -1,5 +1,5 @@
 import random
-import pickle
+import json
 
 # Generate dict of objects, classes -> uid
 # Generate sequence of objects, story -> [class[uid], class[uid], class[uid]]
@@ -32,13 +32,13 @@ def createNGrams(elements=None, order=3):
         for i in range(order):
             NGram.append(elements[index + i])
 
-        NGrams.append(tuple(NGram))
+        NGrams.append("".join(NGram)) 
 
     return NGrams
 
 def createMarkovChain(ngrams):
     #Parameters
-    ##ngrams - Indexable collections of Indexable Collections (Of the same len())
+    ##ngrams - Indexable collections of strings (Of the same len())
     #Returns
     ##chain - The markov chain, follows the following format...
     #{ ngram:{ link:count, link:count } ngram:{ link:count } }
@@ -115,8 +115,8 @@ def createMarkovDictionary(data, order, filepath=None):
     ##data - Data formated for use with NGrams, 
     # this is a list of list of single objects by which to create NGrams from
     ##order - The order of NGrams to generate
-    ##filepath - Optional argument, if provided path is valid and ends with .p, 
-    # the dictionary will be pickled
+    ##filepath - Optional argument, if provided path is valid and ends with .json, 
+    # the dictionary will be saved
     #Return
     ##The Markov Dictionary
 
@@ -128,8 +128,9 @@ def createMarkovDictionary(data, order, filepath=None):
             new_chains = createMarkovChain(ngrams)
             chains = updateMarkovDictionary(chains, new_chains)
 
-    if filepath != None and filepath.endswith('.p'):
-        pickle.dump(chains, open(filepath, "wb"))
+    if filepath != None and filepath.endswith('.json'):
+        with open(filepath, 'w') as f:
+            json.dump(chains, f, indent=4, sort_keys=True)
 
     return chains
 
@@ -143,8 +144,8 @@ def markovGenerate(markovDictionary, order, amount, max_length=15):
     ##generated_outputs - List of amount number Lists of ordered objects occording to markov algorithm
 
     #Helper Function
-    def tupleEndofList(_list):
-        return tuple(_list[(-1 * order):])
+    def stringifyEndofList(_list):
+        return "".join(_list[(-1 * order):])
     
     generated_outputs = []
     for i in range(amount):
@@ -159,9 +160,9 @@ def markovGenerate(markovDictionary, order, amount, max_length=15):
             output.append(item)
 
         #Now utalize the MarkovDictionary
-        while len(output) < max_length and tupleEndofList(output) in markovDictionary.keys():
+        while len(output) < max_length and stringifyEndofList(output) in markovDictionary.keys():
             #Build population and Weights
-            links = markovDictionary[tupleEndofList(output)]
+            links = markovDictionary[stringifyEndofList(output)]
             population = list(links.keys())
 
             #Get Key-Value pairs (key = link, value = frequency)
