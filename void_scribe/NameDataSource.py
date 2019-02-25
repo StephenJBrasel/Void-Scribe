@@ -39,6 +39,5 @@ class NameDataSource(ABC):
         pass
 
     @abstractmethod
-    @property
     def NameTypes(self):
         pass
