@@ -33,3 +33,12 @@ class NameDataSource(ABC):
     @abstractmethod
     def Data(self, nameTypes):
         pass
+
+    @abstractmethod
+    def GenerationData(self, nameTypes):
+        pass
+
+    @abstractmethod
+    @property
+    def NameTypes(self):
+        pass

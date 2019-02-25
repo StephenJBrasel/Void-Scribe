@@ -1,4 +1,4 @@
-from NameDataSource import NameDataSource
+from void_scribe.NameDataSource import NameDataSource
 from requests import post, Response
 
 voidWebURL = 'www.voidscribe.com/data/names'
@@ -15,15 +15,6 @@ class VoidWebDataSource(NameDataSource):
     def __sendRequest__(self, json):
         resp = post(voidWebURL, json=json)
         return resp.json()
-
-    def Tags(self, nameTypes):
-        return self.MetaData['Tags']
-
-    def Category(self, nameTypes):
-        return self.MetaData['Category']
-
-    def Proper(self, nameTypes):
-        return self.MetaData['Proper']
 
     def MarkovDictionary(self, nameTypes):
         req = self.__baseWebRequestTemplate__(nameTypes)
@@ -47,7 +38,24 @@ class VoidWebDataSource(NameDataSource):
         req["dictionary"] = True
         return self.__sendRequest__(req)
 
-from random import randint
-for i in range(1, 20):
-    x = randint(0, 2)
-    print(x)
+    def Tags(self, nameTypes):
+        return self.MetaData(nameTypes)['Tags']
+
+    def Category(self, nameTypes):
+        return self.MetaData(nameTypes)['Category']
+
+    def Proper(self, nameTypes):
+        return self.MetaData(nameTypes)['Proper']
+
+    def GenerationData(self, nameTypes):
+        req = self.__baseWebRequestTemplate__(nameTypes)
+        req["meta"] = True
+        req["dictionary"] = True
+        return self.__sendRequest__(req)
+
+    def NameTypes(self):
+        from requests import get
+
+        resp = get(url='http://www.voidscribe.com/data/names/nameTypes')
+        return resp.json()
+

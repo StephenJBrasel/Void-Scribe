@@ -2,7 +2,7 @@ from nlglib.realisation.simplenlg.realisation import Realiser
 from nlglib.microplanning import *
 import json
 import random
-from void_scribe import NameGenerator
+import void_scribe
 import pkg_resources
 import os
 
@@ -14,7 +14,7 @@ def selectNameTypeAndGenerateWord(nameTypes):
     # Additionally capitalizes words. (though this should be a functionality moved to NameGenerator)
     chosenNameType = random.randint(0, len(nameTypes) - 1)
     chosenNameType = nameTypes[chosenNameType]
-    generatedWord = NameGenerator.realNames(chosenNameType, 1)[0]
+    generatedWord = void_scribe.realNames(chosenNameType, 1)[0]
     generatedWord = generatedWord.capitalize()
     return generatedWord
 
@@ -179,4 +179,4 @@ class PromptIndex():
             # Update index
             self.__updateIndex__()
 
-PI = PromptIndex()
+# PI = PromptIndex()

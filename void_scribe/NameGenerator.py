@@ -1,22 +1,38 @@
-from void_scribe import MarkovIndex, NamesDictionary, MarkovGen
+from void_scribe import VoidWebDataSource
 
-MI = MarkovIndex()
+class NameGenerator():
+    def __init__(self, dataSource = VoidWebDataSource()):
+        self.__dataSource__ = dataSource
 
-def generateMarkovNames(Name_Type = None, amount = 1):
-    namesMarkovDictionary = MI[Name_Type]
-    names = MarkovGen.markovGenerate(namesMarkovDictionary, 3, amount)
-    for i in range(0, len(names)):
-        names[i] = "".join(names[i])
-    return names
+    def generateNames(self, nameType = None, amount = 0):
+        if nameType == None or amount == 0:
+            return []
 
-def realNames(Name_Type = 'americanForenames', amount = 1):
-    from void_scribe import NamesDictionary
-    from random import choice
-    ND = NamesDictionary()
-    ret = []
-    for i in range(amount + 1):
-        ret.append(choice(ND[Name_Type]['Data']))
-    return ret
+        from MarkovGen import markovGenerate        
 
-def validNameTypes():
-    return MI.keys()
+        generationData = self.__dataSource__.GenerationData([nameType])
+        markovDictionary = generationData[nameType]['dictionary']
+        proper = generationData[nameType]['meta']['Proper']
+
+        names = markovGenerate(markovDictionary, 3, amount)
+
+        if proper:
+            names = [name.Title() for name in names]
+
+        return names
+        
+    @property
+    def ValidNameTypes(self):
+        return self.__dataSource__.NameTypes()
+        
+    def retreiveNames(self, nameType, amount):
+        from random import choice
+
+        rawData = self.__dataSource__.RawData([nameType])
+        rawData = rawData[nameType]
+
+        chosenNames = []
+        for i in range(amount):
+            chosenNames.append(choice(rawData))
+
+        return chosenNames
