@@ -1,9 +1,8 @@
-from void_scribe.NameDataSource import NameDataSource
 from requests import post, Response
 
 voidWebURL = 'www.voidscribe.com/data/names'
 
-class VoidWebDataSource(NameDataSource):
+class VoidWebDataSource():
     def __baseWebRequestTemplate__(self, nameTypes):
         return {
             "nameTypes":nameTypes,
@@ -59,3 +58,4 @@ class VoidWebDataSource(NameDataSource):
         resp = get(url='http://www.voidscribe.com/data/names/nameTypes')
         return resp.json()
 
+ 
