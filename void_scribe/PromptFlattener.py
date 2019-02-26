@@ -11,11 +11,10 @@ realise = Realiser(host='nlg.kutlak.info')
 def selectNameTypeAndGenerateWord(nameTypes):
     # Selects a random NameType from the list passed, then calls for generation.
     # Currently utilizes realNames over generateMarkovNames
-    # Additionally capitalizes words. (though this should be a functionality moved to NameGenerator)
+    nameGenerator = void_scribe.NameGenerator.NameGenerator()
     chosenNameType = random.randint(0, len(nameTypes) - 1)
     chosenNameType = nameTypes[chosenNameType]
-    generatedWord = void_scribe.realNames(chosenNameType, 1)[0]
-    generatedWord = generatedWord.capitalize()
+    generatedWord = nameGenerator.retreiveNames(chosenNameType, 1)[0]
     return generatedWord
 
 def chooseWord(words):
@@ -98,7 +97,7 @@ def generatePrompt(promptType):
     # Creates componet dictionary
     # Runs argument and realization for each clause
     # joins clauses
-
+    PI = PromptIndex()
     #Load prompt JSON from PromptIndex
     promptJSON = PI[promptType]
     
@@ -179,4 +178,3 @@ class PromptIndex():
             # Update index
             self.__updateIndex__()
 
-# PI = PromptIndex()
