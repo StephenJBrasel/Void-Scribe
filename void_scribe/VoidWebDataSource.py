@@ -1,6 +1,6 @@
 from requests import post, Response
 
-voidWebURL = 'www.voidscribe.com/data/names'
+voidWebURL = 'http://www.voidscribe.com/data/names'
 
 class VoidWebDataSource():
     def __baseWebRequestTemplate__(self, nameTypes):
