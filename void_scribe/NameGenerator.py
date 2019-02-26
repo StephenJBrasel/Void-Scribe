@@ -8,7 +8,7 @@ class NameGenerator():
         if nameType == None or amount == 0:
             return []
 
-        from MarkovGen import markovGenerate        
+        from void_scribe.MarkovGen import markovGenerate        
 
         generationData = self.__dataSource__.GenerationData([nameType])
         markovDictionary = generationData[nameType]['dictionary']
