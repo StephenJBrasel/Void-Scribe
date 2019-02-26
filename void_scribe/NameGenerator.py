@@ -1,4 +1,4 @@
-from void_scribe import VoidWebDataSource
+from void_scribe.VoidWebDataSource import VoidWebDataSource
 
 class NameGenerator():
     def __init__(self, dataSource = VoidWebDataSource()):
@@ -16,8 +16,10 @@ class NameGenerator():
 
         names = markovGenerate(markovDictionary, 3, amount)
 
+        names = ["".join(name) for name in names]
+
         if proper:
-            names = [name.Title() for name in names]
+            names = [name.title() for name in names]
 
         return names
         
@@ -29,10 +31,17 @@ class NameGenerator():
         from random import choice
 
         rawData = self.__dataSource__.RawData([nameType])
-        rawData = rawData[nameType]
+        rawData = rawData[nameType]['raw']['Data']
+        metaData = self.__dataSource__.MetaData([nameType])
+        proper = metaData[nameType]['meta']['Proper']
 
         chosenNames = []
         for i in range(amount):
             chosenNames.append(choice(rawData))
 
+        if proper:
+            chosenNames = [name.title() for name in chosenNames]
+
+
         return chosenNames
+
