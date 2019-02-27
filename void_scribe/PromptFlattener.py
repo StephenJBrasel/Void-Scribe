@@ -93,20 +93,13 @@ def realiseClause(clauseArguments):
 
     return realise(clause)
 
-def generatePrompt(promptType):
+def generatePrompt(promptType, templateSource):
     # Takes a promptType, loads associated JSON file from Void-Web
     # Creates componet dictionary
     # Runs argument and realization for each clause
     # joins clauses
-    from requests import post
-    url = 'http://www.voidscribe.com//data/prompts'
-    json = {"promptType":promptType}
-    resp = post(url=url, json=json)
-
-    if resp.status_code != 200:
-        raise Exception('Encountered Network Error With Void-Web when requesting prompt type data')
-
-    promptJSON = resp.json()
+    
+    promptJSON = templateSource(promptType)
     
     componetDictionary = generateComponetDictionary(promptJSON['componets'])
     clauses = []
@@ -116,5 +109,28 @@ def generatePrompt(promptType):
         clauses.append(clause)
     return " ".join(clauses)
 
-print(generatePrompt('acquire'))
+def getPromptTemplateWeb(promptType):
+    from requests import post
+    url = 'http://www.voidscribe.com//data/prompts'
+    json = {"promptType":promptType}
+    resp = post(url=url, json=json)
+    if resp.status_code != 200:
+        raise Exception('Encountered Network Error With Void-Web when requesting prompt type data')
+    promptJSON = resp.json()
+    return promptJSON
 
+def getPromptTemplateLocal(promptType):
+    dataFilePath = r'C:\Users\thepe_000\Desktop\PP5\Void-Web\Enviorment\data\PromptTemplates'
+    import os
+
+    promptTypes = os.listdir(dataFilePath)
+    promptTypes = [pType.split('.')[0] for pType in promptTypes]
+
+    filePath = dataFilePath + '/' + promptType + '.json'
+    with open(filePath, 'r') as f:
+        promptTemplate = json.load(f)
+
+    return promptTemplate
+
+print(generatePrompt('follow', getPromptTemplateWeb))
+print(generatePrompt('follow', getPromptTemplateLocal))
