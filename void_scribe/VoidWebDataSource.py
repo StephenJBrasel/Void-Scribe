@@ -57,5 +57,3 @@ class VoidWebDataSource():
 
         resp = get(url='http://www.voidscribe.com/data/names/nameTypes')
         return resp.json()
-
- 

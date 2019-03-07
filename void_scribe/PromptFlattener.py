@@ -101,9 +101,12 @@ def generatePrompt(promptType, templateSource):
     
     promptJSON = templateSource(promptType)
     
-    componetDictionary = generateComponetDictionary(promptJSON['componets'])
+    return generatePromptFromTemplate(promptJSON)
+
+def generatePromptFromTemplate(template):
+    componetDictionary = generateComponetDictionary(template['componets'])
     clauses = []
-    for clauseJSON in promptJSON['clauses']:
+    for clauseJSON in template['clauses']:
         clauseContructorArguments = contructClauseArguments(componetDictionary, clauseJSON)
         clause = realiseClause(clauseContructorArguments)
         clauses.append(clause)
@@ -131,6 +134,3 @@ def getPromptTemplateLocal(promptType):
         promptTemplate = json.load(f)
 
     return promptTemplate
-
-print(generatePrompt('follow', getPromptTemplateWeb))
-print(generatePrompt('follow', getPromptTemplateLocal))

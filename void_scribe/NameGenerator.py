@@ -44,4 +44,3 @@ class NameGenerator():
 
 
         return chosenNames
-
